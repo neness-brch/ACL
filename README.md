@@ -22,8 +22,3 @@ Backlog général :
 -	Création de l’ambiance sonore et du sound design.
 
 QUETE FINALE A DÉFINIR
-RÉPARTITION PROVISOIRE : 
-Ana : menu principal
-Dieynaba/Matteo: carte 2D
-Amélie/Inès: héroine
-Tous : histoire
