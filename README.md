@@ -1,1 +1,1 @@
-tt
+use javac/java Main
