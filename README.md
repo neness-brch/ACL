@@ -16,7 +16,7 @@ Backlog général :
 -	Gestion des objets : armes, armures, potions, bonus de vie et objets de quête. 
 -	Création de l’inventaire et gestion de l’équipement de l’héroïne. 
 -	Mise en place des points de sauvegarde et du retour au dernier checkpoint en cas de défaite. 
--	Création de l’interface graphique pour l’exploration et pour les combats. 
+-	Création du design pour l’interface graphique pour l’exploration et pour les combats. 
 -	Ajout de la progression de difficulté, de la quête finale et de la condition de victoire. 
 -	Réalisation de tests pour valider les déplacements, les combats, les objets et la progression du jeu.
 -	Création de l’ambiance sonore et du sound design.
