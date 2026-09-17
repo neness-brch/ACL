@@ -1,11 +1,15 @@
 Jeu ACL neness project
 
 L’objectif de ce projet est la réalisation d’un jeu en solo en Java avec une interface graphique en utilisant le moteur de jeu libGDX.
+
 Le joueur contrôle une héroïne qui se déplace sur une carte en 2D. Elle doit explorer différentes zones, combattre des monstres, récupérer des objets et améliorer progressivement ses caractéristiques.
+
 L’histoire commence pour expliquer les règles. L’héroïne débute dans une première zone où elle doit récupérer une arme de départ. Lorsqu’elle rencontre un monstre, le jeu passe de la vue d’exploration à un écran spécifique de combat dans lequel le joueur peut notamment attaquer au tour par tour, utiliser un objet. Si l’héroïne perd le combat, elle retourne au dernier point de sauvegarde. Si elle le gagne, elle avance dans l’histoire et peut récupérer différents objets comme des potions, des armes, des armures, des bonus de vie ou encore des objets pour réussir la quête finale. Lorsqu’elle atteint la sortie d’une zone, une nouvelle partie du monde est débloquée avec un niveau de difficulté supérieur.
+
 Backlog général :
 -	Création de l’héroïne et gestion de ses caractéristiques : points de vie, attaque, défense, équipement. 
--	Création de la carte 2D avec déplacements, obstacles, zones et sorties. 
+-	Création de la carte 2D avec déplacements, obstacles, zones et sorties.
+-	Création du menu principal. 
 -	Mise en place de l’histoire, des objectifs et de la progression entre les différentes zones. 
 -	Ajout des monstres et déclenchement des rencontres. 
 -	Création du système de combat au tour par tour. 
