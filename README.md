@@ -6,11 +6,13 @@ Le joueur contrôle une héroïne qui se déplace sur une carte en 2D. Elle doit
 
 L’histoire commence pour expliquer les règles. L’héroïne débute dans une première zone où elle doit récupérer une arme de départ. Lorsqu’elle rencontre un monstre, le jeu passe de la vue d’exploration à un écran spécifique de combat dans lequel le joueur peut notamment attaquer au tour par tour, utiliser un objet. Si l’héroïne perd le combat, elle retourne au dernier point de sauvegarde. Si elle le gagne, elle avance dans l’histoire et peut récupérer différents objets comme des potions, des armes, des armures, des bonus de vie ou encore des objets pour réussir la quête finale. Lorsqu’elle atteint la sortie d’une zone, une nouvelle partie du monde est débloquée avec un niveau de difficulté supérieur.
 
+__HC: fun__
+
 Backlog général :
 
-__plusieurs éléments de la liste dont des tâches (avec ??) plutôt que de fonctionnalités (aka user stories)__
+__HC: plusieurs éléments de la liste sont des tâches (avec ??) plutôt que de fonctionnalités (aka user stories)__
 
-__il manque les priorités__
+__HC: il manque les priorités__
 
 -	Création de l’héroïne et gestion de ses caractéristiques : points de vie, attaque, défense, équipement.
 
