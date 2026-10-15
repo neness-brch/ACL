@@ -7,6 +7,7 @@ var player_nearby := false
 
 
 
+
 var dialogue: Array[String] = [
 	"nothing to see here...",
 ]
