@@ -16,7 +16,8 @@
   
 ## Retrospective
 - on a réussi à se répartir le travail correctement
-- on a débuté toutes les taches listées que l'on va améliorer
-- on compte perfectionner les éléments déjà créés : la carte, l'esthétique et l'option du menu principal
-- on va ajouter le bouton menu accessible depuis le jeu
 - on a effectué des réunions d'équipe
+- on a débuté toutes les taches listées que l'on compte améliorer à la suite
+- on souhaite perfectionner les éléments déjà créés pour le menu principal : esthétique, l'option et ajout du bouton menu accessible depuis le jeu (Ana)
+- Ajout des directions haut/bas de l'héroïne et ajout des monstres et déclenchement des rencontres (Inès/Amélie)
+- Amélioration de la création de la carte 2D avec déplacements, obstacles, zones et sorties (Dieynaba/Matteo)
