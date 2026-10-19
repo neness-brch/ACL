@@ -10,63 +10,18 @@ __HC: fun__
 
 Backlog général :
 
-__HC: plusieurs éléments de la liste sont des tâches (avec ??) plutôt que de fonctionnalités (aka user stories)__
-
-__HC: il manque les priorités__
-
-2- 	L'utilisateur peut contrôler les déplacements de l'héroïne.
-6- 	L'utilisateur peut gérer les caractéristiques de l'héroïne : points de vie, attaque, défense, équipement.
-
-  __OK__ (je lis comme "le joueur peut créer une héroine en précisant ses caractéristiques:...)
-  
-3- 	L'utilisateur peut explorer la carte 2D : obstacles, zones et sorties.
-  
-  __??__ c'est le joueur qui crée la carte ?
-  
 1-	Création du menu principal.
-
-  __OK__
-  
-4- 	L'utilisateur pourra suivre l'histoire de l'héroïne, ses objectifs et la progression entre les différentes zones auxquelles elle accèdera. 
-
-  __??__ c'est le joueur qui crée la carte ?
-  
+2- 	L'utilisateur peut contrôler les déplacements de l'héroïne.
+3- 	L'utilisateur peut explorer la carte 2D : obstacles, zones et sorties.
+4- 	L'utilisateur pourra suivre l'histoire de l'héroïne, ses objectifs et la progression entre les différentes zones auxquelles elle accèdera.
 5- 	L'utilisateur sera confronté à des monstres.
-
-  __??__ qui les ajoutent
-  
-8- 	Le joueur pourra engager un combat au tour par tour.
-  
-  __OK__ (je lis comme "le joueur peut engager un combat)
-  
+6- 	L'utilisateur peut gérer les caractéristiques de l'héroïne : points de vie, attaque, défense, équipement.
 7- 	L'utilisateur pourra gérer les objets récupérés et/ou gagnés : armes, armures, potions, bonus de vie et objets de quête.
-
-  __??__ quelle est la fonctionnalité/tâche ?
-  
-
-  __??__ pas lié au précédent 
-  
-12- 	Le joueur retournera au checkpoint en cas de défaite face aux monstres.
-  
-  __OK__ (je lis comme "le joueur retourne au checkpoint en cas de défaite)
-  
-13-  Création du design de l’interface graphique pour l’exploration.
-14-  Création du design de l’interface graphique pour les combats.
-
-  __??__ concerne plusieurs fonctionnalités
-  
-11- Ajout des conditions de passages à une nouvelle zone.
+8- 	Le joueur pourra engager un combat au tour par tour.
 9-	Ajout d'une quête par saison dont la quete est finale correspond au sauvetage de la princesse.
-
-  __OK__ (des niveaux?)
-  
-
-  __??__ implicite, il faut en faire tout le temps
-  
-15- 	Création de l’ambiance sonore et du sound design.
-  
-  __OK__ 
-
- 10 - Rédaction des dialogues avec les pnj et les monstres.
-
-
+10 - Rédaction des dialogues avec les pnj et les monstres.
+11- Ajout des conditions de passages à une nouvelle zone.
+12- 	Le joueur retournera au checkpoint en cas de défaite face aux monstres.  
+13-  Création du design de l’interface graphique pour l’exploration.
+14-  Création du design de l’interface graphique pour les combats. 
+15- 	Création de l’ambiance sonore.
