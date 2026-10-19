@@ -11,3 +11,7 @@ Tous : histoire
 ## Review
 
 ## Retrospective
+- on a réussi à se répartir le travail correctement
+- on a débuté toutes les taches listées
+- on compte perfectionner les éléments déjà créés
+- on a effectué des réunions d'équipe
