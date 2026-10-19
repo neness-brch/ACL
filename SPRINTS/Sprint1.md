@@ -3,7 +3,7 @@
 ## Backlog
 - Ana : menu principal
 - Dieynaba/Matteo: carte 2D
-- Amélie/Inès: héroine
+- Création de l’héroïne et gestion de ses caractéristiques : points de vie, attaque, défense, équipement (Amélie/Inès)
 - Tous : histoire
 
 ### HC: ca doit être une sous-liste du backlog général ###
