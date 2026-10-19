@@ -1,9 +1,9 @@
 # Sprint 1
 
 ## Backlog
-- Ana : menu principal
-- Dieynaba/Matteo: carte 2D
-- Création de l’héroïne et gestion de ses caractéristiques : points de vie, attaque, défense, équipement (Amélie/Inès)
+- Création du menu principal (Ana)
+- Création de la carte 2D avec déplacements, obstacles, zones et sorties (Dieynaba/Matteo)
+- Création de l’héroïne et gestion de ses caractéristiques : points de vie, attaque, défense, équipement (Inès/Amélie)
 - Tous : histoire
 
 ### HC: ca doit être une sous-liste du backlog général ###
