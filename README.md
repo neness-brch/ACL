@@ -46,16 +46,16 @@ __HC: il manque les priorités__
 
   __??__ pas lié au précédent 
   
-11- 	Le joueur retournera au checkpoint en cas de défaite face aux monstres.
+12- 	Le joueur retournera au checkpoint en cas de défaite face aux monstres.
   
   __OK__ (je lis comme "le joueur retourne au checkpoint en cas de défaite)
   
-12-  Création du design de l’interface graphique pour l’exploration.
-13-  Création du design de l’interface graphique pour les combats.
+13-  Création du design de l’interface graphique pour l’exploration.
+14-  Création du design de l’interface graphique pour les combats.
 
   __??__ concerne plusieurs fonctionnalités
   
-10- Ajout des conditions de passages à une nouvelle zone.
+11- Ajout des conditions de passages à une nouvelle zone.
 9-	Ajout d'une quête par saison dont la quete est finale correspond au sauvetage de la princesse.
 
   __OK__ (des niveaux?)
@@ -63,10 +63,10 @@ __HC: il manque les priorités__
 
   __??__ implicite, il faut en faire tout le temps
   
--	Création de l’ambiance sonore et du sound design.
+15- 	Création de l’ambiance sonore et du sound design.
   
   __OK__ 
 
-  - Rédaction des dialogues avec les pnj et les monstres.
+ 10 - Rédaction des dialogues avec les pnj et les monstres.
 
 
