@@ -1,6 +1,6 @@
 Jeu ACL neness project
 
-L’objectif de ce projet est la réalisation d’un jeu en solo en Java avec une interface graphique en utilisant le moteur de jeu libGDX.
+L’objectif de ce projet est la réalisation d’un jeu en solo en JDSCRIPT avec une interface graphique en utilisant le moteur de jeu GODOT.
 
 Le joueur contrôle une héroïne qui se déplace sur une carte en 2D. Elle doit explorer différentes zones, combattre des monstres, récupérer des objets et améliorer progressivement ses caractéristiques.
 
