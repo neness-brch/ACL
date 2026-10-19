@@ -2,7 +2,8 @@
 
 ## Backlog
 - Création du menu principal (Ana)
-- Ajout des directions haut/bas de l'héroïne et ajout des monstres et déclenchement des rencontres (Inès/Amélie)
+- Création de l’héroïne et gestion de ses caractéristiques : points de vie, attaque, défense, équipement (Inès/Amélie)
+- Ajout des monstres et déclenchement des rencontres (Inès/Amélie)
 - Amélioration de la création de la carte 2D avec déplacements, obstacles, zones et sorties (Dieynaba/Matteo)
 -	Mise en place de l’histoire, des objectifs et de la progression entre les différentes zones (Tous)
 
