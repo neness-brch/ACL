@@ -14,51 +14,52 @@ __HC: plusieurs éléments de la liste sont des tâches (avec ??) plutôt que de
 
 __HC: il manque les priorités__
 
--	Création de l’héroïne et gestion de ses caractéristiques : points de vie, attaque, défense, équipement.
+2- 	L'utilisateur peut contrôler les déplacements de l'héroïne.
+6- 	L'utilisateur peut gérer les caractéristiques de l'héroïne : points de vie, attaque, défense, équipement.
 
   __OK__ (je lis comme "le joueur peut créer une héroine en précisant ses caractéristiques:...)
   
--	Création de la carte 2D avec déplacements, obstacles, zones et sorties.
+3- 	L'utilisateur peut explorer la carte 2D : obstacles, zones et sorties.
   
   __??__ c'est le joueur qui crée la carte ?
   
--	Création du menu principal.
+1-	Création du menu principal.
 
   __OK__
   
--	Mise en place de l’histoire, des objectifs et de la progression entre les différentes zones. 
+4- 	L'utilisateur pourra suivre l'histoire de l'héroïne, ses objectifs et la progression entre les différentes zones auxquelles elle accèdera. 
 
   __??__ c'est le joueur qui crée la carte ?
   
--	Ajout des monstres et déclenchement des rencontres.
+5- 	L'utilisateur sera confronté à des monstres.
 
   __??__ qui les ajoutent
   
--	Création du système de combat au tour par tour.
+8- 	Le joueur pourra engager un combat au tour par tour.
   
   __OK__ (je lis comme "le joueur peut engager un combat)
   
--	Gestion des objets : armes, armures, potions, bonus de vie et objets de quête.
+7- 	L'utilisateur pourra gérer les objets récupérés et/ou gagnés : armes, armures, potions, bonus de vie et objets de quête.
 
   __??__ quelle est la fonctionnalité/tâche ?
   
--	Création de l’inventaire et gestion de l’équipement de l’héroïne.
 
   __??__ pas lié au précédent 
   
--	Mise en place des points de sauvegarde et du retour au dernier checkpoint en cas de défaite.
+11- 	Le joueur retournera au checkpoint en cas de défaite face aux monstres.
   
   __OK__ (je lis comme "le joueur retourne au checkpoint en cas de défaite)
   
--	Création du design pour l’interface graphique pour l’exploration et pour les combats. 
+12-  Création du design de l’interface graphique pour l’exploration.
+13-  Création du design de l’interface graphique pour les combats.
 
   __??__ concerne plusieurs fonctionnalités
   
--	Ajout de la progression de difficulté, de la quête finale et de la condition de victoire.
+10- Ajout des conditions de passages à une nouvelle zone.
+9-	Ajout d'une quête par saison dont la quete est finale correspond au sauvetage de la princesse.
 
   __OK__ (des niveaux?)
   
--	Réalisation de tests pour valider les déplacements, les combats, les objets et la progression du jeu.
 
   __??__ implicite, il faut en faire tout le temps
   
@@ -66,4 +67,6 @@ __HC: il manque les priorités__
   
   __OK__ 
 
-QUETE FINALE A DÉFINIR
+  - Rédaction des dialogues avec les pnj et les monstres.
+
+
