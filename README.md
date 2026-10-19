@@ -11,17 +11,31 @@ __HC: fun__
 Backlog général :
 
 1-	Création du menu principal.
+
 2- 	L'utilisateur peut contrôler les déplacements de l'héroïne.
+
 3- 	L'utilisateur peut explorer la carte 2D : obstacles, zones et sorties.
+
 4- 	L'utilisateur pourra suivre l'histoire de l'héroïne, ses objectifs et la progression entre les différentes zones auxquelles elle accèdera.
+
 5- 	L'utilisateur sera confronté à des monstres.
+
 6- 	L'utilisateur peut gérer les caractéristiques de l'héroïne : points de vie, attaque, défense, équipement.
+
 7- 	L'utilisateur pourra gérer les objets récupérés et/ou gagnés : armes, armures, potions, bonus de vie et objets de quête.
+
 8- 	Le joueur pourra engager un combat au tour par tour.
+
 9-	Ajout d'une quête par saison dont la quete est finale correspond au sauvetage de la princesse.
+
 10 - Rédaction des dialogues avec les pnj et les monstres.
+
 11- Ajout des conditions de passages à une nouvelle zone.
-12- 	Le joueur retournera au checkpoint en cas de défaite face aux monstres.  
+
+12- 	Le joueur retournera au checkpoint en cas de défaite face aux monstres. 
+
 13-  Création du design de l’interface graphique pour l’exploration.
+
 14-  Création du design de l’interface graphique pour les combats. 
+
 15- 	Création de l’ambiance sonore.
