@@ -62,6 +62,7 @@ layout_mode = 0
 offset_top = -16.0
 offset_right = 223.0
 offset_bottom = 39.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 text = "E - Interact"
 label_settings = SubResource("LabelSettings_uu46q")
 horizontal_alignment = 1

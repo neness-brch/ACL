@@ -1,0 +1,97 @@
+[gd_scene format=3 uid="uid://dse2sgkrbi4nk"]
+
+[ext_resource type="Script" uid="uid://cer31ir8wwb70" path="res://script/knight.gd" id="1_pv5x2"]
+[ext_resource type="Texture2D" uid="uid://dwp616v3ao8qq" path="res://assets/VIllager.png" id="2_e1cr2"]
+[ext_resource type="Texture2D" uid="uid://b4bndgj016ueq" path="res://assets/DialogueBubble.png" id="3_enlew"]
+[ext_resource type="Texture2D" uid="uid://d06utvcqkjj5a" path="res://assets/Villager2.png" id="3_pxawt"]
+[ext_resource type="FontFile" uid="uid://c4bfe8sqo0dwg" path="res://assets/EBGaramond-VariableFont_wght.ttf" id="4_pxawt"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sy5e1"]
+size = Vector2(287, 197)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_swm0g"]
+size = Vector2(52.5, 53.5)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_swm0g"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5fsgc"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Theme" id="Theme_yue2o"]
+Label/styles/focus = SubResource("StyleBoxFlat_swm0g")
+Label/styles/normal = SubResource("StyleBoxFlat_5fsgc")
+
+[sub_resource type="LabelSettings" id="LabelSettings_uu46q"]
+font = ExtResource("4_pxawt")
+font_size = 18
+shadow_color = Color(0.747536, 0.17547697, 0.41036525, 0)
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_uu46q"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uu46q"]
+size = Vector2(218, 161)
+
+[node name="Area2D" type="Area2D" unique_id=1905969664]
+script = ExtResource("1_pv5x2")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1945095972]
+position = Vector2(-42.000004, 16.999992)
+scale = Vector2(0.15, 0.13)
+texture = ExtResource("2_e1cr2")
+region_rect = Rect2(79.29258, 2.0749948, 234.95468, 327.84918)
+
+[node name="Sprite2D2" type="Sprite2D" parent="." unique_id=118414247]
+position = Vector2(70, 26)
+scale = Vector2(0.15578705, 0.1412711)
+texture = ExtResource("3_pxawt")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=674720984]
+position = Vector2(4.5, 21.5)
+shape = SubResource("RectangleShape2D_sy5e1")
+
+[node name="DialogueBubble" type="Area2D" parent="." unique_id=1130826103]
+
+[node name="Sprite2D" type="Sprite2D" parent="DialogueBubble" unique_id=1709619139]
+position = Vector2(7, -127)
+scale = Vector2(0.32956645, 0.32956645)
+texture = ExtResource("3_enlew")
+region_enabled = true
+region_rect = Rect2(452.30905, 92.00406, 271.16043, 285.46207)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DialogueBubble" unique_id=1324236848]
+position = Vector2(-1181.25, 280.75)
+shape = SubResource("RectangleShape2D_swm0g")
+
+[node name="InteractionPrompt" type="Panel" parent="." unique_id=642111107]
+offset_left = -175.0
+offset_top = -118.0
+offset_right = 58.0
+offset_bottom = -93.0
+scale = Vector2(1.5, 1.5)
+theme = SubResource("Theme_yue2o")
+metadata/_edit_use_anchors_ = true
+
+[node name="VillagersLabel" type="Label" parent="InteractionPrompt" unique_id=157950337]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.074392
+anchor_top = 0.6666666
+anchor_right = -0.0042918455
+anchor_bottom = -0.53333336
+offset_top = -16.0
+offset_right = 223.0
+offset_bottom = 39.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "E - Interact"
+label_settings = SubResource("LabelSettings_uu46q")
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=533936491]
+physics_material_override = SubResource("PhysicsMaterial_uu46q")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=805049793]
+position = Vector2(4, 28.5)
+shape = SubResource("RectangleShape2D_uu46q")

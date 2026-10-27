@@ -1,0 +1,82 @@
+[gd_scene format=3 uid="uid://dg5hxel6v4rrf"]
+
+[ext_resource type="Texture2D" uid="uid://d1qyr72kf7nic" path="res://assets/KnightSPrite.png" id="2_qxgmm"]
+[ext_resource type="FontFile" uid="uid://c4bfe8sqo0dwg" path="res://assets/EBGaramond-VariableFont_wght.ttf" id="3_5fsgc"]
+[ext_resource type="Script" uid="uid://cer31ir8wwb70" path="res://script/knight.gd" id="4_0dyjn"]
+[ext_resource type="Texture2D" uid="uid://b4bndgj016ueq" path="res://assets/DialogueBubble.png" id="4_5fsgc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sy5e1"]
+size = Vector2(110, 89)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_swm0g"]
+size = Vector2(52.5, 53.5)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0dyjn"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Theme" id="Theme_yue2o"]
+Panel/styles/panel = SubResource("StyleBoxFlat_0dyjn")
+
+[sub_resource type="LabelSettings" id="LabelSettings_uu46q"]
+font = ExtResource("3_5fsgc")
+font_size = 18
+shadow_color = Color(0.747536, 0.17547697, 0.41036525, 0)
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_uu46q"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uu46q"]
+size = Vector2(60, 74)
+
+[node name="Area2D" type="Area2D" unique_id=1905969664]
+script = ExtResource("4_0dyjn")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1945095972]
+position = Vector2(-2, -6)
+scale = Vector2(0.26262656, 0.24069457)
+texture = ExtResource("2_qxgmm")
+region_enabled = true
+region_rect = Rect2(79.29258, 2.0749948, 234.95468, 327.84918)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=674720984]
+position = Vector2(7, -6.5)
+shape = SubResource("RectangleShape2D_sy5e1")
+
+[node name="DialogueBubble" type="Area2D" parent="." unique_id=1130826103]
+
+[node name="Sprite2D" type="Sprite2D" parent="DialogueBubble" unique_id=1709619139]
+position = Vector2(1.9073486e-06, -66)
+scale = Vector2(0.15221402, 0.15221402)
+texture = ExtResource("4_5fsgc")
+region_enabled = true
+region_rect = Rect2(452.30905, 92.00406, 271.16043, 285.46207)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DialogueBubble" unique_id=1324236848]
+position = Vector2(-1181.25, 280.75)
+shape = SubResource("RectangleShape2D_swm0g")
+
+[node name="InteractionPrompt" type="Panel" parent="." unique_id=642111107]
+offset_left = -117.0
+offset_top = -82.0
+offset_right = 116.0
+offset_bottom = -57.0
+theme = SubResource("Theme_yue2o")
+metadata/_edit_use_anchors_ = true
+
+[node name="KnightLabel" type="Label" parent="InteractionPrompt" unique_id=157950337]
+layout_mode = 0
+offset_top = -16.0
+offset_right = 223.0
+offset_bottom = 39.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "E - Interact"
+label_settings = SubResource("LabelSettings_uu46q")
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=533936491]
+physics_material_override = SubResource("PhysicsMaterial_uu46q")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=805049793]
+position = Vector2(1, -6)
+shape = SubResource("RectangleShape2D_uu46q")

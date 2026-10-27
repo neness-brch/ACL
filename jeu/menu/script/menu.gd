@@ -12,11 +12,11 @@ func _process(_delta: float) -> void:
 
 
 func _on_texture_button_play_pressed() -> void:
-	get_tree().change_scene_to_file("res://maingame.tscn")
+	SceneTransition.change_scene("res://maingame.tscn")
 
 
 func _on_texture_button_options_pressed() -> void:
-	get_tree().change_scene_to_file("res://options.tscn")
+	get_tree().change_scene("res://menu/options.tscn")
 
 
 func _on_texture_button_quit_pressed() -> void:
