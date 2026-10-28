@@ -8,69 +8,110 @@ var current_dialogue_id: String = ""
 @onready var interaction_prompt = $InteractionPrompt
 @onready var new_dialogue_bubble = $DialogueBubble
 @onready var dialogue_box: DialogueBox = $"../CanvasLayer/BoiteDialogues"
+@export var dad_portrait: Texture2D
+@export var daughter_portrait: Texture2D
 
 
-var before_quest_dialogue: Array[String] = [
-	"???, we've talked about this many times",
-	"this place is not safe for you anymore.",
-	"you know very well these monsters are freaking me out",
-	"but...",
-	"there's no...",
-	"wait...",
-	"who are you ?",
-	"...",
-	"HELLOOOOOO ?",
-	"looks like she doesn't want to talk",
-	"what do you want then ?",
-	"...",
-	"a sword...are you a knight or something ?",
-	"you don't look like you're from here",
-	"aaargh...",
-	"this is annoying.",
-	"look...",
-	"do you think you could...",
-	"get rid of these monsters for us ?",
-	"go talk to that knight up there, he might have some extra information about them",
-	"be careful."
-	]
+var before_quest_dialogue: Array[Dictionary] = [
+	{"text": "...I knew I shouldn't have let him go play without supervision.", "speaker": "dad"},
+	{"text": "It's been a few hours and they still haven't come back.", "speaker": "dad"},
+	{"text": "I'm sure those monsters killed him...", "speaker": "dad"},
 
-var first_meeting_during_quest_dialogue: Array[String] = [
-	"???, we've talked about this many times",
-	"this place is not safe for you anymore.",
-	"you know very well these monsters are freaking me out",
-	"but...",
-	"there's no...",
-	"wait...",
-	"who are you ?",
-	"...",
-	"HELLOOOOOO ?",
-	"looks like she doesn't want to talk",
-	"what do you want then ?",
-	"...",
-	"a sword...are you a knight or something ?",
-	"you don't look like you're from here",
-	"are you on your way to kill the monsters ?",
-	"thank god...",
-	"my stubborn daughter won't listen to me...",
-	"she wants to fight them but has no clue how to do it",
-	"but you...",
-	"you look like you have a lot a experience.",
-	"please save us.",
-	"and be careful, these monsters are smarter than you think."
+	{"text": "dad, let me go look for him.", "speaker": "daughter"},
+	{"text": "I swear I'll kill those monsters if they're responsible!", "speaker": "daughter"},
+
+	{"text": "you're not going anywhere. It's too dangerous, and I don't want to lose both my children on the same day.", "speaker": "dad"},
+
+	{"text": "so you're just going to wait for him to come back? and do nothing?!", "speaker": "daughter"},
+
+	{"text": "even the Royal Guards are struggling against them, and you think you can do something? how naive...", "speaker": "dad"},
+	{"text": "wait... who are you? have you been listening this whole time?", "speaker": "dad"},
+	{"text": "...", "speaker": "dad"},
+	{"text": "HELLOOOOOO?", "speaker": "dad"},
+
+	{"text": "looks like she doesn't want to talk.", "speaker": "daughter"},
+
+	{"text": "what do you want, then?", "speaker": "dad"},
+	{"text": "...", "speaker": "dad"},
+	{"text": "a sword... are you a knight or something?", "speaker": "dad"},
+	{"text": "that can't be. you don't look like you're from around here.", "speaker": "dad"},
+	{"text": "do you think... you could help us find our son?", "speaker": "dad"},
+	{"text": "because...", "speaker": "dad"},
+	{"text": "my stubborn daughter won't listen to me...", "speaker": "dad"},
+	{"text": "she wants to fight them, but she has no idea what she's getting herself into.", "speaker": "dad"},
+	{"text": "I can't lose her too. It's too risky.", "speaker": "dad"},
+	{"text": "but you...", "speaker": "dad"},
+	{"text": "you look like you have a lot of experience.", "speaker": "dad"},
+	{"text": "if you bring my son back, I would be so grateful.", "speaker": "dad"},
+	{"text": "the last time I saw him, he was heading south with his friends.", "speaker": "dad"},
+	{"text": "but before you do anything, please go talk to that knight up there.", "speaker": "dad"},
+	{"text": "he might have some valuable information about those monsters.", "speaker": "dad"},
+	{"text": "and please... be careful.", "speaker": "dad"},
+	{"text": "those monsters are smarter than you think.", "speaker": "dad"},
 	
+
+	{"text": "please bring my little brother back.", "speaker": "daughter"},
+	{"text": "you're our only hope.", "speaker": "daughter"},
+	{"text": "here is something to help you.", "speaker": "dad"}
 ]
 
-var quest_started_after_meeting_dialogue: Array[String] = [
-	"so you came to the knight, is it ?",
-	"well, good luck."
+
+var first_meeting_during_quest_dialogue: Array[Dictionary] = [
+	{"text": "...I knew I shouldn't have let him go play without supervision.", "speaker": "dad"},
+	{"text": "it's been a few hours and they still haven't come back.", "speaker": "dad"},
+	{"text": "I'm sure those monsters killed him...", "speaker": "dad"},
+
+	{"text": "dad, let me go look for him.", "speaker": "daughter"},
+	{"text": "I swear I'll kill those monsters if they're responsible!", "speaker": "daughter"},
+
+	{"text": "you're not going anywhere. It's too dangerous, and I don't want to lose both my children on the same day.", "speaker": "dad"},
+
+	{"text": "so you're just going to wait for him to come back? and do nothing?!", "speaker": "daughter"},
+
+	{"text": "even the Royal Guards are struggling against them, and you think you can do something? How naive...", "speaker": "dad"},
+	{"text": "wait... who are you? have you been listening this whole time?", "speaker": "dad"},
+	{"text": "...", "speaker": "dad"},
+	{"text": "HELLOOOOOO?", "speaker": "dad"},
+
+	{"text": "looks like she doesn't want to talk.", "speaker": "daughter"},
+
+	{"text": "what do you want, then?", "speaker": "dad"},
+	{"text": "...", "speaker": "dad"},
+	{"text": "a sword... are you a knight or something?", "speaker": "dad"},
+	{"text": "that can't be. you don't look like you're from around here.", "speaker": "dad"},
+	{"text": "are you on your way to fight those monsters?", "speaker": "dad"},
+	{"text": "thank God...", "speaker": "dad"},
+	{"text": "my stubborn daughter won't listen to me...", "speaker": "dad"},
+	{"text": "she wants to fight them, but she has no idea what she's getting herself into.", "speaker": "dad"},
+	{"text": "but you...", "speaker": "dad"},
+	{"text": "you look like you have a lot of experience.", "speaker": "dad"},
+	{"text": "if you bring my son back, I would be so grateful.", "speaker": "dad"},
+	{"text": "the last time I saw him, he was heading south with his friends.", "speaker": "dad"},
+	{"text": "please... be careful.", "speaker": "dad"},
+	{"text": "those monsters are smarter than you think.", "speaker": "dad"},
+	
+
+	{"text": "please bring my little brother back.", "speaker": "daughter"},
+	{"text": "you're our only hope.", "speaker": "daughter"},
+	{"text": "here is something to help you.", "speaker": "dad"}
 ]
 
-var normal_dialogue: Array[String] = [
-	"good luck out there."
+
+var quest_started_after_meeting_dialogue: Array[Dictionary] = [
+	{"text": "so, you went to see the knight?", "speaker": "dad"},
+	{"text": "...well, good luck out there.", "speaker": "dad"},
+	{"text": "and please... find Tim.", "speaker": "dad"}
 ]
 
-var potion_dialogue: Array[String] = [
-	"You obtained a Health Potion."
+
+var normal_dialogue: Array[Dictionary] = [
+	{"text": "did you find Tim?", "speaker": "daughter"},
+	{"text": "he was heading south the last time we saw him.", "speaker": "daughter"}
+]
+
+
+var potion_dialogue: Array[Dictionary] = [
+	{"text": "You obtained a Health Potion."}
 ]
 
 
@@ -108,14 +149,16 @@ func _process(_delta):
 
 func start_dialogue():
 	current_dialogue_id = get_current_dialogue_id()
+
 	var dialogue := get_current_dialogue()
+	var prepared_dialogue := prepare_dialogue(dialogue)
 
 	interaction_prompt.visible = false
 
 	GameState.mark_dialogue_seen(current_dialogue_id)
 	update_dialogue_bubble()
 
-	dialogue_box.start_dialogue(dialogue)
+	dialogue_box.start_dialogue(prepared_dialogue)
 
 
 func get_current_dialogue_id() -> String:
@@ -143,7 +186,7 @@ func get_current_dialogue_id() -> String:
 	return npc_id + "_normal"
 
 
-func get_current_dialogue() -> Array[String]:
+func get_current_dialogue() -> Array[Dictionary]:
 	var dialogue_id := get_current_dialogue_id()
 
 	if dialogue_id == npc_id + "_before_quest":
@@ -187,3 +230,23 @@ func update_dialogue_bubble():
 		or dialogue_id == npc_id + "_during_quest"
 		or dialogue_id == npc_id + "_quest_update"
 	)
+	
+func prepare_dialogue(dialogue: Array[Dictionary]) -> Array[Dictionary]:
+	var prepared: Array[Dictionary] = []
+
+	for message in dialogue:
+		var new_message := message.duplicate()
+		var speaker: String = message.get("speaker", "")
+
+		if speaker == "dad":
+			new_message["portrait"] = dad_portrait
+
+		elif speaker == "daughter":
+			new_message["portrait"] = daughter_portrait
+
+		else:
+			new_message["portrait"] = null
+
+		prepared.append(new_message)
+
+	return prepared

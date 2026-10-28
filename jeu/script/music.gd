@@ -4,7 +4,9 @@ extends Node
 @onready var silence_timer: Timer = $SilenceTimer
 
 var tracks: Array[AudioStream] = [
-	preload("res://music/secunda.ogg")
+	preload("res://music/secunda.ogg"),
+	preload("res://music/hogre.ogg"),
+	preload("res://music/tedra.ogg")
 ]
 
 var last_track: AudioStream = null

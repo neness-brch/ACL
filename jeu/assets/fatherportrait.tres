@@ -1,0 +1,7 @@
+[gd_resource type="AtlasTexture" format=3 uid="uid://cbijexhpl1uoc"]
+
+[ext_resource type="Texture2D" uid="uid://dwp616v3ao8qq" path="res://assets/VIllager.png" id="1_46m6h"]
+
+[resource]
+atlas = ExtResource("1_46m6h")
+region = Rect2(200.5857, 0, 830.7721, 865.9389)

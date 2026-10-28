@@ -2,12 +2,23 @@ extends Control
 class_name DialogueBox
 
 @export var chars_per_second := 40.0
+@export var monster_chars_per_second := 300.0
+
+@export var normal_pitch_min := 0.95
+@export var normal_pitch_max := 1.05
+
+@export var monster_pitch_min := 0.55
+@export var monster_pitch_max := 0.70
+
+var current_speaker: String = ""
 
 @onready var label: RichTextLabel = $VBoxContainer/Dialog
 @onready var voice_player: AudioStreamPlayer = $VoicePlayer
 @onready var voice_timer: Timer = $VoiceTimer
+@onready var portrait_panel: Panel = $Portrait
+@onready var portrait: TextureRect = $Portrait/Portrait
 
-var messages: Array[String] = []
+var messages: Array = []
 var current_message := 0
 var dialogue_active := false
 var tween: Tween
@@ -20,16 +31,39 @@ func _ready():
 	voice_timer.timeout.connect(_on_voice_timer_timeout)
 
 
-func start_dialogue(new_messages: Array[String]):
-	messages = new_messages.duplicate()
+func start_dialogue(new_messages: Array, default_portrait: Texture2D = null):
+	messages = []
+
+	for message in new_messages:
+		if message is String:
+			messages.append({
+				"text": message,
+				"portrait": default_portrait
+			})
+		else:
+			messages.append(message)
+
 	current_message = 0
 	dialogue_active = true
 	visible = true
+
 	show_message()
 
 
 func show_message():
-	label.text = messages[current_message]
+	var message = messages[current_message]
+
+	label.text = message["text"]
+	current_speaker = message.get("speaker", "")
+
+	var speaker_portrait: Texture2D = message.get("portrait", null)
+
+	if speaker_portrait != null:
+		portrait.texture = speaker_portrait
+		portrait_panel.visible = true
+	else:
+		portrait_panel.visible = false
+
 	label.visible_ratio = 0.0
 
 	if tween:
@@ -37,17 +71,32 @@ func show_message():
 
 	voice_timer.start()
 
-	var duration := label.get_total_character_count() / chars_per_second
+	var speed := chars_per_second
+
+	if current_speaker == "monster":
+		speed = monster_chars_per_second
+
+	var duration := label.get_total_character_count() / speed
+
 	tween = create_tween()
 	tween.tween_property(label, "visible_ratio", 1.0, duration)
-
-	# Stop the voice when the text finishes appearing
 	tween.tween_callback(voice_timer.stop)
 
 
 func _on_voice_timer_timeout():
 	if tween and tween.is_running():
-		voice_player.pitch_scale = randf_range(0.95, 1.05)
+
+		if current_speaker == "monster":
+			voice_player.pitch_scale = randf_range(
+				monster_pitch_min,
+				monster_pitch_max
+			)
+		else:
+			voice_player.pitch_scale = randf_range(
+				normal_pitch_min,
+				normal_pitch_max
+			)
+
 		voice_player.play()
 
 

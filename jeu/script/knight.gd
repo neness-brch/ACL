@@ -8,6 +8,7 @@ var current_dialogue_id: String = ""
 @onready var interaction_prompt = $InteractionPrompt
 @onready var new_dialogue_bubble = $DialogueBubble
 @onready var dialogue_box: DialogueBox = $"../CanvasLayer/BoiteDialogues"
+@export var portrait: Texture2D
 
 
 var first_dialogue: Array[String] = [
@@ -99,7 +100,7 @@ func start_dialogue():
 	GameState.mark_dialogue_seen(current_dialogue_id)
 	update_dialogue_bubble()
 
-	dialogue_box.start_dialogue(dialogue)
+	dialogue_box.start_dialogue(dialogue, portrait)
 
 
 func get_current_dialogue_id() -> String:

@@ -1,0 +1,7 @@
+[gd_resource type="AtlasTexture" format=3 uid="uid://glk8sfqjku0c"]
+
+[ext_resource type="Texture2D" uid="uid://dx3qdomg0xc8w" path="res://Basic Asset Pack/Basic Asset Pack/Basic Monster Animations/Ocular Watcher/OcularWatcher.png" id="1_l1u4s"]
+
+[resource]
+atlas = ExtResource("1_l1u4s")
+region = Rect2(3, 2, 11, 13)
