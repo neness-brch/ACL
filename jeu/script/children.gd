@@ -3,9 +3,13 @@ extends Area2D
 @export var npc_id: String = "children"
 @onready var monster = $Monster1
 @onready var player: Player = $"../Player"
+@onready var music_zone: Area2D = $"../Monster1MusicZone"
+@onready var normal_music: AudioStreamPlayer = $"../MusicNode/AudioStreamPlayer"
+@onready var monster_music: AudioStreamPlayer = $"../MusicNode/MonsterMusic"
 
 var player_nearby := false
 var current_dialogue_id: String = ""
+var tim_needs_escort := false
 
 @onready var interaction_prompt = $InteractionPrompt
 @onready var new_dialogue_bubble = $DialogueBubble
@@ -17,32 +21,32 @@ var current_dialogue_id: String = ""
 
 
 var first_dialogue: Array[Dictionary] = [
-	{"text": "ray... are you okay???", "speaker": "tim"},
-	{"text": "...", "speaker": "friend"},
-	{"text": "i knew I shouldn't have gone so far...", "speaker": "tim"},
-	{"text": "my father warned me.", "speaker": "tim"},
-	{"text": "I'm so sorry I couldn't save you, Ray...", "speaker": "tim"},
+	{"text": "tim... are you okay???", "speaker": "friend"},
+	{"text": "...", "speaker": "tim"},
+	{"text": "i knew we shouldn't have gone so far...", "speaker": "friend"},
+	{"text": "your father warned us.", "speaker": "friend"},
+	{"text": "I'm so sorry I couldn't save you, Tim...", "speaker": "friend"},
 	{"text": "...", "speaker": "tim"},
 
-	{"text": "are you... here to save me?", "speaker": "tim"},
-	{"text": "no... this thing is too strong for us.", "speaker": "tim"},
-	{"text": "it's gonna kill my family...", "speaker": "tim"},
-	{"text": "and then the whole village...", "speaker": "tim"},
-	{"text": "and we're next.", "speaker": "tim"},
+	{"text": "are you... here to save us?", "speaker": "friend"},
+	{"text": "no... this thing is too strong for us.", "speaker": "friend"},
+	{"text": "it's gonna kill my family...", "speaker": "friend"},
+	{"text": "and then the whole village...", "speaker": "friend"},
+	{"text": "and we're next.", "speaker": "friend"},
 
-	{"text": "y-you're not saying anything...", "speaker": "tim"},
-	{"text": "I-I suppose you're too scared as well.", "speaker": "tim"},
-	{"text": "no...", "speaker": "tim"},
-	{"text": "you really want to fight it?", "speaker": "tim"},
-	{"text": "you better be qui--", "speaker": "tim"},
+	{"text": "y-you're not saying anything...", "speaker": "friend"},
+	{"text": "I-I suppose you're too scared as well.", "speaker": "friend"},
+	{"text": "no...", "speaker": "friend"},
+	{"text": "you really want to fight it?", "speaker": "friend"},
+	{"text": "you better be qui--", "speaker": "friend"},
 
 	{"text": "Ḧ̸̡́̀̐̽̈͘Ą̶̛̜̦̩̹̩̫̖̤̤͎̂̐H̴̤̉̄̊̈́̍̍̕̚A̷̝̋̐̆͌̾͋̕͠͠A̴̹̟͕͕̟̦͗̅H̴̪̘̜̮̤̥͚̠͉̜͈̋̂̀̓͋̈̿̐̂̚͠Ȃ̶̧̡̻̟̻̰̹̖̳̻̱͕̎̊͋̍̓̾̿̈́̕͝Ḩ̷̙͔̒A̷͚̣͙̪̼̫̜̙͊̏́͛̄͂͗̏̌̐̃͜͝A̵̛̪͓̮̟̝̼̠̒́͊̽̄̇̆̈́A̷̛̛̻͙̼̺̐̌͗͌̏̃̀͂Á̴̘̱̹͚̿̀̓͗̈̾̈́̇̕͝͝ͅȦ̵͓͙͓̺͍͇̌̋̓̊̋̀͘̕A̵͔͔͈͉͌̐͌̈́̌A̷̱̱̻̻̳̲̳̽̆͆̋͐͗́͂̕A̷̝̰̞̣̅̉̑Ḣ̸̨̟̩̮͍̹̝͚̖̌̇͂̅̂͑́̓̂͘͜͜ͅH̸̛͕̖͎͓̝̩̪͈̐̒̒́̉̈́̊̇̑͝͝ͅH̶̡̧̻̩͙̗̰̯̩̖̱̥͋Ă̶̯̦͖̺̱̙̦̫̞͇͚͆̈́̈͆̃̀̎̕ͅȂ̵̦̰̣̰̙̰͝ͅͅḦ̷̠̩̥͗̍͗͘A̶̱͑̓̊͆͒̅̀͐H̶̸̟̳̜̪͍̦͚͈̹̤̘̗̮̮̰̅͗̈́͛͗̆̑͌̉͆", "speaker": "monster"},
 
-	{"text": "it keeps talking nonsense!", "speaker": "tim"},
+	{"text": "it keeps talking nonsense!", "speaker": "friend"},
 
 	{"text": "y̸̭͇͎̠͈̖̭̞͈͉̐̓͒͌̒͝o̷̡̩̩͎̱̗̬͓̿͊̋̀̏ŭ̸̲͈̔͂̑̑̃̇̃͂͝ͅ ̸̡̛̩̖̌̊̅̍̽̏͝͠r̶̰͊́̈̾͛͑́͂͐͒̆͝ę̸͚͈͈̲̬̂̽̒̀̄̀̔̀́̉͑̕ả̵̡̹͖͈̘̘̬͔̻̟̺͋ļ̴̝͔̭͇̮̦̜̘̫͖̀͛̀̎̎͂̉͛̚͝l̷̛̳̤̠̹̽͆̔͌͐̓́͋͜y̵̫̙̮̼̣̳͉̙̞̗̯̽͛́̌ͅ ̴͖̜͎͚͔̲͎̼̱̍̐̽̅́̉̕͘͝͠w̴̙̲͎̦̫̼̣̗͈͙͒́̌̔̐́͒͗̓ą̶̔̏̀̆̈̔͊̃̿̌̀n̷̛̬͖̼͙̼̖̽̂̍̈́̎̾̒n̶̡͍̪̞̪̞̜̫͚̯͉̜̑̈̌̔́a̷̧̧̢̧̠̝̮͕̪̮͉͔͗͋̈̅̋̅͌̕ ̷̡̛̜͕̩̬̗̄̑̀̈́͛̃̃̽͝d̷͉͎̠̻̝̈́͑̎̔̌̑̕o̵͎̮͓̩̼͚̦̱͖̜̦͂̊̅̑̿̈́̍̚ ̷̢̻̗̳̫͒̒̌͂͋́̾̉̿̎͘̚t̵̨͍̩̜͍͓͒̃͠h̶͓̰́̿í̶̢̢̙̠̰͔̬̞̿̎͐͗̐͝s̷̢͙̪̼̦̞͔̟͇̬͗̾̆ ̶͚̂̿̍͛͐̌́̏̂?̵̨͙͔͇͈̳̹͚̔̌͝", "speaker": "monster"},
 
-	{"text": "...HELP!!", "speaker": "tim"},
+	{"text": "...HELP!!", "speaker": "friend"},
 
 	{"text": "e̷̗̺͚̤̋̄̆̕v̵̥̰̺͕͖͙̆͐̽̏͘̚͝ͅè̴̡̩͙͍̤̭̌́̌̚͝͝r̵̼̪̰͎͉̺͔͓̈̾͘y̸̪͎͙͔͊ö̸̩͈̇̇̍̇̍͋̿̈́̕̚̕ņ̸̘̻̤̏̏̇̃͒͒̅̆̓͝ë̴̡̧̻̩͚͍̝̘́̽̒͂̊͌̕͝ ̴̮̺̖͊͜ì̸̧̤͕̪̤͕́̀͛́͐͠s̷̹̖̤̑̀͊̒̀͝ ̵̩̣͕̍̍̐̏́̈́g̴̲̮̖͈̹̠͎̮̥̬̤̀̓̈̑͗̽̃̂͋͑͛̌ȯ̶̲̜̔n̵͈͖̖͇͋̔̾̃̈́n̸͇̗͚̘̠͕̩̤̓̎̀͝͠a̴̡̭̲̠̮̹̝̘̩̅̎̾̑̀͝ ̷̛̝̉̔̒͛̇̓͛̂͊̕̕ḋ̸͇̙̭̲̳̙̿̀͋̿̑͒̒͝i̴̢̨̛͔̖̖̺̫͕͉͖͔̊̐̐͂ͅȩ̷̢̦͓̼̺̫̟̥̈́̅̓̔̾͋̓̌̌͘͠͝.", "speaker": "monster"},
 
@@ -52,17 +56,16 @@ var first_dialogue: Array[Dictionary] = [
 ]
 var normal_dialogue: Array[Dictionary] = [
 	
-	{"text": "I-I can't believe it ! you really beat it!", "speaker": "tim"},
-{"text": "aaargh...", "speaker": "friend"},
-{"text": "ray ! you're alive ??", "speaker": "tim"},
-{"text": "...aaaaaaaaargh", "speaker": "friend"},
-{"text": "of course I'm alive", "speaker": "friend"},
-{"text": "you ! you were amazing ! I saw everything", "speaker": "tim"},
-{"text": "I really can't believe it...", "speaker": "tim"},
-{"text": "now that all of this is over...", "speaker": "tim"},
-{"text": "have you seen my father and my sister???", "speaker": "tim"},
+	{"text": "I-I can't believe it ! you really beat it!", "speaker": "friend"},
+{"text": "aaargh...", "speaker": "tim"},
+{"text": "tim ! you're alive ??", "speaker": "friend"},
+{"text": "...aaaaaaaaargh...it hurts.....", "speaker": "tim"},
+{"text": "of course I'm alive", "speaker": "tim"},
+{"text": "you ! you were amazing ! I saw everything", "speaker": "friend"},
+{"text": "I really can't believe it...", "speaker": "friend"},
+{"text": "hey you...have you seen my father and my sister???", "speaker": "tim"},
 {"text": "they must be so worried", "speaker": "tim"},
-{"text": "and ray need my sister's medicine skills", "speaker": "tim"},
+{"text": "and I need my sister's medicine skills", "speaker": "tim"},
 {"text": "...really ?? you know where they are ?", "speaker": "tim"},
 {"text": "could you lead us to them ?", "speaker": "tim"}
 ]
@@ -72,7 +75,8 @@ func _ready():
 	body_entered.connect(_on_body_entered)
 	body_exited.connect(_on_body_exited)
 	dialogue_box.dialogue_finished.connect(_on_dialogue_finished)
-
+	music_zone.body_entered.connect(_on_music_zone_entered)
+	music_zone.body_exited.connect(_on_music_zone_exited)
 	if GameState.is_monster_defeated("monster_1"):
 		$Monster1.hide()
 		$Monster1.process_mode = Node.PROCESS_MODE_DISABLED
@@ -152,8 +156,10 @@ func _on_dialogue_finished():
 		SceneTransition.change_scene("res://scenes/battle.tscn")
 		return
 
-	current_dialogue_id = ""
+	if current_dialogue_id == npc_id + "_after_battle":
+		GameState.tim_needs_escort = true
 
+	current_dialogue_id = ""
 
 func update_dialogue_bubble():
 	var dialogue_id := get_current_dialogue_id()
@@ -201,3 +207,42 @@ func prepare_dialogue(dialogue: Array[Dictionary]) -> Array[Dictionary]:
 		prepared.append(new_message)
 
 	return prepared
+func _on_music_zone_entered(body):
+	if body is Player:
+		if not GameState.is_monster_defeated("monster_1"):
+			fade_music(normal_music, monster_music)
+
+
+func _on_music_zone_exited(body):
+	if body is Player:
+		if not GameState.is_monster_defeated("monster_1"):
+			fade_music(monster_music, normal_music)	
+func fade_music(
+	from_music: AudioStreamPlayer,
+	to_music: AudioStreamPlayer
+):
+	var tween := create_tween()
+
+	to_music.volume_db = -40.0
+	to_music.play()
+
+	tween.set_parallel(true)
+
+	tween.tween_property(
+		from_music,
+		"volume_db",
+		-40.0,
+		1.5
+	)
+
+	tween.tween_property(
+		to_music,
+		"volume_db",
+		0.0,
+		1.5
+	)
+
+	await tween.finished
+
+	from_music.stop()
+	from_music.volume_db = 0.0

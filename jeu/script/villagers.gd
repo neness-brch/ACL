@@ -114,6 +114,19 @@ var potion_dialogue: Array[Dictionary] = [
 	{"text": "You obtained a Health Potion."}
 ]
 
+var ability_dialogue: Array[Dictionary] = [
+	{"text": "You learned a Special Attack."}
+]
+
+var tim_return_dialogue: Array[Dictionary] = [
+	{"text": "TIM !", "speaker": "dad"},
+	{"text": "where were you ?", "speaker": "dad"},
+	{"text": "thank you for bringing him back", "speaker": "daughter"},
+	{"text": "...", "speaker": "dad"},
+	{"text": "so you did beat this monster, right ?", "speaker": "daughter"},
+	{"text": "I knew we could trust you !", "speaker": "daughter"},
+	{"text": "I guess, I owe you something now...", "speaker": "dad"},
+]
 
 func _ready():
 	interaction_prompt.visible = false
@@ -132,6 +145,10 @@ func _on_body_entered(body):
 		player_nearby = true
 		interaction_prompt.visible = true
 		update_dialogue_bubble()
+		
+	print("tim_needs_escort = ", GameState.tim_needs_escort)
+	print("dialogue = ", get_current_dialogue_id())
+	print("seen = ", GameState.has_seen_dialogue(npc_id + "_tim_found"))
 
 
 func _on_body_exited(body):
@@ -162,6 +179,10 @@ func start_dialogue():
 
 
 func get_current_dialogue_id() -> String:
+	
+	if GameState.tim_needs_escort:
+		if not GameState.has_seen_dialogue(npc_id + "_tim_found"):
+			return npc_id + "_tim_found"
 
 	# Fall Quest hasn't started yet
 	if not GameState.is_quest_active("fall_quest"):
@@ -188,6 +209,9 @@ func get_current_dialogue_id() -> String:
 
 func get_current_dialogue() -> Array[Dictionary]:
 	var dialogue_id := get_current_dialogue_id()
+	
+	if dialogue_id == npc_id + "_tim_found":
+		return tim_return_dialogue
 
 	if dialogue_id == npc_id + "_before_quest":
 		return before_quest_dialogue
@@ -203,7 +227,6 @@ func get_current_dialogue() -> Array[Dictionary]:
 
 
 func _on_dialogue_finished():
-	# Potion after Hello2 or Hello3
 	if current_dialogue_id == npc_id + "_during_quest" \
 	or current_dialogue_id == npc_id + "_quest_update":
 
@@ -213,6 +236,13 @@ func _on_dialogue_finished():
 			current_dialogue_id = npc_id + "_potion_message"
 			dialogue_box.start_dialogue(potion_dialogue)
 			return
+	
+	if current_dialogue_id == npc_id + "_tim_found":
+		current_dialogue_id = npc_id + "_ability"
+
+		var prepared_dialogue := prepare_dialogue(ability_dialogue)
+		dialogue_box.start_dialogue(prepared_dialogue)
+		return
 
 	current_dialogue_id = ""
 	update_dialogue_bubble()
@@ -230,6 +260,7 @@ func update_dialogue_bubble():
 		dialogue_id == npc_id + "_before_quest"
 		or dialogue_id == npc_id + "_during_quest"
 		or dialogue_id == npc_id + "_quest_update"
+		or dialogue_id == npc_id + "_tim_found"
 	)
 	
 func prepare_dialogue(dialogue: Array[Dictionary]) -> Array[Dictionary]:

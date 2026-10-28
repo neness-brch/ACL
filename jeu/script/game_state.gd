@@ -13,6 +13,7 @@ var quests_active: Dictionary = {
 }
 
 var dialogues_seen: Dictionary = {}
+var tim_needs_escort := false
 
 var quest_progress: Dictionary = {
 	"fall_quest": 0

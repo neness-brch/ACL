@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://ccux2o6ugnwq6"]
 
-[ext_resource type="Script" uid="uid://dgt8tn12xubee" path="res://script/player.gd" id="2_pv6li"]
+[ext_resource type="Script" uid="uid://c71ogcct57rmc" path="res://script/player.gd" id="2_pv6li"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_8vrlf"]
 

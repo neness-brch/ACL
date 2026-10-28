@@ -5,36 +5,12 @@
 [ext_resource type="Texture2D" uid="uid://b4bndgj016ueq" path="res://assets/DialogueBubble.png" id="3_enlew"]
 [ext_resource type="Texture2D" uid="uid://d06utvcqkjj5a" path="res://assets/Villager2.png" id="3_pxawt"]
 [ext_resource type="FontFile" uid="uid://c4bfe8sqo0dwg" path="res://assets/EBGaramond-VariableFont_wght.ttf" id="4_pxawt"]
-[ext_resource type="Texture2D" uid="uid://glk8sfqjku0c" path="res://assets/sprite sheets/monster1-frame1.tres" id="5_qaj6n"]
-[ext_resource type="Texture2D" uid="uid://cph5wiiwqua12" path="res://assets/sprite sheets/monster1-frame2.tres" id="6_aa0xh"]
-[ext_resource type="Texture2D" uid="uid://bid8sa8vbud24" path="res://assets/sprite sheets/monster1-frame3.tres" id="7_6eqhs"]
-[ext_resource type="Texture2D" uid="uid://r4a8bvvvyyeq" path="res://assets/sprite sheets/monster1-frame4.tres" id="8_ekfm5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sy5e1"]
 size = Vector2(287, 197)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_swm0g"]
-size = Vector2(52.5, 53.5)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_lfbfk"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("5_qaj6n")
-}, {
-"duration": 1.0,
-"texture": ExtResource("6_aa0xh")
-}, {
-"duration": 1.0,
-"texture": ExtResource("7_6eqhs")
-}, {
-"duration": 1.0,
-"texture": ExtResource("8_ekfm5")
-}],
-"loop": 1,
-"name": &"Monster1",
-"speed": 5.0
-}]
+size = Vector2(302.25, 173.75)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_swm0g"]
 bg_color = Color(0, 0, 0, 1)
@@ -84,15 +60,8 @@ region_enabled = true
 region_rect = Rect2(452.30905, 92.00406, 271.16043, 285.46207)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DialogueBubble" unique_id=1324236848]
-position = Vector2(-1181.25, 280.75)
+position = Vector2(9.875, 37.875)
 shape = SubResource("RectangleShape2D_swm0g")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="DialogueBubble" unique_id=1419443063]
-position = Vector2(-719, 1854.0001)
-scale = Vector2(6, 6)
-sprite_frames = SubResource("SpriteFrames_lfbfk")
-animation = &"Monster1"
-autoplay = "Monster1"
 
 [node name="InteractionPrompt" type="Panel" parent="." unique_id=642111107]
 offset_left = -167.0
