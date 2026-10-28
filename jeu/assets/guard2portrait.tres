@@ -1,0 +1,7 @@
+[gd_resource type="AtlasTexture" format=3 uid="uid://dgveano7kcynr"]
+
+[ext_resource type="Texture2D" uid="uid://opxyaijqncoj" path="res://assets/sprite sheets/GateGuards/south-west.png" id="1_g1sji"]
+
+[resource]
+atlas = ExtResource("1_g1sji")
+region = Rect2(8.489166, 0, 31.813442, 32.705254)

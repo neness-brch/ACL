@@ -209,6 +209,7 @@ func _on_dialogue_finished():
 
 		if not GameState.has_seen_dialogue(npc_id + "_potion_received"):
 			GameState.mark_dialogue_seen(npc_id + "_potion_received")
+			GameState.add_item("health_potion", 1)
 			current_dialogue_id = npc_id + "_potion_message"
 			dialogue_box.start_dialogue(potion_dialogue)
 			return

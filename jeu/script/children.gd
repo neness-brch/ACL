@@ -1,6 +1,8 @@
 extends Area2D
 
 @export var npc_id: String = "children"
+@onready var monster = $Monster1
+@onready var player: Player = $"../Player"
 
 var player_nearby := false
 var current_dialogue_id: String = ""
@@ -49,24 +51,38 @@ var first_dialogue: Array[Dictionary] = [
 	{"text": "P̷̢̗͈̲̼̼͙̰̭͗͌̏̎̏̋̽͒̿̋̕͝R̶͖̘͕̿Į̸̨̩̺̱̤͔̙͉̰̅́͘N̵̛͇̞͔̗̲̳̎̓̈̓́̀̆̍̕͠C̵̣̘̘͖͉̑͋Ȩ̸̡͇̺̭͙̬̥̣̗͉̿̒̑̌̓̐̂̑̕̚͘͜S̶̡̛͓̟͎͚̥͌̎͌̈̕̚͜Ş̵̢̧̡̣̲͎̝̱̠̯͊̿͌̽̓͘̚͠͝ ̴̬͉͈̘̂̆̏̅̕P̷̢̟̣͍̞̪͔͓̺̙͚̉̚R̴̡̜̱̝̘͓͍̪̲̻͎͐́͂͑̎̍̓̿̾͂͊͑Ĩ̴̧̠̞̦̰̞̟̊̃̂̔̕͝͠N̶͔̗̜͕̂͋̄̄̓̆̔͘͝Ç̸̙͓̹̘̹̈́̎͝Ḛ̶̞͓̹̪̫̱̗͇͆̿̈́Ş̵̞̘̝͎̪̠̙͍́̈́̃͆̏̉̽̄̐̈̚͘͜ͅS̴̗̹̪̮̣̺̙̭͍̥̲̈́̓̔͛͒́̐̈́͘ͅ ̵̰͓̈̈̅͑́̉P̷̛̮͔͇̔͒͛̌̆̒̋͛̈́͐̑R̴͔̓́̃̈́̈́̈̂Ī̵̯̹̗̻̭̑̓̍́̿̄̑́͂́͘N̸̡͕̤̲̺̥̠̹͂̄͑C̵̘̤̬͚̮̗̺͚͎̀̒̽̄̒͜͠E̶̤͖̣̝̻͉͕̰̜̙͐͗̌̑̂̅̐͑̉͒͝S̷̡̡̛̥͔̝̲̬̣̣̥̾̐̎̃̄̕̕͠S̴͉͍̥̼̔͝ ̸̢̨̬̘̰͈̫̱̄͒̅͋̅̓̋̊̚͘Ą̶̢̼͇̱̳̆̾̃͋̆̎̔̿̓͝͝A̸̛͙̋Ą̶̡̬̤̫̬͓̐̑̒̈͒̆͑̈́̅͝A̸̧͍͙͈͉̞̗̙̳̯̣̬͂A̶̳͂̈́̽̊̾̂̓̌͝͝Ā̸̢̱͍̫̬͈̜̝̹̩̣̍͒̑͋̃À̴̧͇͚̽̆̐Å̴̢̳̭̆͂̀̅́̃̀̕Ȃ̵̡̰̳̼̯̖̬̓̇̅̏͌̈́̃̅ͅH̵̙͛̋͐̏͒͒͐͝ ̸̡͉̙͉̠̲̯̯̠̀̽͝I̷̱̒̇̓̈́̔͂̋͜T̷̹̞̲̳̠͍͔͖̬̹̦̺̾͆͆͒͐̔͐̚ ̶̜̪̪̺̥̟͎̹̝̈́͑̈́́̎̈́̐̌M̵̡̡̛͚̩̪̦̭̦̤̗̓͑̀̇̏͊̄̃͘͠͝A̵̫̳͖̼̍̂K̸̨̲̻̰̺̦̼͙̯̫̋̈́͌͗̀͜Ȅ̵̢̦͕̻̲͓̆̉͆̾̆͝͝͝͝S̸̢͈̯̭͓͇̎͗̈́͗̑͊̀̚ ̶͉̬̯͕̩̦͍̃̒̈̿̌̿̂̕͘͜M̶̢̜̱̫͇̲͕̒́̍͑̄͠͝ͅE̷̼̝̜͉̗̯̰̩̣̾̀͠ͅ ̵͙̠̭͈̔̇̀̔̄͗͌̐̍̕͠C̷̛̬͕̟͔̬̀͘Ŕ̸̳̈́́͑͛̌̈́̾A̵̡̧̱͓̗̠̻̞̝̍̓̇̀̈́̓̓ͅÀ̴̡̬͖̪̆̚A̸͈͉̜̯͎͉͇͇̅͂͂̇̓̀Ȧ̵͈̾͗̐̿͗A̴̲̘̘̿̈́A̴̬̅̆͋̇̓̀͛̃͑̃͊̏Ą̷̛̛͑̄̎̓̽̋̆̈́́Á̷̢̬̖̫͇̜̼̤̘͎͇̄̅͆͆͘A̵̡̦͈̲͎̹̘͎̯̝̜͐̈̽͐̽Ą̶̛̠͖̼̦͇̻̭̞͉͓̐͂̓͊̒̎͒̑̿͝ͅǍ̵̢̬̳̼͕̦̰̝̳͈̦̠́͗͊Á̷̳͉͍̳͍͇̖́̃͗͜͠Ả̶̯̙̟̝͑̌̆̊̇͗͛̑̓Z̵͇̦͚̯̠̙̈́͌͠Y̶͎̖̔̌̈́", "speaker": "monster"}
 ]
 var normal_dialogue: Array[Dictionary] = [
-	{"text": "Please... do something!", "speaker": "friend"},
-	{"text": "That thing won't let us leave.", "speaker": "tim"}
+	
+	{"text": "I-I can't believe it ! you really beat it!", "speaker": "tim"},
+{"text": "aaargh...", "speaker": "friend"},
+{"text": "ray ! you're alive ??", "speaker": "tim"},
+{"text": "...aaaaaaaaargh", "speaker": "friend"},
+{"text": "of course I'm alive", "speaker": "friend"},
+{"text": "you ! you were amazing ! I saw everything", "speaker": "tim"},
+{"text": "I really can't believe it...", "speaker": "tim"},
+{"text": "now that all of this is over...", "speaker": "tim"},
+{"text": "have you seen my father and my sister???", "speaker": "tim"},
+{"text": "they must be so worried", "speaker": "tim"},
+{"text": "and ray need my sister's medicine skills", "speaker": "tim"},
+{"text": "...really ?? you know where they are ?", "speaker": "tim"},
+{"text": "could you lead us to them ?", "speaker": "tim"}
 ]
-
-
 func _ready():
 	interaction_prompt.visible = false
 
 	body_entered.connect(_on_body_entered)
 	body_exited.connect(_on_body_exited)
-
 	dialogue_box.dialogue_finished.connect(_on_dialogue_finished)
+
+	if GameState.is_monster_defeated("monster_1"):
+		$Monster1.hide()
+		$Monster1.process_mode = Node.PROCESS_MODE_DISABLED
 
 	update_dialogue_bubble()
 
 
 func _on_body_entered(body):
 	if body is Player:
+		player = body
 		player_nearby = true
 		interaction_prompt.visible = true
 		update_dialogue_bubble()
@@ -74,6 +90,9 @@ func _on_body_entered(body):
 
 func _on_body_exited(body):
 	if body is Player:
+		if player == body:
+			player = null
+
 		player_nearby = false
 		interaction_prompt.visible = false
 
@@ -100,6 +119,12 @@ func start_dialogue():
 
 
 func get_current_dialogue_id() -> String:
+	if GameState.is_monster_defeated("monster_1"):
+		if not GameState.has_seen_dialogue(npc_id + "_after_battle"):
+			return npc_id + "_after_battle"
+
+		return npc_id + "_normal"
+
 	if not GameState.has_seen_dialogue(npc_id + "_first_meeting"):
 		return npc_id + "_first_meeting"
 
@@ -117,15 +142,37 @@ func get_current_dialogue() -> Array[Dictionary]:
 
 func _on_dialogue_finished():
 	if current_dialogue_id == npc_id + "_first_meeting":
-		# Plus tard :
-		# start_monster_fight()
-		pass
+
+		GameState.save_return_position(player.global_position)
+
+		print("POSITION SAUVEGARDEE : ", player.global_position)
+
+		current_dialogue_id = ""
+
+		SceneTransition.change_scene("res://scenes/battle.tscn")
+		return
 
 	current_dialogue_id = ""
 
 
 func update_dialogue_bubble():
 	var dialogue_id := get_current_dialogue_id()
+
+	new_dialogue_bubble.visible = (
+		not GameState.has_seen_dialogue(dialogue_id)
+		and (
+			dialogue_id == npc_id + "_first_meeting"
+			or dialogue_id == npc_id + "_after_battle"
+		)
+	)
+
+	new_dialogue_bubble.visible = (
+		not GameState.has_seen_dialogue(dialogue_id)
+		and (
+			dialogue_id == npc_id + "_first_meeting"
+			or dialogue_id == npc_id + "_after_battle"
+		)
+	)
 
 	new_dialogue_bubble.visible = (
 		dialogue_id == npc_id + "_first_meeting"

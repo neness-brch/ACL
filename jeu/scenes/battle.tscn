@@ -1,0 +1,256 @@
+[gd_scene format=3 uid="uid://cdt2dlqtul11f"]
+
+[ext_resource type="Script" uid="uid://bvguxdtymjfhq" path="res://script/battle.gd" id="1_4k1nj"]
+[ext_resource type="Texture2D" uid="uid://dtmg0uacmistu" path="res://assets/sprite sheets/from idle.png" id="1_lpir7"]
+[ext_resource type="Texture2D" uid="uid://glk8sfqjku0c" path="res://assets/sprite sheets/monster1-frame1.tres" id="2_6vh42"]
+[ext_resource type="Texture2D" uid="uid://cph5wiiwqua12" path="res://assets/sprite sheets/monster1-frame2.tres" id="3_4k1nj"]
+[ext_resource type="Texture2D" uid="uid://bid8sa8vbud24" path="res://assets/sprite sheets/monster1-frame3.tres" id="4_f4pi3"]
+[ext_resource type="Texture2D" uid="uid://r4a8bvvvyyeq" path="res://assets/sprite sheets/monster1-frame4.tres" id="5_yahae"]
+[ext_resource type="FontFile" uid="uid://x6poahq41v4" path="res://assets/PKMN RBYGSC.ttf" id="6_6vh42"]
+[ext_resource type="FontFile" uid="uid://c4bfe8sqo0dwg" path="res://assets/EBGaramond-VariableFont_wght.ttf" id="8_f4pi3"]
+[ext_resource type="AudioStream" uid="uid://48qu8ix11mxy" path="res://music/180db.ogg" id="9_yahae"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_v7i3o"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_6vh42")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_4k1nj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_f4pi3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_yahae")
+}],
+"loop": 1,
+"name": &"Monster1",
+"speed": 5.0
+}]
+
+[node name="Battle" type="Node2D" unique_id=690537773]
+script = ExtResource("1_4k1nj")
+
+[node name="Background" type="Sprite2D" parent="." unique_id=1458131735]
+
+[node name="Player" type="Sprite2D" parent="." unique_id=293630027]
+texture_filter = 1
+position = Vector2(261, 307.9583)
+scale = Vector2(4, 4.000001)
+texture = ExtResource("1_lpir7")
+flip_h = true
+region_enabled = true
+region_rect = Rect2(0, 0, 48.95709, 58)
+
+[node name="Opponent" type="AnimatedSprite2D" parent="." unique_id=776005374]
+texture_filter = 1
+position = Vector2(813, 126)
+scale = Vector2(15.863633, 15.863633)
+sprite_frames = SubResource("SpriteFrames_v7i3o")
+animation = &"Monster1"
+autoplay = "Monster1"
+
+[node name="PlayerUI" type="Control" parent="." unique_id=1948828985]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 639.0
+offset_top = 216.0
+offset_right = 1012.0
+offset_bottom = 289.0
+
+[node name="Name" type="Label" parent="PlayerUI" unique_id=1382615417]
+layout_mode = 0
+offset_left = 84.0
+offset_top = 30.0
+offset_right = 268.0
+offset_bottom = 55.0
+theme_override_fonts/font = ExtResource("6_6vh42")
+theme_override_font_sizes/font_size = 22
+text = "Monster"
+horizontal_alignment = 1
+
+[node name="HealthBar" type="ProgressBar" parent="PlayerUI" unique_id=529639257]
+layout_mode = 0
+offset_left = -457.0
+offset_top = -101.0
+offset_right = -262.0
+offset_bottom = -74.0
+theme_override_fonts/font = ExtResource("6_6vh42")
+
+[node name="OpponentUI" type="Control" parent="." unique_id=1721399244]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 170.0
+offset_top = 105.0
+offset_right = 402.0
+offset_bottom = 141.0
+
+[node name="Name" type="Label" parent="OpponentUI" unique_id=1551535403]
+layout_mode = 0
+offset_left = 41.0
+offset_top = 55.0
+offset_right = 170.0
+offset_bottom = 78.0
+theme_override_fonts/font = ExtResource("6_6vh42")
+theme_override_font_sizes/font_size = 21
+text = "Heroin"
+horizontal_alignment = 1
+
+[node name="HealthBar" type="ProgressBar" parent="OpponentUI" unique_id=886698401]
+layout_mode = 0
+offset_left = 536.0
+offset_top = 180.0
+offset_right = 756.0
+offset_bottom = 207.0
+theme_override_fonts/font = ExtResource("6_6vh42")
+
+[node name="IntimidateArrow" type="Label" parent="." unique_id=21313347]
+offset_left = 785.0
+offset_top = 32.0
+offset_right = 842.0
+offset_bottom = 193.0
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_fonts/font = ExtResource("6_6vh42")
+theme_override_font_sizes/font_size = 120
+text = "↓"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=932616926]
+
+[node name="BattleMenu" type="Panel" parent="CanvasLayer" unique_id=1089086360]
+anchors_preset = -1
+anchor_right = 0.017
+anchor_bottom = 0.062000003
+offset_left = 13.0
+offset_top = 459.0
+offset_right = 1117.416
+offset_bottom = 595.824
+
+[node name="FightLabel" type="Label" parent="CanvasLayer/BattleMenu" unique_id=1040672381]
+layout_mode = 0
+offset_left = 124.0
+offset_top = 39.0
+offset_right = 301.0
+offset_bottom = 73.0
+theme_override_fonts/font = ExtResource("6_6vh42")
+theme_override_font_sizes/font_size = 30
+text = "FIGHT"
+
+[node name="ObjectsLabel" type="Label" parent="CanvasLayer/BattleMenu" unique_id=1123212528]
+layout_mode = 0
+offset_left = 645.0
+offset_top = 45.0
+offset_right = 822.0
+offset_bottom = 74.0
+theme_override_fonts/font = ExtResource("6_6vh42")
+theme_override_font_sizes/font_size = 25
+text = "OBJECTS"
+
+[node name="Arrow" type="Label" parent="CanvasLayer/BattleMenu" unique_id=640045217]
+layout_mode = 0
+offset_left = 75.0
+offset_top = 35.0
+offset_right = 118.0
+offset_bottom = 71.0
+theme_override_fonts/font = ExtResource("6_6vh42")
+theme_override_font_sizes/font_size = 26
+text = "->"
+
+[node name="FightMenu" type="Panel" parent="CanvasLayer" unique_id=1657795329]
+visible = false
+anchors_preset = -1
+anchor_bottom = 0.062000003
+offset_left = 22.0
+offset_top = 457.0
+offset_right = 1140.0
+offset_bottom = 600.824
+
+[node name="SharpBladeLabel" type="Label" parent="CanvasLayer/FightMenu" unique_id=822071165]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.26700002
+anchor_bottom = 0.61300004
+offset_left = 117.0
+offset_top = 44.0
+offset_right = 77.49399
+offset_bottom = -39.792007
+theme_override_fonts/font = ExtResource("6_6vh42")
+theme_override_font_sizes/font_size = 25
+text = "SHARP BLADE"
+
+[node name="IntimidateLabel" type="Label" parent="CanvasLayer/FightMenu" unique_id=1936487109]
+layout_mode = 0
+offset_left = 634.0
+offset_top = 47.0
+offset_right = 868.0
+offset_bottom = 76.0
+theme_override_fonts/font = ExtResource("6_6vh42")
+theme_override_font_sizes/font_size = 25
+text = "INTIMIDATE"
+
+[node name="Arrow" type="Label" parent="CanvasLayer/FightMenu" unique_id=1358879601]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.669
+anchor_top = 12.533001
+anchor_right = 1.669
+anchor_bottom = 12.533001
+offset_left = -1809.942
+offset_top = -2265.0723
+offset_right = -1756.942
+offset_bottom = -2226.0723
+theme_override_fonts/font = ExtResource("6_6vh42")
+theme_override_font_sizes/font_size = 25
+text = "->"
+
+[node name="ObjectsMenu" type="Panel" parent="CanvasLayer" unique_id=1258421916]
+visible = false
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="HealthPotionLabel" type="Label" parent="CanvasLayer/ObjectsMenu" unique_id=1637306874]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.5
+anchor_bottom = 0.57500005
+offset_left = 136.0
+offset_top = 502.0
+offset_right = 420.0
+offset_bottom = 508.0
+theme_override_fonts/font = ExtResource("6_6vh42")
+theme_override_font_sizes/font_size = 25
+text = "HEALTH POTION"
+
+[node name="Arrow" type="Label" parent="CanvasLayer/ObjectsMenu" unique_id=438166804]
+layout_mode = 0
+offset_left = 78.0
+offset_top = 498.0
+offset_right = 118.0
+offset_bottom = 532.0
+theme_override_fonts/font = ExtResource("6_6vh42")
+theme_override_font_sizes/font_size = 25
+text = "->"
+
+[node name="BattleDialogue" type="Panel" parent="CanvasLayer" unique_id=1790366555]
+anchors_preset = -1
+anchor_right = 0.035
+anchor_bottom = 0.062000003
+offset_left = 484.0
+offset_top = 384.0
+offset_right = 1095.68
+offset_bottom = 411.824
+
+[node name="Text" type="RichTextLabel" parent="CanvasLayer/BattleDialogue" unique_id=2042350810]
+layout_mode = 0
+offset_left = 60.0
+offset_top = 8.0
+offset_right = 649.0
+offset_bottom = 70.0
+theme_override_fonts/normal_font = ExtResource("8_f4pi3")
+theme_override_font_sizes/normal_font_size = 33
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=140313363]
+stream = ExtResource("9_yahae")
+autoplay = true
+parameters/looping = true
