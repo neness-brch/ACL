@@ -40,10 +40,14 @@
 [ext_resource type="Texture2D" uid="uid://domu5uweik71y" path="res://assets/Child2.png" id="28_vbhjr"]
 [ext_resource type="Texture2D" uid="uid://cd2fgd7no7c08" path="res://assets/monster1portrait.tres" id="29_q6363"]
 [ext_resource type="AudioStream" uid="uid://b3yenfuwrn0qv" path="res://music/deathwish.ogg" id="36_tbtx4"]
+[ext_resource type="Texture2D" uid="uid://h7gwgk7eerkr" path="res://menu/import/godot-pixel-ui-free-7ea1d3962268a1e19f123fcc8103b686c3af2b8c/godot-pixel-ui-free-7ea1d3962268a1e19f123fcc8103b686c3af2b8c/addons/pixel_ui/themes/wood/button_normal.png" id="38_dxsqd"]
 [ext_resource type="Texture2D" uid="uid://dn0edxra5rpe1" path="res://assets/CastleGate1.png" id="38_ebbwe"]
+[ext_resource type="Texture2D" uid="uid://cp5yfvu6nafaf" path="res://menu/import/godot-pixel-ui-free-7ea1d3962268a1e19f123fcc8103b686c3af2b8c/godot-pixel-ui-free-7ea1d3962268a1e19f123fcc8103b686c3af2b8c/addons/pixel_ui/themes/wood/button_pressed.png" id="39_70l3m"]
 [ext_resource type="Texture2D" uid="uid://cd4gpdq01pd3t" path="res://assets/CastleGate2.png" id="39_ywewv"]
 [ext_resource type="Texture2D" uid="uid://cib6j8t40slv1" path="res://assets/CastleGate3.png" id="40_b1jo6"]
+[ext_resource type="Texture2D" uid="uid://bwae327r5i1wq" path="res://menu/import/godot-pixel-ui-free-7ea1d3962268a1e19f123fcc8103b686c3af2b8c/godot-pixel-ui-free-7ea1d3962268a1e19f123fcc8103b686c3af2b8c/addons/pixel_ui/themes/wood/button_hover.png" id="40_si4m4"]
 [ext_resource type="Texture2D" uid="uid://d3w84ijuo025k" path="res://assets/CastleGate4.png" id="41_3yaqj"]
+[ext_resource type="FontFile" uid="uid://b4ysgp2awsrtc" path="res://menu/import/godot-pixel-ui-free-7ea1d3962268a1e19f123fcc8103b686c3af2b8c/godot-pixel-ui-free-7ea1d3962268a1e19f123fcc8103b686c3af2b8c/addons/pixel_ui/font/pixel_ui_font.fnt" id="41_70l3m"]
 [ext_resource type="Script" uid="uid://bojetgqgcrxkr" path="res://script/guards.gd" id="42_3yaqj"]
 [ext_resource type="Texture2D" uid="uid://opxyaijqncoj" path="res://assets/sprite sheets/GateGuards/south-west.png" id="42_tbtx4"]
 [ext_resource type="Texture2D" uid="uid://dr7q74y6rooqa" path="res://assets/sprite sheets/GateGuards/south-east.png" id="43_1jgrg"]
@@ -10399,6 +10403,36 @@ layout_mode = 2
 texture = ExtResource("18_yopyy")
 expand_mode = 2
 
+[node name="TextureButton_Menu" type="TextureButton" parent="CanvasLayer" unique_id=121156804]
+texture_filter = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -119.0
+offset_bottom = 61.0
+grow_horizontal = 0
+texture_normal = ExtResource("38_dxsqd")
+texture_pressed = ExtResource("39_70l3m")
+texture_hover = ExtResource("40_si4m4")
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="CanvasLayer/TextureButton_Menu" unique_id=1784211301]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -31.5
+offset_top = -13.125
+offset_right = 31.5
+offset_bottom = 13.125
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("41_70l3m")
+theme_override_font_sizes/font_size = 21
+text = "Menu"
+
 [node name="MusicNode" type="Node2D" parent="." unique_id=1040719193]
 script = ExtResource("19_q45tq")
 
@@ -10563,3 +10597,5 @@ scale = Vector2(0.24687472, 0.24687472)
 texture = ExtResource("52_np24b")
 region_enabled = true
 region_rect = Rect2(476, 1702, 273, 160)
+
+[connection signal="pressed" from="CanvasLayer/TextureButton_Menu" to="." method="_on_texture_button_menu_pressed"]
