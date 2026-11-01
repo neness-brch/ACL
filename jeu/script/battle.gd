@@ -20,8 +20,13 @@ var state: BattleState = BattleState.MAIN_MENU
 var hero_max_hp := 100
 var hero_hp := 100
 
-var monster_max_hp := 100
-var monster_hp := 100
+@export var monster_id: String = "monster_1"
+@export var monster_max_hp: int = 100
+@export var monster_damage_min: int = 10
+@export var monster_damage_max: int = 15
+@export_range(0.01, 1.0) var monster_start_health_ratio: float = 1.0
+
+var monster_hp: int = 100
 
 var monster_attack_multiplier := 1.0
 
@@ -61,6 +66,7 @@ var object_selection := 0
 
 
 func _ready():
+	monster_hp = int(round(monster_max_hp * monster_start_health_ratio))
 	var hero_fill = hero_health_bar.get_theme_stylebox("fill").duplicate()
 	var monster_fill = monster_health_bar.get_theme_stylebox("fill").duplicate()
 
@@ -152,7 +158,7 @@ func show_objects_menu():
 	fight_menu.visible = false
 	objects_menu.visible = true
 
-	var has_potion := GameState.has_item("health_potion")
+	var has_potion: bool = GameState.has_item("health_potion")
 
 	$CanvasLayer/ObjectsMenu/HealthPotionLabel.visible = has_potion
 	objects_arrow.visible = has_potion
@@ -268,8 +274,7 @@ func enemy_turn():
 
 	await get_tree().create_timer(0.6).timeout
 
-	var base_damage := randi_range(10, 15)
-
+	var base_damage := randi_range(monster_damage_min, monster_damage_max)
 	var damage := int(
 		base_damage * monster_attack_multiplier
 	)
@@ -351,8 +356,8 @@ func hide_menus():
 func victory():
 	state = BattleState.VICTORY
 	hide_menus()
-	if not GameState.is_monster_defeated("monster_1"):
-		GameState.defeat_monster("monster_1")
+	if not GameState.is_monster_defeated(monster_id):
+		GameState.defeat_monster(monster_id)
 		GameState.add_quest_progress("fall_quest", 1)
 
 	battle_dialogue.visible = true

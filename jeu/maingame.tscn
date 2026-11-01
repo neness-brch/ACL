@@ -56,6 +56,7 @@
 [ext_resource type="Texture2D" uid="uid://b4gkkb11r5dqc" path="res://assets/DIalogueBubble (2).png" id="49_2x7ir"]
 [ext_resource type="Texture2D" uid="uid://cp8saohby7bqv" path="res://assets/NPCrestock.png" id="50_v663p"]
 [ext_resource type="Texture2D" uid="uid://cp71q3syqlltv" path="res://Basic Asset Pack/Basic Asset Pack/Basic Monster Animations/Bloodshot Eye/BloodshotEye.png" id="51_mdr15"]
+[ext_resource type="Script" uid="uid://yixm0u7ttw31" path="res://script/monster2_knight.gd" id="52_a1acs"]
 [ext_resource type="Texture2D" uid="uid://d1qyr72kf7nic" path="res://assets/KnightSPrite.png" id="52_np24b"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ir8iy"]
@@ -10579,6 +10580,7 @@ region_enabled = true
 region_rect = Rect2(78, 71, 25, 37)
 
 [node name="Monster2+KnightZone" type="Area2D" parent="." unique_id=1338195433]
+script = ExtResource("52_a1acs")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Monster2+KnightZone" unique_id=1727718569]
 position = Vector2(-3196.5, 910.5)
