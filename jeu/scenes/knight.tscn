@@ -41,7 +41,7 @@ region_rect = Rect2(79.29258, 2.0749948, 234.95468, 327.84918)
 position = Vector2(7, -6.5)
 shape = SubResource("RectangleShape2D_sy5e1")
 
-[node name="Sprite2D2" type="Sprite2D" parent="." unique_id=1709619139]
+[node name="BulleDialogue" type="Sprite2D" parent="." unique_id=1709619139]
 position = Vector2(-1.4305115e-06, -64.00001)
 scale = Vector2(0.4102758, 0.41027582)
 texture = ExtResource("4_5fsgc")

@@ -16,7 +16,7 @@ func update_progress() -> void:
 	var target: int = GameState.get_quest_target(quest_id)
 
 	progress_text.text = str(current) + " / " + str(target)
-	visible = GameState.is_quest_active(quest_id) or current > 0
+	visible = GameState.is_quest_active(quest_id)
 
 
 func _on_quest_active_changed(

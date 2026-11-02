@@ -6,7 +6,7 @@ var player_nearby := false
 var current_dialogue_id: String = ""
 
 @onready var interaction_prompt = $InteractionPrompt
-@onready var new_dialogue_bubble = $DialogueBubble
+@onready var new_dialogue_bubble = $BulleDialogue
 @onready var dialogue_box: DialogueBox = $"../CanvasLayer/BoiteDialogues"
 @export var portrait: Texture2D
 
@@ -58,6 +58,7 @@ func _ready():
 
 	dialogue_box.dialogue_finished.connect(_on_dialogue_finished)
 	GameState.quest_completed.connect(_on_quest_completed)
+	GameState.quest_active_changed.connect(_on_quest_active_changed)
 
 	update_dialogue_bubble()
 
@@ -70,6 +71,8 @@ func _on_dialogue_finished():
 		GameState.end_quest("fall_quest")
 
 	current_dialogue_id = ""
+
+	update_dialogue_bubble()
 
 func _on_body_entered(body):
 	if body is Player:
@@ -95,10 +98,10 @@ func start_dialogue():
 	current_dialogue_id = get_current_dialogue_id()
 	var dialogue := get_current_dialogue()
 
-	interaction_prompt.visible = false
+	interaction_prompt.hide()
+	new_dialogue_bubble.hide()
 
 	GameState.mark_dialogue_seen(current_dialogue_id)
-	update_dialogue_bubble()
 
 	dialogue_box.start_dialogue(dialogue, portrait)
 
@@ -135,11 +138,15 @@ func get_current_dialogue() -> Array[String]:
 
 func update_dialogue_bubble():
 	var dialogue_id := get_current_dialogue_id()
-	if dialogue_id == npc_id + "_first_meeting":
-		new_dialogue_bubble.visible = true
 
-	elif dialogue_id == npc_id + "_fall_quest":
-		new_dialogue_bubble.visible = true
-
-	else:
-		new_dialogue_bubble.visible = false
+	new_dialogue_bubble.visible = (
+		not GameState.has_seen_dialogue(dialogue_id)
+		and (
+			dialogue_id == npc_id + "_first_meeting"
+			or dialogue_id == npc_id + "_fall_quest"
+		)
+	)
+	
+func _on_quest_active_changed(quest_id: String, _active: bool):
+	if quest_id == "fall_quest":
+		update_dialogue_bubble()

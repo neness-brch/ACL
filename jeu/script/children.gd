@@ -12,7 +12,7 @@ var current_dialogue_id: String = ""
 var tim_needs_escort := false
 
 @onready var interaction_prompt = $InteractionPrompt
-@onready var new_dialogue_bubble = $DialogueBubble
+@onready var new_dialogue_bubble = $DialogueBubble/Sprite2D
 @onready var dialogue_box: DialogueBox = $"../CanvasLayer/BoiteDialogues"
 
 @export var tim_portrait: Texture2D
@@ -65,9 +65,13 @@ var normal_dialogue: Array[Dictionary] = [
 {"text": "I really can't believe it...", "speaker": "friend"},
 {"text": "hey you...have you seen my father and my sister???", "speaker": "tim"},
 {"text": "they must be so worried", "speaker": "tim"},
-{"text": "and I need my sister's medicine skills", "speaker": "tim"},
+{"text": "and I need my sister's medical skills", "speaker": "tim"},
 {"text": "...really ?? you know where they are ?", "speaker": "tim"},
 {"text": "could you lead us to them ?", "speaker": "tim"}
+]
+var thank_you_dialogue: Array[Dictionary] = [
+	{"text": "thank you for your help!", "speaker": "friend"},
+	{"text": "we really owe you one.", "speaker": "tim"}
 ]
 func _ready():
 	interaction_prompt.visible = false
@@ -77,6 +81,7 @@ func _ready():
 	dialogue_box.dialogue_finished.connect(_on_dialogue_finished)
 	music_zone.body_entered.connect(_on_music_zone_entered)
 	music_zone.body_exited.connect(_on_music_zone_exited)
+	GameState.quest_active_changed.connect(_on_quest_active_changed)
 	if GameState.is_monster_defeated("monster_1"):
 		$Monster1.hide()
 		$Monster1.process_mode = Node.PROCESS_MODE_DISABLED
@@ -88,7 +93,7 @@ func _on_body_entered(body):
 	if body is Player:
 		player = body
 		player_nearby = true
-		interaction_prompt.visible = true
+		interaction_prompt.visible = GameState.is_quest_active("fall_quest")
 		update_dialogue_bubble()
 
 
@@ -103,6 +108,7 @@ func _on_body_exited(body):
 
 func _process(_delta):
 	if player_nearby \
+	and GameState.is_quest_active("fall_quest") \
 	and Input.is_action_just_pressed("interact") \
 	and not dialogue_box.dialogue_active:
 		start_dialogue()
@@ -114,20 +120,23 @@ func start_dialogue():
 	var dialogue := get_current_dialogue()
 	var prepared_dialogue := prepare_dialogue(dialogue)
 
-	interaction_prompt.visible = false
+	interaction_prompt.hide()
+	new_dialogue_bubble.hide()
 
 	GameState.mark_dialogue_seen(current_dialogue_id)
-	update_dialogue_bubble()
 
 	dialogue_box.start_dialogue(prepared_dialogue)
 
-
 func get_current_dialogue_id() -> String:
 	if GameState.is_monster_defeated("monster_1"):
+
 		if not GameState.has_seen_dialogue(npc_id + "_after_battle"):
 			return npc_id + "_after_battle"
 
-		return npc_id + "_normal"
+		if not GameState.has_seen_dialogue(npc_id + "_thank_you"):
+			return npc_id + "_thank_you"
+
+		return npc_id + "_thank_you"
 
 	if not GameState.has_seen_dialogue(npc_id + "_first_meeting"):
 		return npc_id + "_first_meeting"
@@ -141,12 +150,18 @@ func get_current_dialogue() -> Array[Dictionary]:
 	if dialogue_id == npc_id + "_first_meeting":
 		return first_dialogue
 
+	if dialogue_id == npc_id + "_after_battle":
+		return normal_dialogue
+
+	if dialogue_id == npc_id + "_thank_you":
+		return thank_you_dialogue
+
 	return normal_dialogue
 
 
 func _on_dialogue_finished():
-	if current_dialogue_id == npc_id + "_first_meeting":
 
+	if current_dialogue_id == npc_id + "_first_meeting":
 		GameState.save_return_position(player.global_position)
 
 		print("POSITION SAUVEGARDEE : ", player.global_position)
@@ -161,6 +176,7 @@ func _on_dialogue_finished():
 
 	current_dialogue_id = ""
 
+	update_dialogue_bubble()
 func update_dialogue_bubble():
 	var dialogue_id := get_current_dialogue_id()
 
@@ -171,20 +187,6 @@ func update_dialogue_bubble():
 			or dialogue_id == npc_id + "_after_battle"
 		)
 	)
-
-	new_dialogue_bubble.visible = (
-		not GameState.has_seen_dialogue(dialogue_id)
-		and (
-			dialogue_id == npc_id + "_first_meeting"
-			or dialogue_id == npc_id + "_after_battle"
-		)
-	)
-
-	new_dialogue_bubble.visible = (
-		dialogue_id == npc_id + "_first_meeting"
-	)
-
-
 func prepare_dialogue(dialogue: Array[Dictionary]) -> Array[Dictionary]:
 	var prepared: Array[Dictionary] = []
 
@@ -246,3 +248,10 @@ func fade_music(
 
 	from_music.stop()
 	from_music.volume_db = 0.0
+	
+func _on_quest_active_changed(quest_id: String, active: bool):
+	if quest_id != "fall_quest":
+		return
+
+	interaction_prompt.visible = player_nearby and active
+	update_dialogue_bubble()

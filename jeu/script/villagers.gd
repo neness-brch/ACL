@@ -128,6 +128,10 @@ var tim_return_dialogue: Array[Dictionary] = [
 	{"text": "I guess, I owe you something now...", "speaker": "dad"},
 ]
 
+var thank_you_dialogue: Array[Dictionary] = [
+	{"text": "thank you for your help!", "speaker": "dad"},
+	{"text": "we really owe you one.", "speaker": "daughter"}
+]
 func _ready():
 	interaction_prompt.visible = false
 
@@ -171,38 +175,43 @@ func start_dialogue():
 	var prepared_dialogue := prepare_dialogue(dialogue)
 
 	interaction_prompt.visible = false
+	new_dialogue_bubble.visible = false
 
 	GameState.mark_dialogue_seen(current_dialogue_id)
-	update_dialogue_bubble()
 
 	dialogue_box.start_dialogue(prepared_dialogue)
 
 
 func get_current_dialogue_id() -> String:
-	
+
+	# Tim est revenu
 	if GameState.tim_needs_escort:
 		if not GameState.has_seen_dialogue(npc_id + "_tim_found"):
 			return npc_id + "_tim_found"
 
-	# Fall Quest hasn't started yet
+		# Le dialogue final a déjà été débloqué :
+		# on le répète indéfiniment.
+		if GameState.has_seen_dialogue(npc_id + "_thank_you"):
+			return npc_id + "_thank_you"
+
+		return npc_id + "_thank_you"
+
+	# Avant le début de la quête
 	if not GameState.is_quest_active("fall_quest"):
 		if not GameState.has_seen_dialogue(npc_id + "_before_quest"):
 			return npc_id + "_before_quest"
 
 		return npc_id + "_normal"
 
-
-	# Fall Quest is active, but we've NEVER met this villager
+	# Première rencontre pendant la quête
 	if not GameState.has_seen_dialogue(npc_id + "_before_quest") \
 	and not GameState.has_seen_dialogue(npc_id + "_during_quest"):
 		return npc_id + "_during_quest"
 
-
-	# We met the villager BEFORE starting the Fall Quest
+	# Mise à jour après une rencontre avant la quête
 	if GameState.has_seen_dialogue(npc_id + "_before_quest") \
 	and not GameState.has_seen_dialogue(npc_id + "_quest_update"):
 		return npc_id + "_quest_update"
-
 
 	return npc_id + "_normal"
 
@@ -221,22 +230,27 @@ func get_current_dialogue() -> Array[Dictionary]:
 
 	elif dialogue_id == npc_id + "_quest_update":
 		return quest_started_after_meeting_dialogue
+		
+	elif dialogue_id == npc_id + "_thank_you":
+		return thank_you_dialogue
 
 	else:
 		return normal_dialogue
 
 
 func _on_dialogue_finished():
+
 	if current_dialogue_id == npc_id + "_during_quest" \
 	or current_dialogue_id == npc_id + "_quest_update":
 
 		if not GameState.has_seen_dialogue(npc_id + "_potion_received"):
 			GameState.mark_dialogue_seen(npc_id + "_potion_received")
 			GameState.add_item("health_potion", 1)
+
 			current_dialogue_id = npc_id + "_potion_message"
 			dialogue_box.start_dialogue(potion_dialogue)
 			return
-	
+
 	if current_dialogue_id == npc_id + "_tim_found":
 		current_dialogue_id = npc_id + "_ability"
 
@@ -247,9 +261,8 @@ func _on_dialogue_finished():
 	current_dialogue_id = ""
 	update_dialogue_bubble()
 
-
-func _on_quest_active_changed(quest_id: String, active: bool):
-	if quest_id == "fall_quest" and active:
+func _on_quest_active_changed(quest_id: String, _active: bool):
+	if quest_id == "fall_quest":
 		update_dialogue_bubble()
 
 
@@ -257,10 +270,13 @@ func update_dialogue_bubble():
 	var dialogue_id := get_current_dialogue_id()
 
 	new_dialogue_bubble.visible = (
-		dialogue_id == npc_id + "_before_quest"
-		or dialogue_id == npc_id + "_during_quest"
-		or dialogue_id == npc_id + "_quest_update"
-		or dialogue_id == npc_id + "_tim_found"
+		current_dialogue_id == ""
+		and (
+			dialogue_id == npc_id + "_before_quest"
+			or dialogue_id == npc_id + "_during_quest"
+			or dialogue_id == npc_id + "_quest_update"
+			or dialogue_id == npc_id + "_tim_found"
+		)
 	)
 	
 func prepare_dialogue(dialogue: Array[Dictionary]) -> Array[Dictionary]:

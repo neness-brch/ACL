@@ -25,6 +25,9 @@ var quest_targets: Dictionary = {
 
 
 func add_quest_progress(quest_id: String, amount: int = 1):
+	if not is_quest_active(quest_id):
+		return
+
 	if is_quest_completed(quest_id):
 		return
 
@@ -71,7 +74,13 @@ func has_seen_dialogue(dialogue_id: String) -> bool:
 	return dialogues_seen.get(dialogue_id, false)
 	
 func start_quest(quest_id: String):
-	quests_active[quest_id] = true	
+	if is_quest_completed(quest_id):
+		return
+
+	if is_quest_active(quest_id):
+		return
+
+	quests_active[quest_id] = true
 	quest_active_changed.emit(quest_id, true)
 
 
