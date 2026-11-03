@@ -184,13 +184,11 @@ func start_dialogue():
 
 func get_current_dialogue_id() -> String:
 
-	# Tim est revenu
 	if GameState.tim_needs_escort:
 		if not GameState.has_seen_dialogue(npc_id + "_tim_found"):
 			return npc_id + "_tim_found"
 
-		# Le dialogue final a déjà été débloqué :
-		# on le répète indéfiniment.
+
 		if GameState.has_seen_dialogue(npc_id + "_thank_you"):
 			return npc_id + "_thank_you"
 

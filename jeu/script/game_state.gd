@@ -3,6 +3,9 @@ extends Node
 signal quest_progress_changed(quest_id: String, current: int, target: int)
 signal quest_completed(quest_id: String)
 signal quest_active_changed(quest_id: String, active: bool)
+signal time_of_day_changed(progress: float)
+
+var time_progress: float = 0.0
 
 var quests_completed: Dictionary = {
 	"fall_quest": false
@@ -41,6 +44,10 @@ func add_quest_progress(quest_id: String, amount: int = 1):
 		quest_progress[quest_id] = target
 
 	quest_progress_changed.emit(quest_id, current, target)
+
+	# Le cycle jour/nuit avance avec chaque feuille obtenue
+	if quest_id == "fall_quest":
+		advance_time()
 
 	if current >= target:
 		complete_quest(quest_id)
@@ -139,3 +146,8 @@ func save_return_position(position: Vector2):
 func consume_return_position() -> Vector2:
 	has_return_position = false
 	return return_position
+
+
+func advance_time() -> void:
+	time_progress = min(time_progress + 1.0, 3.0)
+	time_of_day_changed.emit(time_progress)

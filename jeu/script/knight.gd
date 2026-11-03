@@ -23,13 +23,14 @@ var first_dialogue: Array[String] = [
 	"so what possibly can you be doing here ?",
 	"looking for the princess ?",
 	"to be honest, I have no idea where she might be",
-	"but I know someone who does...",
-	"you know, if you could do something from me, maybe I could help you",
+	"she is quite discreet lately to be honest",
+	"you know, perhaps we could make a deal. you do something for me, and I'll tell you what I know.",
 	"you know how to fight ?",
 	"I can see you have a sword with you",
-	"why don't you go hunting for these monsters out there ?",
-	"each one of them own a Precious Leaf",
-	"I believe there is three of them here in the Fall Zone",
+	"why don't you hunt down these monsters out there ?",
+	"they are scaring the villagers.",
+	"each one of them carries a Precious Leaf",
+	"I believe there are three of them here in the Fall Zone",
 	"if you bring them to me, I will be willing to tell you everything I know"
 ]
 var normal_dialogue: Array[String] = [
@@ -39,11 +40,17 @@ var normal_dialogue: Array[String] = [
 
 var after_fall_quest: Array[String] = [
 	"you really managed to gather all of them",
-	"you are truly impressive."
+	"you are truly impressive.",
+	"so...as I promised to you...",
+"I will tell you everything I know.",
+"but before that, we should go to my place first.",
+"the night is coming and you will need rest.",
+"go find my house on the village up there, I'll meet you there"
 ]
 
 var after_quest_dialogue: Array[String] = [
-	"see you soon."
+	"did you find my house?",
+	"it's a big house,you can't miss it !"
 ]
 
 func _on_quest_completed(quest_id: String):
