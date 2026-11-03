@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://bhrfyhgr5qyu5"]
+
+[ext_resource type="Texture2D" uid="uid://dtmg0uacmistu" path="res://assets/sprite sheets/from idle.png" id="1_agioa"]
+[ext_resource type="FontFile" uid="uid://x6poahq41v4" path="res://assets/PKMN RBYGSC.ttf" id="2_lde8p"]
+
+[node name="Node2D" type="Node2D" unique_id=451786500]
+
+[node name="FromIdle" type="Sprite2D" parent="." unique_id=1372872818]
+position = Vector2(190.00006, 277.00003)
+scale = Vector2(5.875, 5.875)
+texture = ExtResource("1_agioa")
+region_enabled = true
+region_rect = Rect2(0, 0, 48, 58)
+
+[node name="Label" type="Label" parent="." unique_id=443097281]
+offset_left = 323.0
+offset_top = 265.0
+offset_right = 1017.0
+offset_bottom = 312.0
+theme_override_fonts/font = ExtResource("2_lde8p")
+theme_override_font_sizes/font_size = 35
+text = "maison du chevalier à créer !"

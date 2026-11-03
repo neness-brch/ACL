@@ -4,6 +4,9 @@ signal quest_progress_changed(quest_id: String, current: int, target: int)
 signal quest_completed(quest_id: String)
 signal quest_active_changed(quest_id: String, active: bool)
 signal time_of_day_changed(progress: float)
+var knight_house_unlocked: bool = false
+var player_return_position: Vector2 = Vector2.ZERO
+var has_return_position: bool = false
 
 var time_progress: float = 0.0
 
@@ -135,7 +138,7 @@ func is_monster_defeated(monster_id: String) -> bool:
 	return monsters_defeated.get(monster_id, false)
 	
 var return_position: Vector2 = Vector2.ZERO
-var has_return_position := false
+
 
 
 func save_return_position(position: Vector2):
@@ -150,4 +153,11 @@ func consume_return_position() -> Vector2:
 
 func advance_time() -> void:
 	time_progress = min(time_progress + 1.0, 3.0)
+	time_of_day_changed.emit(time_progress)
+	
+func return_to_village() -> void:
+	SceneTransition.change_scene("res://maingame.tscn")
+	
+func sleep_until_morning() -> void:
+	time_progress = 0.0
 	time_of_day_changed.emit(time_progress)

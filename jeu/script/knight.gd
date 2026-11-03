@@ -71,15 +71,15 @@ func _ready():
 
 func _on_dialogue_finished():
 
-	if current_dialogue_id == npc_id + "_first_meeting":
-		GameState.start_quest("fall_quest")
+		if current_dialogue_id == npc_id + "_first_meeting":
+			GameState.start_quest("fall_quest")
 
-	elif current_dialogue_id == npc_id + "_fall_quest":
-		GameState.end_quest("fall_quest")
+		elif current_dialogue_id == npc_id + "_fall_quest":
+			GameState.end_quest("fall_quest")
+			GameState.knight_house_unlocked = true
 
-	current_dialogue_id = ""
-
-	update_dialogue_bubble()
+		current_dialogue_id = ""
+		update_dialogue_bubble()
 
 func _on_body_entered(body):
 	if body is Player:

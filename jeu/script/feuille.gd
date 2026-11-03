@@ -47,5 +47,5 @@ func collect_leaf() -> void:
 		return
 
 	collected = true
-	GameState.add_quest_progress("fall_quest", 1)
+	GameState.add_quest_progress("fall_quest", 3)
 	queue_free()

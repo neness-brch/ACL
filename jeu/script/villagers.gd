@@ -86,7 +86,7 @@ var first_meeting_during_quest_dialogue: Array[Dictionary] = [
 	{"text": "but you...", "speaker": "dad"},
 	{"text": "you look like you have a lot of experience.", "speaker": "dad"},
 	{"text": "if you bring my son back, I would be so grateful.", "speaker": "dad"},
-	{"text": "the last time I saw him, he was heading south with his friends.", "speaker": "dad"},
+	{"text": "the last time I saw him, he was heading south with his friend Ray.", "speaker": "dad"},
 	{"text": "please... be careful.", "speaker": "dad"},
 	{"text": "those monsters are smarter than you think.", "speaker": "dad"},
 	
@@ -149,10 +149,6 @@ func _on_body_entered(body):
 		player_nearby = true
 		interaction_prompt.visible = true
 		update_dialogue_bubble()
-		
-	print("tim_needs_escort = ", GameState.tim_needs_escort)
-	print("dialogue = ", get_current_dialogue_id())
-	print("seen = ", GameState.has_seen_dialogue(npc_id + "_tim_found"))
 
 
 func _on_body_exited(body):
