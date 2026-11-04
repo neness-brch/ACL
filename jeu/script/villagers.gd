@@ -250,6 +250,7 @@ func _on_dialogue_finished():
 
 		var prepared_dialogue := prepare_dialogue(ability_dialogue)
 		dialogue_box.start_dialogue(prepared_dialogue)
+		GameState.unlock_attack("id")
 		return
 
 	current_dialogue_id = ""

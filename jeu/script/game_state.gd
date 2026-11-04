@@ -104,7 +104,8 @@ func end_quest(quest_id: String):
 	quest_active_changed.emit(quest_id, false)
 
 var inventory: Dictionary = {
-	"health_potion": 0
+	"health_potion": 0,
+	"cherry_jam" : 0
 }
 
 
@@ -175,3 +176,10 @@ func set_spawn_point(position: Vector2) -> void:
 func consume_spawn_position() -> Vector2:
 	has_pending_spawn = false
 	return pending_spawn_position
+	
+var unlocked_attacks: Array[String] = ["sharp_blade", "intimidate"]
+
+
+func unlock_attack(attack_id: String) -> void:
+	if not unlocked_attacks.has(attack_id):
+		unlocked_attacks.append(attack_id)

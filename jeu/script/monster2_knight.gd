@@ -18,7 +18,7 @@ var encounter_return_position: Vector2
 
 var encounter_dialogue: Array[Dictionary] = [
 	{
-		"text": "help! This monster is too powerful!",
+		"text": "help! this monster is too powerful!",
 		"speaker": "knight"
 	},
 	{

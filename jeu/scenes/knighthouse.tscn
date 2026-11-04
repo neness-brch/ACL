@@ -2576,7 +2576,7 @@ scroll_following_visible_characters = true
 
 [node name="VoicePlayer" type="AudioStreamPlayer" parent="CanvasLayer/BoiteDialogues" unique_id=1866028274]
 stream = ExtResource("12_ti5c4")
-volume_db = -4.761
+volume_db = -7.0
 
 [node name="VoiceTimer" type="Timer" parent="CanvasLayer/BoiteDialogues" unique_id=1599688499]
 wait_time = 0.075
