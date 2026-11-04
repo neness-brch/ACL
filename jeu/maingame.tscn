@@ -75,7 +75,7 @@
 [ext_resource type="Texture2D" uid="uid://ceyj7m6oeg1w0" path="res://assets/jamsellerportrait.tres" id="73_j0ij8"]
 [ext_resource type="Texture2D" uid="uid://behf1pq4q50pd" path="res://assets/JamPots.png.png" id="74_2scw4"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ir8iy"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_745vy"]
 texture = ExtResource("1_fputw")
 7:21/0 = 0
 7:21/0/terrain_set = 0
@@ -1783,7 +1783,7 @@ texture = ExtResource("1_fputw")
 12:35/0 = 0
 12:35/0/terrain_set = 0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hqns4"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_j5njb"]
 texture = ExtResource("2_ekqhg")
 2:1/0 = 0
 2:2/0 = 0
@@ -2184,7 +2184,7 @@ texture = ExtResource("2_ekqhg")
 14:9/0 = 0
 14:8/0 = 0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_olu43"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gtgbl"]
 texture = ExtResource("3_ekqhg")
 4:1/0 = 0
 5:1/0 = 0
@@ -2344,7 +2344,7 @@ texture = ExtResource("3_ekqhg")
 6:17/0 = 0
 7:17/0 = 0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_x0ka3"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0gitp"]
 texture = ExtResource("3_olu43")
 2:6/0 = 0
 2:6/0/terrain_set = 1
@@ -2691,7 +2691,7 @@ texture = ExtResource("3_olu43")
 7:6/0/terrains_peering_bit/bottom_side = 0
 7:6/0/terrains_peering_bit/left_side = 0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0h7mo"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_phe4h"]
 texture = ExtResource("4_w5oa7")
 1:1/0 = 0
 1:1/0/terrain_set = 1
@@ -3022,7 +3022,7 @@ texture = ExtResource("4_w5oa7")
 12:1/0/terrains_peering_bit/bottom_left_corner = 1
 12:1/0/terrains_peering_bit/left_side = 1
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_nr8wp"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2dgps"]
 texture = ExtResource("5_4y8sd")
 2:5/0 = 0
 2:5/0/terrain_set = 1
@@ -3352,7 +3352,7 @@ texture = ExtResource("5_4y8sd")
 12:7/0/terrains_peering_bit/top_left_corner = 2
 12:7/0/terrains_peering_bit/top_side = 2
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mnpky"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_n3onq"]
 texture = ExtResource("7_wy1l4")
 36:10/0 = 0
 37:10/0 = 0
@@ -5054,7 +5054,7 @@ texture = ExtResource("7_wy1l4")
 40:69/0 = 0
 41:69/0 = 0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ekqhg"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_t7j0a"]
 texture = ExtResource("6_rvkpk")
 2:4/0 = 0
 2:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
@@ -5128,7 +5128,7 @@ texture = ExtResource("6_rvkpk")
 3:8/0 = 0
 3:7/0 = 0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_745vy"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_j0ij8"]
 texture = ExtResource("10_kymhk")
 10:3/0 = 0
 11:3/0 = 0
@@ -5463,15 +5463,15 @@ terrain_set_1/terrain_2/name = "fall path"
 terrain_set_1/terrain_2/color = Color(0.15294118, 0.5176471, 0.67058825, 1)
 terrain_set_1/terrain_3/name = "winter path"
 terrain_set_1/terrain_3/color = Color(0.375, 0.5, 0.25, 1)
-sources/0 = SubResource("TileSetAtlasSource_ir8iy")
-sources/1 = SubResource("TileSetAtlasSource_hqns4")
-sources/2 = SubResource("TileSetAtlasSource_x0ka3")
-sources/3 = SubResource("TileSetAtlasSource_0h7mo")
-sources/4 = SubResource("TileSetAtlasSource_nr8wp")
-sources/6 = SubResource("TileSetAtlasSource_ekqhg")
-sources/10 = SubResource("TileSetAtlasSource_olu43")
-sources/5 = SubResource("TileSetAtlasSource_mnpky")
-sources/7 = SubResource("TileSetAtlasSource_745vy")
+sources/0 = SubResource("TileSetAtlasSource_745vy")
+sources/1 = SubResource("TileSetAtlasSource_j5njb")
+sources/2 = SubResource("TileSetAtlasSource_0gitp")
+sources/3 = SubResource("TileSetAtlasSource_phe4h")
+sources/4 = SubResource("TileSetAtlasSource_2dgps")
+sources/6 = SubResource("TileSetAtlasSource_t7j0a")
+sources/10 = SubResource("TileSetAtlasSource_gtgbl")
+sources/5 = SubResource("TileSetAtlasSource_n3onq")
+sources/7 = SubResource("TileSetAtlasSource_j0ij8")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wy1l4"]
 texture = ExtResource("6_rvkpk")
@@ -8846,11 +8846,11 @@ sources/0 = SubResource("TileSetAtlasSource_np24b")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ydia2"]
 size = Vector2(194, 114)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0dyjn"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_745vy"]
 bg_color = Color(0, 0, 0, 1)
 
 [sub_resource type="Theme" id="Theme_b3c3w"]
-Panel/styles/panel = SubResource("StyleBoxFlat_0dyjn")
+Panel/styles/panel = SubResource("StyleBoxFlat_745vy")
 
 [sub_resource type="LabelSettings" id="LabelSettings_5uxs7"]
 font = ExtResource("13_wy1l4")
@@ -11221,6 +11221,9 @@ label_settings = SubResource("LabelSettings_5uxs7")
 horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
+
+[node name="Depart" type="Marker2D" parent="." unique_id=125820027]
+position = Vector2(-3152, 464)
 
 [node name="Player" parent="." unique_id=1247019272 node_paths=PackedStringArray("dialogue_box") instance=ExtResource("7_fputw")]
 position = Vector2(-200, 143)

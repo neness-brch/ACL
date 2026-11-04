@@ -7,6 +7,7 @@ signal time_of_day_changed(progress: float)
 var knight_house_unlocked: bool = false
 var player_return_position: Vector2 = Vector2.ZERO
 var has_return_position: bool = false
+var spawn: String = ""
 var knight_has_moved_to_house: bool = false
 var knight_house_dialogue_seen: bool = false
 var time_progress: float = 0.0
