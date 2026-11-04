@@ -2,8 +2,11 @@ extends Node2D
 
 @onready var player: Player = $Player
 
+
 func _ready():
-	if GameState.spawn != "" :
+	if GameState.has_pending_spawn:
+		player.global_position = GameState.consume_spawn_position()
+	elif GameState.spawn != "" :
 		player.global_position = get_node(GameState.spawn).global_position
 		GameState.has_return_position = false
 	elif GameState.has_return_position:
@@ -12,5 +15,6 @@ func _ready():
 	GameState.spawn = ""
 
 
+
 func _on_texture_button_menu_pressed() -> void:
-	SceneTransition.change_scene("res://menu/main_menu.tscn")
+	SceneTransition.change_scene("res://maingame.tscn")

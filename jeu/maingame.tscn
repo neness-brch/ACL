@@ -10,12 +10,13 @@
 [ext_resource type="Texture2D" uid="uid://cltss05wst0my" path="res://Nature/nature.png" id="6_rvkpk"]
 [ext_resource type="PackedScene" uid="uid://crwja1j6djpt4" path="res://scenes/playeranimation.tscn" id="7_fputw"]
 [ext_resource type="Texture2D" uid="uid://dayvyghyq80af" path="res://assets/Campfire.png" id="7_wy1l4"]
-[ext_resource type="Script" uid="uid://c71ogcct57rmc" path="res://script/player.gd" id="9_ekqhg"]
+[ext_resource type="Script" uid="uid://dgt8tn12xubee" path="res://script/player.gd" id="9_ekqhg"]
 [ext_resource type="Texture2D" uid="uid://ka623gyeolb2" path="res://Tilemap/WaterTiles.png" id="10_2x7ir"]
 [ext_resource type="Texture2D" uid="uid://b4qoy6myusb60" path="res://assets/KnightHouse.png" id="10_kymhk"]
 [ext_resource type="Script" uid="uid://p7ojoobsn4wc" path="res://script/health_bar.gd" id="10_olu43"]
 [ext_resource type="PackedScene" uid="uid://dg5hxel6v4rrf" path="res://scenes/knight.tscn" id="11_hhwgs"]
 [ext_resource type="Script" uid="uid://cc6gixofs6a0" path="res://script/texture_health_bar.gd" id="11_w5oa7"]
+[ext_resource type="Texture2D" uid="uid://dw15la8vk3jb0" path="res://assets/HouseInterior2.png" id="12_n3onq"]
 [ext_resource type="Texture2D" uid="uid://dm220nvginsib" path="res://assets/TextBox.PNG" id="12_rvkpk"]
 [ext_resource type="PackedScene" uid="uid://dse2sgkrbi4nk" path="res://scenes/villager.tscn" id="12_tma5p"]
 [ext_resource type="Script" uid="uid://bgxfnq3nrsveu" path="res://script/villagers.gd" id="13_aq4ac"]
@@ -26,7 +27,9 @@
 [ext_resource type="Script" uid="uid://buc4pl4a81d23" path="res://script/quest_progress.gd" id="17_f0ocn"]
 [ext_resource type="AudioStream" uid="uid://d2mmybdbcd1m3" path="res://music/bip.ogg" id="17_mnpky"]
 [ext_resource type="Texture2D" uid="uid://4ba8r3kbeyg3" path="res://resources/leaf.tres" id="18_yopyy"]
+[ext_resource type="Script" uid="uid://dq1pcbrpb0hfh" path="res://script/pnj2.gd" id="19_j5njb"]
 [ext_resource type="Script" uid="uid://b7eubnv3f8lt1" path="res://script/music.gd" id="19_q45tq"]
+[ext_resource type="Texture2D" uid="uid://2q8nu6uqttxv" path="res://assets/pnj1.tres" id="20_gtgbl"]
 [ext_resource type="Texture2D" uid="uid://cuvhrsmdl7cer" path="res://assets/knight.tres" id="20_vbhjr"]
 [ext_resource type="Texture2D" uid="uid://glk8sfqjku0c" path="res://assets/sprite sheets/monster1-frame1.tres" id="23_a8utw"]
 [ext_resource type="Texture2D" uid="uid://ctku0kfxw0j5f" path="res://assets/sprite sheets/Fisherman.png" id="23_grdtw"]
@@ -64,10 +67,13 @@
 [ext_resource type="Script" uid="uid://yixm0u7ttw31" path="res://script/monster2_knight.gd" id="52_a1acs"]
 [ext_resource type="Texture2D" uid="uid://d1qyr72kf7nic" path="res://assets/KnightSPrite.png" id="52_np24b"]
 [ext_resource type="Texture2D" uid="uid://c8algejthapdn" path="res://assets/Monika.png" id="58_84fym"]
-[ext_resource type="Script" uid="uid://yx27ygp34krg" path="res://script/pnj2.gd" id="58_hnxqn"]
+[ext_resource type="Script" uid="uid://yx27ygp34krg" path="res://script/pnj1.gd" id="58_hnxqn"]
 [ext_resource type="Script" uid="uid://sj06lyrqxqxx" path="res://script/feuille.gd" id="64_24mxn"]
 [ext_resource type="Script" uid="uid://bhidmvmchgq8j" path="res://script/daynightcycle.gd" id="66_8umxq"]
 [ext_resource type="Script" uid="uid://cmjqbu1lilure" path="res://script/knighthouse.gd" id="67_8umxq"]
+[ext_resource type="Script" uid="uid://b1ttf7ovneh4d" path="res://script/jamseller.gd" id="72_t7j0a"]
+[ext_resource type="Texture2D" uid="uid://ceyj7m6oeg1w0" path="res://assets/jamsellerportrait.tres" id="73_j0ij8"]
+[ext_resource type="Texture2D" uid="uid://behf1pq4q50pd" path="res://assets/JamPots.png.png" id="74_2scw4"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_745vy"]
 texture = ExtResource("1_fputw")
@@ -6342,8 +6348,11 @@ texture = ExtResource("10_2x7ir")
 46:17/0 = 0
 47:17/0 = 0
 0:18/0 = 0
+0:18/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 1:18/0 = 0
+1:18/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 2:18/0 = 0
+2:18/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 3:18/0 = 0
 4:18/0 = 0
 5:18/0 = 0
@@ -6399,8 +6408,11 @@ texture = ExtResource("10_2x7ir")
 46:18/0 = 0
 47:18/0 = 0
 0:19/0 = 0
+0:19/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 1:19/0 = 0
+1:19/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 2:19/0 = 0
+2:19/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 3:19/0 = 0
 4:19/0 = 0
 5:19/0 = 0
@@ -6457,10 +6469,15 @@ texture = ExtResource("10_2x7ir")
 46:19/0 = 0
 47:19/0 = 0
 0:20/0 = 0
+0:20/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 1:20/0 = 0
+1:20/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 2:20/0 = 0
+2:20/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 3:20/0 = 0
+3:20/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 4:20/0 = 0
+4:20/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 5:20/0 = 0
 5:20/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 6:20/0 = 0
@@ -6515,10 +6532,15 @@ texture = ExtResource("10_2x7ir")
 46:20/0 = 0
 47:20/0 = 0
 0:21/0 = 0
+0:21/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 1:21/0 = 0
+1:21/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 2:21/0 = 0
+2:21/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 3:21/0 = 0
+3:21/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 4:21/0 = 0
+4:21/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 5:21/0 = 0
 5:21/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 6:21/0 = 0
@@ -6578,9 +6600,13 @@ texture = ExtResource("10_2x7ir")
 0:22/0 = 0
 1:22/0 = 0
 2:22/0 = 0
+2:22/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 3:22/0 = 0
+3:22/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 4:22/0 = 0
+4:22/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 5:22/0 = 0
+5:22/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 6:22/0 = 0
 6:22/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 7:22/0 = 0
@@ -6636,11 +6662,17 @@ texture = ExtResource("10_2x7ir")
 46:22/0 = 0
 47:22/0 = 0
 0:23/0 = 0
+0:23/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 1:23/0 = 0
+1:23/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 2:23/0 = 0
+2:23/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 3:23/0 = 0
+3:23/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 4:23/0 = 0
+4:23/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 5:23/0 = 0
+5:23/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 6:23/0 = 0
 6:23/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 7:23/0 = 0
@@ -6685,9 +6717,13 @@ texture = ExtResource("10_2x7ir")
 0:24/0 = 0
 1:24/0 = 0
 2:24/0 = 0
+2:24/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 3:24/0 = 0
+3:24/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 4:24/0 = 0
+4:24/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 5:24/0 = 0
+5:24/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 6:24/0 = 0
 6:24/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 7:24/0 = 0
@@ -6731,11 +6767,17 @@ texture = ExtResource("10_2x7ir")
 46:24/0 = 0
 47:24/0 = 0
 0:25/0 = 0
+0:25/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 1:25/0 = 0
+1:25/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 2:25/0 = 0
+2:25/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 3:25/0 = 0
+3:25/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 4:25/0 = 0
+4:25/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 5:25/0 = 0
+5:25/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 6:25/0 = 0
 6:25/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 7:25/0 = 0
@@ -6780,10 +6822,15 @@ texture = ExtResource("10_2x7ir")
 47:25/0 = 0
 0:26/0 = 0
 1:26/0 = 0
+1:26/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 2:26/0 = 0
+2:26/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 3:26/0 = 0
+3:26/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 4:26/0 = 0
+4:26/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 5:26/0 = 0
+5:26/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 6:26/0 = 0
 6:26/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 7:26/0 = 0
@@ -8670,6 +8717,87 @@ texture = ExtResource("2_ekqhg")
 1:10/0 = 0
 0:10/0 = 0
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0dibl"]
+texture = ExtResource("12_n3onq")
+49:36/0 = 0
+48:36/0 = 0
+47:36/0 = 0
+46:36/0 = 0
+45:36/0 = 0
+44:36/0 = 0
+43:36/0 = 0
+42:36/0 = 0
+41:36/0 = 0
+40:36/0 = 0
+39:36/0 = 0
+38:36/0 = 0
+37:36/0 = 0
+37:35/0 = 0
+37:34/0 = 0
+37:33/0 = 0
+37:32/0 = 0
+37:31/0 = 0
+38:31/0 = 0
+39:31/0 = 0
+40:31/0 = 0
+41:31/0 = 0
+42:31/0 = 0
+43:31/0 = 0
+44:31/0 = 0
+45:31/0 = 0
+46:31/0 = 0
+47:31/0 = 0
+48:31/0 = 0
+49:31/0 = 0
+49:32/0 = 0
+49:33/0 = 0
+49:34/0 = 0
+49:35/0 = 0
+48:35/0 = 0
+47:35/0 = 0
+46:35/0 = 0
+45:35/0 = 0
+44:35/0 = 0
+43:35/0 = 0
+42:35/0 = 0
+41:35/0 = 0
+40:35/0 = 0
+39:35/0 = 0
+38:35/0 = 0
+38:34/0 = 0
+39:34/0 = 0
+40:34/0 = 0
+41:34/0 = 0
+42:34/0 = 0
+43:34/0 = 0
+44:34/0 = 0
+45:34/0 = 0
+46:34/0 = 0
+47:34/0 = 0
+48:34/0 = 0
+48:33/0 = 0
+47:33/0 = 0
+46:33/0 = 0
+45:33/0 = 0
+44:33/0 = 0
+43:33/0 = 0
+42:33/0 = 0
+41:33/0 = 0
+40:33/0 = 0
+39:33/0 = 0
+38:33/0 = 0
+38:32/0 = 0
+39:32/0 = 0
+40:32/0 = 0
+41:32/0 = 0
+42:32/0 = 0
+43:32/0 = 0
+44:32/0 = 0
+45:32/0 = 0
+46:32/0 = 0
+47:32/0 = 0
+48:32/0 = 0
+
 [sub_resource type="TileSet" id="TileSet_1vjwg"]
 physics_layer_0/collision_layer = 16
 physics_layer_0/collision_mask = 16
@@ -8688,6 +8816,7 @@ sources/3 = SubResource("TileSetAtlasSource_f0ocn")
 sources/4 = SubResource("TileSetAtlasSource_yopyy")
 sources/5 = SubResource("TileSetAtlasSource_q45tq")
 sources/1 = SubResource("TileSetAtlasSource_y8t25")
+sources/6 = SubResource("TileSetAtlasSource_0dibl")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_np24b"]
 texture = ExtResource("26_mdr15")
@@ -8730,6 +8859,9 @@ shadow_color = Color(0.747536, 0.17547697, 0.41036525, 0)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gec47"]
 size = Vector2(89, 109)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b7sl3"]
+size = Vector2(251, 166)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_4tdkx"]
 animations = [{
@@ -10490,13 +10622,13 @@ tile_size = Vector2i(4, 4)
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_tma5p")
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ibka2"]
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8umxq"]
 texture = ExtResource("12_rvkpk")
 
 [sub_resource type="Theme" id="Theme_uu46q"]
 default_font = ExtResource("13_wy1l4")
 default_font_size = 32
-Panel/styles/panel = SubResource("StyleBoxTexture_ibka2")
+Panel/styles/panel = SubResource("StyleBoxTexture_8umxq")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4tdkx"]
 size = Vector2(52, 59)
@@ -10662,7 +10794,7 @@ vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="VillagePNJ2" type="Area2D" parent="." unique_id=478754106]
-script = ExtResource("58_hnxqn")
+script = ExtResource("19_j5njb")
 pnj_2_portrait = ExtResource("58_84fym")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="VillagePNJ2" unique_id=698835335]
@@ -10703,6 +10835,8 @@ vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="VillagePNJ1" type="Area2D" parent="." unique_id=1538401132]
+script = ExtResource("58_hnxqn")
+pnj_1_portrait = ExtResource("20_gtgbl")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="VillagePNJ1" unique_id=707208073]
 position = Vector2(-2423.5, -53)
@@ -10715,6 +10849,119 @@ scale = Vector2(1.3125, 1.3125)
 texture = ExtResource("50_v663p")
 region_enabled = true
 region_rect = Rect2(78, 71, 25, 37)
+
+[node name="InteractionPrompt" type="Panel" parent="VillagePNJ1" unique_id=220790036]
+offset_left = -2539.0
+offset_top = -106.0
+offset_right = -2306.0
+offset_bottom = -81.0
+theme = SubResource("Theme_b3c3w")
+metadata/_edit_use_anchors_ = true
+
+[node name="PNJ1Label" type="Label" parent="VillagePNJ1/InteractionPrompt" unique_id=1770692137]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 2.8689785
+anchor_top = -77.66
+anchor_right = 2.8689785
+anchor_bottom = -77.66
+offset_left = -665.472
+offset_top = 1926.5
+offset_right = -442.472
+offset_bottom = 1981.5
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "E - Interact"
+label_settings = SubResource("LabelSettings_5uxs7")
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="JamSeller" type="Area2D" parent="." unique_id=2019484909]
+texture_filter = 1
+position = Vector2(-1016, 551)
+scale = Vector2(0.6, 0.6)
+script = ExtResource("72_t7j0a")
+jamseller_portrait = ExtResource("73_j0ij8")
+
+[node name="JamSeller" type="Sprite2D" parent="JamSeller" unique_id=1143383536]
+texture_filter = 1
+position = Vector2(-2407, 1541)
+scale = Vector2(1.9285715, 1.9285715)
+texture = ExtResource("50_v663p")
+region_enabled = true
+region_rect = Rect2(324, 320, 28, 39)
+
+[node name="Table" type="Sprite2D" parent="JamSeller" unique_id=1591224588]
+position = Vector2(-2407, 1610)
+texture = ExtResource("12_n3onq")
+region_enabled = true
+region_rect = Rect2(599, 496, 191, 99)
+
+[node name="JamPot" type="Sprite2D" parent="JamSeller" unique_id=1468228043]
+position = Vector2(-2405.402, 1590.375)
+scale = Vector2(0.16600032, 0.1660003)
+texture = ExtResource("74_2scw4")
+region_enabled = true
+region_rect = Rect2(391.71854, 215.81973, 126.55606, 125.529236)
+
+[node name="JamPot2" type="Sprite2D" parent="JamSeller" unique_id=1195301739]
+position = Vector2(-2384, 1591)
+scale = Vector2(0.16761987, 0.1599982)
+texture = ExtResource("74_2scw4")
+region_enabled = true
+region_rect = Rect2(391.71854, 215.81973, 126.55606, 125.529236)
+
+[node name="JamPot3" type="Sprite2D" parent="JamSeller" unique_id=1133973562]
+position = Vector2(-2428, 1590.5)
+scale = Vector2(0.17460407, 0.16800095)
+texture = ExtResource("74_2scw4")
+region_enabled = true
+region_rect = Rect2(391.71854, 215.81973, 126.55606, 125.529236)
+
+[node name="JamPot4" type="Sprite2D" parent="JamSeller" unique_id=12503879]
+position = Vector2(-2416, 1603)
+scale = Vector2(0.17078488, 0.15811175)
+texture = ExtResource("74_2scw4")
+region_enabled = true
+region_rect = Rect2(391.71854, 215.81973, 126.55606, 125.529236)
+
+[node name="JamPot5" type="Sprite2D" parent="JamSeller" unique_id=1030448691]
+position = Vector2(-2394.0002, 1603.9999)
+scale = Vector2(0.18259385, 0.15650047)
+texture = ExtResource("74_2scw4")
+region_enabled = true
+region_rect = Rect2(391.71854, 215.81973, 126.55606, 125.529236)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="JamSeller" unique_id=1663415010]
+position = Vector2(-2400.5, 1603)
+shape = SubResource("RectangleShape2D_b7sl3")
+
+[node name="InteractionPrompt" type="Panel" parent="JamSeller" unique_id=665313745]
+offset_left = -2569.9998
+offset_top = 1466.6666
+offset_right = -2336.9998
+offset_bottom = 1491.6666
+scale = Vector2(1.4, 1.4)
+theme = SubResource("Theme_b3c3w")
+metadata/_edit_use_anchors_ = true
+
+[node name="JamSellerLabel" type="Label" parent="JamSeller/InteractionPrompt" unique_id=1626284046]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.47842064
+anchor_top = 0.5
+anchor_right = 0.50417167
+anchor_bottom = 0.5
+offset_left = -111.472
+offset_top = -28.5
+offset_right = 111.528
+offset_bottom = 26.5
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "E - Interact"
+label_settings = SubResource("LabelSettings_5uxs7")
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="FallZoneGate" type="Area2D" parent="." unique_id=147767006]
 
@@ -11037,6 +11284,7 @@ grow_horizontal = 2
 grow_vertical = 0
 theme = SubResource("Theme_uu46q")
 script = ExtResource("14_hhwgs")
+metadata/_edit_use_anchors_ = true
 
 [node name="Box" type="Panel" parent="CanvasLayer/BoiteDialogues" unique_id=1621417159]
 layout_mode = 1
@@ -11072,7 +11320,7 @@ scroll_following_visible_characters = true
 
 [node name="VoicePlayer" type="AudioStreamPlayer" parent="CanvasLayer/BoiteDialogues" unique_id=454029718]
 stream = ExtResource("17_mnpky")
-volume_db = -4.761
+volume_db = -7.0
 
 [node name="VoiceTimer" type="Timer" parent="CanvasLayer/BoiteDialogues" unique_id=1115416377]
 wait_time = 0.075
