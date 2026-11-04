@@ -7,9 +7,7 @@ var player_nearby := false
 func _ready() -> void:
 	body_entered.connect(_on_body_entered)
 	body_exited.connect(_on_body_exited)
-	if GameState.has_return_position:
-		var player = get_node("Player")
-		player.global_position = GameState.player_return_position
+	
 
 func _process(_delta: float) -> void:
 	if not GameState.knight_house_unlocked:

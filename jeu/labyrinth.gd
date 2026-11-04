@@ -38,4 +38,4 @@ func enter_labyrinth() -> void:
 	GameState.player_return_position = player[0].global_position
 	GameState.has_return_position = true
 
-	SceneTransition.change_scene("res://scenes/foret_entree.tscn")
+	SceneTransition.change_scene("res://scenes/foret _entree.tscn")

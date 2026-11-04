@@ -3,12 +3,13 @@ extends Node2D
 @onready var player: Player = $Player
 
 func _ready():
-	if GameState.has_return_position:
-		player.global_position = GameState.return_position
-
-		print("POSITION RESTAUREE : ", GameState.return_position)
-
+	if GameState.spawn != "" :
+		player.global_position = get_node(GameState.spawn).global_position
 		GameState.has_return_position = false
+	elif GameState.has_return_position:
+		player.global_position = GameState.return_position
+		GameState.has_return_position = false
+	GameState.spawn = ""
 
 
 func _on_texture_button_menu_pressed() -> void:
