@@ -12,6 +12,8 @@ var knight_house_dialogue_seen: bool = false
 var time_progress: float = 0.0
 var pending_spawn_position: Vector2 = Vector2.ZERO
 var has_pending_spawn: bool = false
+var player_max_hp: int = 100
+var player_hp: int = 100
 
 
 
@@ -23,7 +25,8 @@ var quests_active: Dictionary = {
 	"fall_quest": false
 }
 
-var dialogues_seen: Dictionary = {}
+var dialogues_seen: Dictionary = {"summer_guard_night": false,
+	"summer_guard_morning": false}
 var tim_needs_escort := false
 
 var quest_progress: Dictionary = {

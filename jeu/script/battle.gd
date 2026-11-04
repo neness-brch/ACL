@@ -93,6 +93,7 @@ var object_arrow_offset := Vector2.ZERO
 
 
 func _ready():
+	hero_hp = GameState.player_hp
 	monster_hp = int(round(monster_max_hp * monster_start_health_ratio))
 	var hero_fill = hero_health_bar.get_theme_stylebox("fill").duplicate()
 	var monster_fill = monster_health_bar.get_theme_stylebox("fill").duplicate()
@@ -424,10 +425,10 @@ func use_item(item_id: String) -> void:
 
 	var healing := int(hero_max_hp * ITEMS[item_id]["heal_ratio"])
 
-	hero_hp = min(
+	update_player_hp(min(
 		hero_hp + healing,
 		hero_max_hp
-	)
+	))
 
 	await animate_health_bar(
 		hero_health_bar,
@@ -559,8 +560,7 @@ func enemy_turn():
 		base_damage * monster_attack_multiplier
 	)
 
-	hero_hp -= damage
-	hero_hp = max(hero_hp, 0)
+	update_player_hp(hero_hp-damage)
 
 	await flash_hero()
 
@@ -631,3 +631,7 @@ func update_health_bar_color(bar: ProgressBar):
 
 	if fill_style is StyleBoxFlat:
 		fill_style.bg_color = health_color
+		
+func update_player_hp(new_hp: int) -> void:
+	hero_hp = clampi(new_hp, 0, GameState.player_max_hp)
+	GameState.player_hp = hero_hp
