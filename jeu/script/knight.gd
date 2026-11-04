@@ -7,7 +7,7 @@ var current_dialogue_id: String = ""
 
 @onready var interaction_prompt = $InteractionPrompt
 @onready var new_dialogue_bubble = $BulleDialogue
-@onready var dialogue_box: DialogueBox = $"../CanvasLayer/BoiteDialogues"
+@onready var dialogue_box: DialogueBox = $CanvasLayer/BoiteDialogues
 @export var portrait: Texture2D
 
 
@@ -58,6 +58,12 @@ func _on_quest_completed(quest_id: String):
 		update_dialogue_bubble()
 		
 func _ready():
+	if GameState.knight_has_moved_to_house:
+		hide()
+		set_deferred("monitoring", false)
+		set_deferred("monitorable", false)
+		return
+
 	interaction_prompt.visible = false
 
 	body_entered.connect(_on_body_entered)

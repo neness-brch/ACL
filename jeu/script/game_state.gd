@@ -7,8 +7,13 @@ signal time_of_day_changed(progress: float)
 var knight_house_unlocked: bool = false
 var player_return_position: Vector2 = Vector2.ZERO
 var has_return_position: bool = false
-
+var knight_has_moved_to_house: bool = false
+var knight_house_dialogue_seen: bool = false
 var time_progress: float = 0.0
+var pending_spawn_position: Vector2 = Vector2.ZERO
+var has_pending_spawn: bool = false
+
+
 
 var quests_completed: Dictionary = {
 	"fall_quest": false
@@ -161,3 +166,12 @@ func return_to_village() -> void:
 func sleep_until_morning() -> void:
 	time_progress = 0.0
 	time_of_day_changed.emit(time_progress)
+	
+func set_spawn_point(position: Vector2) -> void:
+	pending_spawn_position = position
+	has_pending_spawn = true
+
+
+func consume_spawn_position() -> Vector2:
+	has_pending_spawn = false
+	return pending_spawn_position
