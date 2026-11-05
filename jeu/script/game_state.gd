@@ -4,6 +4,7 @@ signal quest_progress_changed(quest_id: String, current: int, target: int)
 signal quest_completed(quest_id: String)
 signal quest_active_changed(quest_id: String, active: bool)
 signal time_of_day_changed(progress: float)
+signal summer_gate_opened
 var knight_house_unlocked: bool = false
 var player_return_position: Vector2 = Vector2.ZERO
 var has_return_position: bool = false
@@ -15,6 +16,8 @@ var pending_spawn_position: Vector2 = Vector2.ZERO
 var has_pending_spawn: bool = false
 var player_max_hp: int = 100
 var player_hp: int = 100
+var has_slept_after_knight_dialogue: bool = false
+var summer_gate_open: bool = false
 
 
 
@@ -27,7 +30,7 @@ var quests_active: Dictionary = {
 }
 
 var dialogues_seen: Dictionary = {"summer_guard_night": false,
-	"summer_guard_morning": false}
+	"summer_guard_morning": false, "knight_morning": false}
 var tim_needs_escort := false
 
 var quest_progress: Dictionary = {
@@ -168,9 +171,24 @@ func advance_time() -> void:
 func return_to_village() -> void:
 	SceneTransition.change_scene("res://maingame.tscn")
 	
-func sleep_until_morning() -> void:
+# Dormir n'est possible qu'après la conversation avec le chevalier (Event 1).
+# Renvoie false si le joueur ne peut pas encore dormir.
+func sleep_until_morning() -> bool:
+	if not knight_house_dialogue_seen:
+		return false
+
 	time_progress = 0.0
+	has_slept_after_knight_dialogue = true
 	time_of_day_changed.emit(time_progress)
+	return true
+
+
+func open_summer_gate() -> void:
+	if summer_gate_open:
+		return
+
+	summer_gate_open = true
+	summer_gate_opened.emit()
 	
 func set_spawn_point(position: Vector2) -> void:
 	pending_spawn_position = position
