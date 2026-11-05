@@ -56,12 +56,20 @@ func _process(_delta):
 		start_dialogue()
 
 
-func start_dialogue():
-	interaction_prompt.visible = false
-	GameState.add_item("cherry_jam", 1)
+func start_dialogue() -> void:
+	interaction_prompt.hide()
 
-	var prepared_dialogue := prepare_dialogue(first_dialogue)
+	var selected_dialogue: Array[Dictionary]
 
+	if not GameState.jamseller_dialogue_seen:
+		selected_dialogue = first_dialogue
+		GameState.jamseller_dialogue_seen = true
+		GameState.add_item("cherry_jam", 1)
+
+	else:
+		selected_dialogue = second_dialogue
+
+	var prepared_dialogue := prepare_dialogue(selected_dialogue)
 	dialogue_box.start_dialogue(prepared_dialogue)
 
 

@@ -26,8 +26,8 @@ var night_dialogue: Array[Dictionary] = [
 	{"text": "what a day...", "speaker": "guard_1"},
 	{"text": "sorry, the gate is closed until next morning !", "speaker": "guard_1"},
 	{"text": "come back later ! I mean...only if you have a Special Pass of course.", "speaker": "guard_2"},
-	{"text": "who wants to go to the Winter Zone anyway ?", "speaker": "guard_1"},
-	{"text": "everything is quite dead there.", "speaker": "guard_1"}
+	{"text": "ooh...I only I could live in the Summer Zone...", "speaker": "guard_1"},
+	{"text": "such a great place.", "speaker": "guard_1"}
 ]
 
 

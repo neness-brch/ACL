@@ -18,7 +18,7 @@ var player_max_hp: int = 100
 var player_hp: int = 100
 var has_slept_after_knight_dialogue: bool = false
 var summer_gate_open: bool = false
-
+var jamseller_dialogue_seen: bool = false
 
 
 var quests_completed: Dictionary = {
