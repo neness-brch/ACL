@@ -38,4 +38,4 @@ func right_way() -> void:
 	GameState.player_return_position = player[0].global_position
 	GameState.has_return_position = true
 
-	SceneTransition.change_scene("res://scenes/foret_2.tscn")
+	SceneTransition.change_scene("res://scenes/foret4.tscn")
