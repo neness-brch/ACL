@@ -1,7 +1,7 @@
 extends Area2D
 
 var player_nearby := false
-@export var spawn: String = "Depart"
+
 @onready var interaction_prompt = $InteractionPrompt
  
 
@@ -14,7 +14,7 @@ func _process(delta: float) -> void:
 	if player_nearby:
 		interaction_prompt.show()
 		if Input.is_action_just_pressed("interact"):
-			false_way()
+			right_way()
 	else :
 		interaction_prompt.hide()
 		
@@ -28,6 +28,14 @@ func _on_body_exited(body: Node2D) -> void:
 		player_nearby = false
 
 
-func false_way() -> void:
-	GameState.spawn = spawn
-	SceneTransition.change_scene("res://maingame.tscn")
+func right_way() -> void:
+	var player = get_overlapping_bodies().filter(
+		func(body): return body is Player
+	)
+	if player.is_empty():
+		return
+		
+	GameState.player_return_position = player[0].global_position
+	GameState.has_return_position = true
+
+	SceneTransition.change_scene("res://scenes/foret5.tscn")
