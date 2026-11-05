@@ -7,10 +7,6 @@
 [ext_resource type="Texture2D" uid="uid://dm220nvginsib" path="res://assets/TextBox.PNG" id="7_8a0iq"]
 [ext_resource type="Script" uid="uid://csvjudbx7rd1b" path="res://script/dialogs.gd" id="8_8ko4r"]
 [ext_resource type="AudioStream" uid="uid://d2mmybdbcd1m3" path="res://music/bip.ogg" id="9_tpjby"]
-[ext_resource type="Texture2D" uid="uid://h7gwgk7eerkr" path="res://menu/import/godot-pixel-ui-free-7ea1d3962268a1e19f123fcc8103b686c3af2b8c/godot-pixel-ui-free-7ea1d3962268a1e19f123fcc8103b686c3af2b8c/addons/pixel_ui/themes/wood/button_normal.png" id="12_rlkoa"]
-[ext_resource type="Texture2D" uid="uid://cp5yfvu6nafaf" path="res://menu/import/godot-pixel-ui-free-7ea1d3962268a1e19f123fcc8103b686c3af2b8c/godot-pixel-ui-free-7ea1d3962268a1e19f123fcc8103b686c3af2b8c/addons/pixel_ui/themes/wood/button_pressed.png" id="13_4yp3h"]
-[ext_resource type="Texture2D" uid="uid://bwae327r5i1wq" path="res://menu/import/godot-pixel-ui-free-7ea1d3962268a1e19f123fcc8103b686c3af2b8c/godot-pixel-ui-free-7ea1d3962268a1e19f123fcc8103b686c3af2b8c/addons/pixel_ui/themes/wood/button_hover.png" id="14_co5rl"]
-[ext_resource type="FontFile" uid="uid://b4ysgp2awsrtc" path="res://menu/import/godot-pixel-ui-free-7ea1d3962268a1e19f123fcc8103b686c3af2b8c/godot-pixel-ui-free-7ea1d3962268a1e19f123fcc8103b686c3af2b8c/addons/pixel_ui/font/pixel_ui_font.fnt" id="15_ujkqr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sy5e1"]
 size = Vector2(110, 89)
@@ -175,33 +171,3 @@ grow_vertical = 2
 scale = Vector2(0.7, 0.7)
 expand_mode = 1
 stretch_mode = 5
-
-[node name="TextureButton_Menu" type="TextureButton" parent="CanvasLayer" unique_id=645796212]
-texture_filter = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -119.0
-offset_bottom = 61.0
-grow_horizontal = 0
-texture_normal = ExtResource("12_rlkoa")
-texture_pressed = ExtResource("13_4yp3h")
-texture_hover = ExtResource("14_co5rl")
-stretch_mode = 0
-
-[node name="Label" type="Label" parent="CanvasLayer/TextureButton_Menu" unique_id=694982940]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -31.5
-offset_top = -13.125
-offset_right = 31.5
-offset_bottom = 13.125
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_fonts/font = ExtResource("15_ujkqr")
-theme_override_font_sizes/font_size = 21
-text = "Menu"

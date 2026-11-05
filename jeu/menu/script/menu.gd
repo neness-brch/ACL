@@ -16,7 +16,7 @@ func _on_texture_button_play_pressed() -> void:
 
 
 func _on_texture_button_options_pressed() -> void:
-	get_tree().change_scene("res://menu/options.tscn")
+	SceneTransition.change_scene("res://menu/options.tscn")
 
 
 func _on_texture_button_quit_pressed() -> void:
