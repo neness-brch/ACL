@@ -8,12 +8,12 @@
 -	Mise en place de l’histoire, des objectifs et de la progression entre les différentes zones (Tous)
 
 ## Review
-- 1 — Création du menu principal.
+- 1 — Création du menu principal (ajout du bouton retour au menu).
 - 2 — L’utilisateur peut contrôler les déplacements de l’héroïne.
-- 3 — L’utilisateur peut explorer la carte 2D : obstacles, zones et sorties.
-- 4 — L’utilisateur pourra suivre l’histoire de l’héroïne, ses objectifs et la progression entre les différentes zones auxquelles elle accédera.
+- 3 — L’utilisateur peut explorer la carte 2D : obstacles, zones et sorties + ajout du LABYRINTHE sur la map.
+- 4 — L’utilisateur pourra suivre l’histoire de l’héroïne, ses objectifs et la progression entre les différentes zones auxquelles elle accédera (3 quetes de la zone automne).
 - 5 — L’utilisateur sera confronté à des monstres.
-- 6 — L’utilisateur peut gérer les caractéristiques de l’héroïne : points de vie, attaque, défense, équipement.
+- 7 — L’utilisateur pourra gérer les objets récupérés et/ou gagnés : armes, armures, potions, bonus de vie et objets de quête (potion et confiture pour l'instant).
 - 8 — Le joueur pourra engager un combat au tour par tour.
 - 10 — Rédaction des dialogues avec les PNJ et les monstres.
 - 13 — Création du design de l’interface graphique pour l’exploration.
@@ -26,9 +26,9 @@ Nous avons fait avancer plusieurs parties complémentaires du jeu : la carte, le
 Nous avons relié davantage les fonctionnalités entre elles : les dialogues permettent de suivre la quête, les rencontres déclenchent des combats et la progression conditionne certains accès.
 Les tests dans Godot ont permis de repérer des problèmes d’affichage, de collisions et de progression, puis d’apporter des corrections.
 Le partage du travail sur GitHub a permis de récupérer et d’intégrer les modifications des différents membres du groupe.
+Nous avons proposé et intégré de nouvelles idées pour enrichir le jeu et varier les défis, notamment le labyrinthe de la troisième quête de la zone automne.
 
 #Difficultés rencontrées
 La progression de la quête a demandé plusieurs ajustements pour que les événements s’enchaînent correctement.
 Les nouvelles animations de face et de dos présentaient des différences visuelles avec celles de profil : taille, proportions et couleur de peau.
 La carte et le labyrinthe ont nécessité plusieurs corrections après leur mise en place.
-

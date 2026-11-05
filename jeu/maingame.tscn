@@ -10,7 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://cltss05wst0my" path="res://Nature/nature.png" id="6_rvkpk"]
 [ext_resource type="PackedScene" uid="uid://crwja1j6djpt4" path="res://scenes/playeranimation.tscn" id="7_fputw"]
 [ext_resource type="Texture2D" uid="uid://dayvyghyq80af" path="res://assets/Campfire.png" id="7_wy1l4"]
-[ext_resource type="Script" uid="uid://c71ogcct57rmc" path="res://script/player.gd" id="9_ekqhg"]
+[ext_resource type="Script" uid="uid://dgt8tn12xubee" path="res://script/player.gd" id="9_ekqhg"]
 [ext_resource type="Texture2D" uid="uid://ka623gyeolb2" path="res://Tilemap/WaterTiles.png" id="10_2x7ir"]
 [ext_resource type="Texture2D" uid="uid://b4qoy6myusb60" path="res://assets/KnightHouse.png" id="10_kymhk"]
 [ext_resource type="Script" uid="uid://p7ojoobsn4wc" path="res://script/health_bar.gd" id="10_olu43"]
@@ -28,7 +28,9 @@
 [ext_resource type="AudioStream" uid="uid://d2mmybdbcd1m3" path="res://music/bip.ogg" id="17_mnpky"]
 [ext_resource type="Texture2D" uid="uid://4ba8r3kbeyg3" path="res://resources/leaf.tres" id="18_yopyy"]
 [ext_resource type="Script" uid="uid://b7eubnv3f8lt1" path="res://script/music.gd" id="19_q45tq"]
+[ext_resource type="Script" uid="uid://bkavghbitpwd6" path="res://script/pnj3.gd" id="20_n3onq"]
 [ext_resource type="Texture2D" uid="uid://cuvhrsmdl7cer" path="res://assets/knight.tres" id="20_vbhjr"]
+[ext_resource type="Texture2D" uid="uid://dln0stb2h4ouj" path="res://assets/pnj3portrait.tres" id="21_t7j0a"]
 [ext_resource type="Texture2D" uid="uid://glk8sfqjku0c" path="res://assets/sprite sheets/monster1-frame1.tres" id="23_a8utw"]
 [ext_resource type="Texture2D" uid="uid://ctku0kfxw0j5f" path="res://assets/sprite sheets/Fisherman.png" id="23_grdtw"]
 [ext_resource type="Script" uid="uid://barc3cfb0j8qo" path="res://script/winterfallzoneguards.gd" id="24_nxir4"]
@@ -10837,6 +10839,49 @@ horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
+[node name="VillagePNJ3" type="Area2D" parent="." unique_id=364070549]
+position = Vector2(0, -130)
+script = ExtResource("20_n3onq")
+pnj_3_portrait = ExtResource("21_t7j0a")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="VillagePNJ3" unique_id=1950193721]
+position = Vector2(-2423.5, -53)
+shape = SubResource("RectangleShape2D_gec47")
+
+[node name="Sprite2D" type="Sprite2D" parent="VillagePNJ3" unique_id=1251062904]
+texture_filter = 1
+position = Vector2(-2422, -52)
+scale = Vector2(1.3125, 1.3125)
+texture = ExtResource("50_v663p")
+region_enabled = true
+region_rect = Rect2(389, 257, 22, 37)
+
+[node name="InteractionPrompt" type="Panel" parent="VillagePNJ3" unique_id=2123230084]
+offset_left = -2539.0
+offset_top = -106.0
+offset_right = -2306.0
+offset_bottom = -81.0
+theme = SubResource("Theme_b3c3w")
+metadata/_edit_use_anchors_ = true
+
+[node name="PNJ3Label" type="Label" parent="VillagePNJ3/InteractionPrompt" unique_id=1388555478]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 2.8689785
+anchor_top = -77.66
+anchor_right = 2.8689785
+anchor_bottom = -77.66
+offset_left = -665.472
+offset_top = 1926.5
+offset_right = -442.472
+offset_bottom = 1981.5
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "E - Interact"
+label_settings = SubResource("LabelSettings_5uxs7")
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
 [node name="VillagePNJ1" type="Area2D" parent="." unique_id=1538401132]
 script = ExtResource("58_hnxqn")
 
@@ -11549,17 +11594,14 @@ metadata/_edit_use_anchors_ = true
 [node name="FallZoneCollision" type="StaticBody2D" parent="." unique_id=107040194]
 
 [node name="Guard1Collision" type="CollisionShape2D" parent="FallZoneCollision" unique_id=448311161]
-visible = false
 position = Vector2(-76, 113)
 shape = SubResource("RectangleShape2D_p8c1k")
 
 [node name="Guard2Collision" type="CollisionShape2D" parent="FallZoneCollision" unique_id=1191551733]
-visible = false
 position = Vector2(27, 109)
 shape = SubResource("RectangleShape2D_ewk2v")
 
 [node name="CastleCollision" type="CollisionShape2D" parent="FallZoneCollision" unique_id=1184452763]
-visible = false
 position = Vector2(-24, 60)
 shape = SubResource("RectangleShape2D_o5dsi")
 
@@ -11581,6 +11623,10 @@ shape = SubResource("RectangleShape2D_ej7hq")
 
 [node name="PNJ2Collision" type="CollisionShape2D" parent="FallZoneCollision" unique_id=986854106]
 position = Vector2(-2091.5, -51)
+shape = SubResource("RectangleShape2D_ej7hq")
+
+[node name="PNJ3Collision" type="CollisionShape2D" parent="FallZoneCollision" unique_id=1706569132]
+position = Vector2(-2424, -181)
 shape = SubResource("RectangleShape2D_ej7hq")
 
 [node name="Monster1MusicZone" type="Area2D" parent="." unique_id=1439223218]
