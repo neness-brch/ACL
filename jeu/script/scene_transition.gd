@@ -8,6 +8,7 @@ var transitioning := false
 
 
 func _ready():
+	# On commence transparent
 	fade.modulate.a = 0.0
 
 
@@ -28,8 +29,10 @@ func change_scene(scene_path: String):
 
 	await tween.finished
 
+	# Changement de scène
 	get_tree().change_scene_to_file(scene_path)
 
+	# Fondu noir → transparent
 	var tween_out := create_tween()
 	tween_out.tween_property(
 		fade,
