@@ -1,14 +1,28 @@
 Jeu ACL neness project
 
-L’objectif de ce projet est la réalisation d’un jeu en solo en JDSCRIPT avec une interface graphique en utilisant le moteur de jeu GODOT.
+
+# H1 Comment jouer au jeu ?
+
+1. Télécharger Godot depuis le lien suivant :
+POUR WINDOWS : https://godotengine.org/download/windows/ 
+ ET POUR MAC OS : https://godotengine.org/download/macos/
+2. Installer Git depuis le lien suivant : https://git-scm.com/install/
+3. Récupérer le projet avec la commande "git clone https://github.com/neness-brch/ACL" depuis Git Bash
+4. Lancer Godot, puis cliquer sur "Import". Importer le fichier "project.godot" situé dans le dossier "jeu".
+5. Tout se charge automatiquement, il n'y a plus qu'à cliquer sur le bouton Play en haut à droite dans la barre d'outils depuis Godot.
+
+Une version .exe, plus pratique pour jouer directement au jeu, sera disponible plus tard...
+
+# H1 Description du projet
+
+L’objectif de ce projet est la réalisation d’un jeu en solo en GDSCRIPT avec une interface graphique en utilisant le moteur de jeu GODOT.
 
 Le joueur contrôle une héroïne qui se déplace sur une carte en 2D. Elle doit explorer différentes zones, combattre des monstres, récupérer des objets et améliorer progressivement ses caractéristiques.
 
 L’histoire commence pour expliquer les règles. L’héroïne débute dans une première zone où elle doit récupérer une arme de départ. Lorsqu’elle rencontre un monstre, le jeu passe de la vue d’exploration à un écran spécifique de combat dans lequel le joueur peut notamment attaquer au tour par tour, utiliser un objet. Si l’héroïne perd le combat, elle retourne au dernier point de sauvegarde. Si elle le gagne, elle avance dans l’histoire et peut récupérer différents objets comme des potions, des armes, des armures, des bonus de vie ou encore des objets pour réussir la quête finale. Lorsqu’elle atteint la sortie d’une zone, une nouvelle partie du monde est débloquée avec un niveau de difficulté supérieur.
 
-__HC: fun__
 
-Backlog général :
+# H1 Backlog général :
 
 1-	Création du menu principal.
 
