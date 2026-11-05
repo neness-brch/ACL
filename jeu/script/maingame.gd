@@ -17,4 +17,7 @@ func _ready():
 
 
 func _on_texture_button_menu_pressed() -> void:
-	SceneTransition.change_scene("res://maingame.tscn")
+	SceneTransition.change_scene("res://menu/main_menu.tscn")
+
+func _on_texture_button_inventory_pressed() -> void:
+	SceneTransition.change_scene("res://menu/inventory.tscn")
