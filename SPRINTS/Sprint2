@@ -8,7 +8,27 @@
 -	Mise en place de l’histoire, des objectifs et de la progression entre les différentes zones (Tous)
 
 ## Review
-
+- 1 — Création du menu principal.
+- 2 — L’utilisateur peut contrôler les déplacements de l’héroïne.
+- 3 — L’utilisateur peut explorer la carte 2D : obstacles, zones et sorties.
+- 4 — L’utilisateur pourra suivre l’histoire de l’héroïne, ses objectifs et la progression entre les différentes zones auxquelles elle accédera.
+- 5 — L’utilisateur sera confronté à des monstres.
+- 6 — L’utilisateur peut gérer les caractéristiques de l’héroïne : points de vie, attaque, défense, équipement.
+- 8 — Le joueur pourra engager un combat au tour par tour.
+- 10 — Rédaction des dialogues avec les PNJ et les monstres.
+- 13 — Création du design de l’interface graphique pour l’exploration.
+- 14 — Création du design de l’interface graphique pour les combats.
   
 ## Retrospective
+
+#Points positifs
+Nous avons fait avancer plusieurs parties complémentaires du jeu : la carte, les interactions, les combats, l’interface et les animations.
+Nous avons relié davantage les fonctionnalités entre elles : les dialogues permettent de suivre la quête, les rencontres déclenchent des combats et la progression conditionne certains accès.
+Les tests dans Godot ont permis de repérer des problèmes d’affichage, de collisions et de progression, puis d’apporter des corrections.
+Le partage du travail sur GitHub a permis de récupérer et d’intégrer les modifications des différents membres du groupe.
+
+#Difficultés rencontrées
+La progression de la quête a demandé plusieurs ajustements pour que les événements s’enchaînent correctement.
+Les nouvelles animations de face et de dos présentaient des différences visuelles avec celles de profil : taille, proportions et couleur de peau.
+La carte et le labyrinthe ont nécessité plusieurs corrections après leur mise en place.
 
