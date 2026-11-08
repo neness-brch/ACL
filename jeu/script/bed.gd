@@ -41,7 +41,9 @@ func update_prompt() -> void:
 
 
 func sleep() -> void:
-	if not GameState.knight_house_dialogue_seen:
+	var success: bool = GameState.sleep_until_morning()
+
+	if not success:
 		return
 
-	# Déclenchement futur de la scène du rêve.
+	SceneTransition.change_scene("res://scenes/knighthouse.tscn")

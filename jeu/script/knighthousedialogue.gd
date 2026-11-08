@@ -11,7 +11,6 @@ var current_dialogue_id: String = ""
 @onready var dialogue_box: DialogueBox = $"../CanvasLayer/BoiteDialogues"
 
 
-# Dialogue principal : première rencontre dans la maison
 var house_dialogue: Array[String] = [
 	"so...",
 	"here we are.",
@@ -56,11 +55,16 @@ var house_dialogue: Array[String] = [
 ]
 
 
-# Dialogue secondaire : toutes les interactions suivantes
-var repeat_dialogue: Array[String] = [
+var repeat_night_dialogue: Array[String] = [
 	"oh, you're still here?",
 	"make yourself at home!",
 	"I'll be around if you need anything."
+]
+
+var repeat_morning_dialogue: Array[String] = [
+	"hellooooooooo",
+	"did you sleep well ?",
+	"a thrilling day awaits you at the Summer Zone !"
 ]
 
 
@@ -93,20 +97,40 @@ func _process(_delta: float) -> void:
 	and not dialogue_box.dialogue_active:
 
 		start_dialogue()
+		
+func prepare_dialogue(dialogue: Array[String]) -> Array[Dictionary]:
+	var prepared: Array[Dictionary] = []
+
+	for message in dialogue:
+		var new_message: Dictionary = {
+			"text": message,
+			"portrait": portrait
+		}
+
+		prepared.append(new_message)
+
+	return prepared
 
 
 func start_dialogue() -> void:
+	var selected_dialogue: Array[String]
 
 	if not GameState.knight_house_dialogue_seen:
 		current_dialogue_id = "knight_house_first"
-		dialogue_box.start_dialogue(house_dialogue, portrait)
+		selected_dialogue = house_dialogue
+
+	elif GameState.has_slept_after_knight_dialogue:
+		current_dialogue_id = "knight_morning"
+		selected_dialogue = repeat_morning_dialogue
 
 	else:
-		current_dialogue_id = "knight_house_repeat"
-		dialogue_box.start_dialogue(repeat_dialogue, portrait)
+		current_dialogue_id = "knight_night"
+		selected_dialogue = repeat_night_dialogue
 
-	interaction_prompt.hide()
-	new_dialogue_bubble.hide()
+	var prepared_dialogue := prepare_dialogue(selected_dialogue)
+
+	interaction_prompt.visible = false
+	dialogue_box.start_dialogue(prepared_dialogue)
 
 
 func _on_dialogue_finished() -> void:

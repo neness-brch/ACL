@@ -10,7 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://cltss05wst0my" path="res://Nature/nature.png" id="6_rvkpk"]
 [ext_resource type="PackedScene" uid="uid://crwja1j6djpt4" path="res://scenes/playeranimation.tscn" id="7_fputw"]
 [ext_resource type="Texture2D" uid="uid://dayvyghyq80af" path="res://assets/Campfire.png" id="7_wy1l4"]
-[ext_resource type="Script" uid="uid://c71ogcct57rmc" path="res://script/player.gd" id="9_ekqhg"]
+[ext_resource type="Script" uid="uid://dgt8tn12xubee" path="res://script/player.gd" id="9_ekqhg"]
 [ext_resource type="Texture2D" uid="uid://ka623gyeolb2" path="res://Tilemap/WaterTiles.png" id="10_2x7ir"]
 [ext_resource type="Texture2D" uid="uid://b4qoy6myusb60" path="res://assets/KnightHouse.png" id="10_kymhk"]
 [ext_resource type="Script" uid="uid://p7ojoobsn4wc" path="res://script/health_bar.gd" id="10_olu43"]
@@ -28,14 +28,13 @@
 [ext_resource type="AudioStream" uid="uid://d2mmybdbcd1m3" path="res://music/bip.ogg" id="17_mnpky"]
 [ext_resource type="Texture2D" uid="uid://4ba8r3kbeyg3" path="res://resources/leaf.tres" id="18_yopyy"]
 [ext_resource type="Script" uid="uid://b7eubnv3f8lt1" path="res://script/music.gd" id="19_q45tq"]
+[ext_resource type="Script" uid="uid://bkavghbitpwd6" path="res://script/pnj3.gd" id="20_n3onq"]
 [ext_resource type="Texture2D" uid="uid://cuvhrsmdl7cer" path="res://assets/knight.tres" id="20_vbhjr"]
 [ext_resource type="Texture2D" uid="uid://dln0stb2h4ouj" path="res://assets/pnj3portrait.tres" id="21_t7j0a"]
 [ext_resource type="Script" uid="uid://cydp7nj261hoj" path="res://script/pnj4.gd" id="23_2scw4"]
-[ext_resource type="Texture2D" uid="uid://drqe2y2f3ts1q" path="res://assets/pnj4.tres" id="24_0dibl"]
-[ext_resource type="Script" path="res://script/pnj3.gd" id="20_n3onq"]
-[ext_resource type="Texture2D" uid="uid://2q8nu6uqttxv" path="res://assets/pnj1.tres" id="24_j0ij8"]
 [ext_resource type="Texture2D" uid="uid://glk8sfqjku0c" path="res://assets/sprite sheets/monster1-frame1.tres" id="23_a8utw"]
 [ext_resource type="Texture2D" uid="uid://ctku0kfxw0j5f" path="res://assets/sprite sheets/Fisherman.png" id="23_grdtw"]
+[ext_resource type="Texture2D" uid="uid://drqe2y2f3ts1q" path="res://assets/pnj4.tres" id="24_0dibl"]
 [ext_resource type="Script" uid="uid://barc3cfb0j8qo" path="res://script/winterfallzoneguards.gd" id="24_nxir4"]
 [ext_resource type="Texture2D" uid="uid://cph5wiiwqua12" path="res://assets/sprite sheets/monster1-frame2.tres" id="24_tsau0"]
 [ext_resource type="Script" uid="uid://vr0d3k0phw14" path="res://script/summerfallzoneguards.gd" id="24_ynf86"]
@@ -11663,17 +11662,14 @@ metadata/_edit_use_anchors_ = true
 [node name="FallZoneCollision" type="StaticBody2D" parent="." unique_id=107040194]
 
 [node name="Guard1Collision" type="CollisionShape2D" parent="FallZoneCollision" unique_id=448311161]
-visible = false
 position = Vector2(-76, 113)
 shape = SubResource("RectangleShape2D_p8c1k")
 
 [node name="Guard2Collision" type="CollisionShape2D" parent="FallZoneCollision" unique_id=1191551733]
-visible = false
 position = Vector2(27, 109)
 shape = SubResource("RectangleShape2D_ewk2v")
 
 [node name="CastleCollision" type="CollisionShape2D" parent="FallZoneCollision" unique_id=1184452763]
-visible = false
 position = Vector2(-24, 60)
 shape = SubResource("RectangleShape2D_o5dsi")
 
@@ -11818,5 +11814,5 @@ shape = SubResource("RectangleShape2D_1qvt6")
 script = ExtResource("66_8umxq")
 
 [connection signal="pressed" from="CanvasLayer/TextureButton_Menu" to="." method="_on_texture_button_menu_pressed"]
-[connection signal="pressed" from="CanvasLayer/TextureButton_inventory" to="." method="_on_texture_button_menu_pressed"]
 [connection signal="pressed" from="CanvasLayer/TextureButton_inventory" to="." method="_on_texture_button_inventory_pressed"]
+[connection signal="pressed" from="CanvasLayer/TextureButton_inventory" to="." method="_on_texture_button_menu_pressed"]

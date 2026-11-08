@@ -204,3 +204,6 @@ var unlocked_attacks: Array[String] = ["sharp_blade", "intimidate"]
 func unlock_attack(attack_id: String) -> void:
 	if not unlocked_attacks.has(attack_id):
 		unlocked_attacks.append(attack_id)
+		
+func open_summer_gate() -> void:
+	summer_gate_open = true
