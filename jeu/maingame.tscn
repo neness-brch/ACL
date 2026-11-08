@@ -32,8 +32,10 @@
 [ext_resource type="Script" uid="uid://bkavghbitpwd6" path="res://script/pnj3.gd" id="20_n3onq"]
 [ext_resource type="Texture2D" uid="uid://cuvhrsmdl7cer" path="res://assets/knight.tres" id="20_vbhjr"]
 [ext_resource type="Texture2D" uid="uid://dln0stb2h4ouj" path="res://assets/pnj3portrait.tres" id="21_t7j0a"]
+[ext_resource type="Script" uid="uid://cydp7nj261hoj" path="res://script/pnj4.gd" id="23_2scw4"]
 [ext_resource type="Texture2D" uid="uid://glk8sfqjku0c" path="res://assets/sprite sheets/monster1-frame1.tres" id="23_a8utw"]
 [ext_resource type="Texture2D" uid="uid://ctku0kfxw0j5f" path="res://assets/sprite sheets/Fisherman.png" id="23_grdtw"]
+[ext_resource type="Texture2D" uid="uid://drqe2y2f3ts1q" path="res://assets/pnj4.tres" id="24_0dibl"]
 [ext_resource type="Texture2D" uid="uid://2q8nu6uqttxv" path="res://assets/pnj1.tres" id="24_j0ij8"]
 [ext_resource type="Script" uid="uid://barc3cfb0j8qo" path="res://script/winterfallzoneguards.gd" id="24_nxir4"]
 [ext_resource type="Texture2D" uid="uid://cph5wiiwqua12" path="res://assets/sprite sheets/monster1-frame2.tres" id="24_tsau0"]
@@ -43,8 +45,10 @@
 [ext_resource type="Script" uid="uid://cddywhvlbwufx" path="res://script/children.gd" id="26_b3c3w"]
 [ext_resource type="Texture2D" uid="uid://bcbf8sc03pfw0" path="res://assets/remparts/east.png" id="26_mdr15"]
 [ext_resource type="Texture2D" uid="uid://r4a8bvvvyyeq" path="res://assets/sprite sheets/monster1-frame4.tres" id="26_vbhjr"]
+[ext_resource type="Texture2D" uid="uid://bf68yipsrxf4c" path="res://assets/princess_sprite.png" id="27_0kvs2"]
 [ext_resource type="Texture2D" uid="uid://t0pgaunogrui" path="res://assets/sprite sheets/TimSprites/east.png" id="27_6i744"]
 [ext_resource type="Texture2D" uid="uid://d1vlnkpi24ahg" path="res://assets/timportrait.tres" id="27_lopxi"]
+[ext_resource type="Script" uid="uid://d3c0i56ayfpnb" path="res://script/princessatnight.gd" id="27_wnh6t"]
 [ext_resource type="Texture2D" uid="uid://bnorggp8452cs" path="res://assets/child2portrait.tres" id="28_ie8l2"]
 [ext_resource type="Texture2D" uid="uid://domu5uweik71y" path="res://assets/Child2.png" id="28_vbhjr"]
 [ext_resource type="Texture2D" uid="uid://cd2fgd7no7c08" path="res://assets/monster1portrait.tres" id="29_q6363"]
@@ -10688,7 +10692,10 @@ font_size = 18
 shadow_color = Color(0.747536, 0.17547697, 0.41036525, 0)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gec47"]
-size = Vector2(89, 109)
+size = Vector2(59, 73.5)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jd76d"]
+radius = 1296.658
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b7sl3"]
 size = Vector2(251, 166)
@@ -10988,12 +10995,56 @@ horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
+[node name="VillagePNJ4" type="Area2D" parent="." unique_id=1694007100]
+position = Vector2(0, -130)
+script = ExtResource("23_2scw4")
+pnj_4_portrait = ExtResource("24_0dibl")
+night_position = Vector2(-2750, 1330)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="VillagePNJ4" unique_id=1325695848]
+position = Vector2(-1101, -46.5)
+shape = SubResource("RectangleShape2D_gec47")
+
+[node name="Sprite2D" type="Sprite2D" parent="VillagePNJ4" unique_id=1308822031]
+texture_filter = 1
+position = Vector2(-1103, -46)
+scale = Vector2(1.3125, 1.3125)
+texture = ExtResource("50_v663p")
+region_enabled = true
+region_rect = Rect2(388, 11, 25, 34)
+
+[node name="InteractionPrompt" type="Panel" parent="VillagePNJ4" unique_id=1934890157]
+offset_left = -1222.0
+offset_top = -105.0
+offset_right = -989.0
+offset_bottom = -80.0
+theme = SubResource("Theme_b3c3w")
+metadata/_edit_use_anchors_ = true
+
+[node name="PNJ4Label" type="Label" parent="VillagePNJ4/InteractionPrompt" unique_id=323355778]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 2.8689785
+anchor_top = -77.66
+anchor_right = 2.8689785
+anchor_bottom = -77.66
+offset_left = -665.472
+offset_top = 1926.5
+offset_right = -442.472
+offset_bottom = 1981.5
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "E - Interact"
+label_settings = SubResource("LabelSettings_5uxs7")
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
 [node name="VillagePNJ1" type="Area2D" parent="." unique_id=1538401132]
 script = ExtResource("58_hnxqn")
 pnj_1_portrait = ExtResource("24_j0ij8")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="VillagePNJ1" unique_id=707208073]
-position = Vector2(-2423.5, -53)
+position = Vector2(-2422, -51.5)
 shape = SubResource("RectangleShape2D_gec47")
 
 [node name="Sprite2D" type="Sprite2D" parent="VillagePNJ1" unique_id=1219931678]
@@ -11029,6 +11080,22 @@ label_settings = SubResource("LabelSettings_5uxs7")
 horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
+
+[node name="PrincessAtNight" type="Area2D" parent="." unique_id=1507150395]
+script = ExtResource("27_wnh6t")
+
+[node name="Sprite2D" type="Sprite2D" parent="PrincessAtNight" unique_id=402408799]
+texture_filter = 1
+position = Vector2(-2962, 1361.0001)
+scale = Vector2(1.7229125, 1.7229127)
+texture = ExtResource("27_0kvs2")
+region_enabled = true
+region_rect = Rect2(129, 2, 30, 33)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PrincessAtNight" unique_id=1394415224]
+visible = false
+position = Vector2(-3746, 743)
+shape = SubResource("CircleShape2D_jd76d")
 
 [node name="JamSeller" type="Area2D" parent="." unique_id=2019484909]
 texture_filter = 1
@@ -11601,6 +11668,7 @@ script = ExtResource("19_q45tq")
 [node name="SilenceTimer" type="Timer" parent="MusicNode" unique_id=333801430]
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="MusicNode" unique_id=572108478]
+bus = &"PrincessNight"
 
 [node name="MonsterMusic" type="AudioStreamPlayer" parent="MusicNode" unique_id=416711797]
 stream = ExtResource("36_tbtx4")
@@ -11731,6 +11799,10 @@ shape = SubResource("RectangleShape2D_ej7hq")
 position = Vector2(-2424, -181)
 shape = SubResource("RectangleShape2D_ej7hq")
 
+[node name="PNJ4Collision" type="CollisionShape2D" parent="FallZoneCollision" unique_id=1998937641]
+position = Vector2(-1104, -179)
+shape = SubResource("RectangleShape2D_ej7hq")
+
 [node name="FishermanCollision" type="CollisionShape2D" parent="FallZoneCollision" unique_id=1947713879]
 position = Vector2(-2306.75, 164)
 shape = SubResource("RectangleShape2D_ej7hq")
@@ -11856,5 +11928,5 @@ position = Vector2(-1258.75, 387.875)
 shape = SubResource("RectangleShape2D_jd76d")
 
 [connection signal="pressed" from="CanvasLayer/TextureButton_Menu" to="." method="_on_texture_button_menu_pressed"]
-[connection signal="pressed" from="CanvasLayer/TextureButton_inventory" to="." method="_on_texture_button_inventory_pressed"]
 [connection signal="pressed" from="CanvasLayer/TextureButton_inventory" to="." method="_on_texture_button_menu_pressed"]
+[connection signal="pressed" from="CanvasLayer/TextureButton_inventory" to="." method="_on_texture_button_inventory_pressed"]

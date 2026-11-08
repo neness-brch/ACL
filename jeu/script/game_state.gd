@@ -19,6 +19,9 @@ var player_hp: int = 100
 var has_slept_after_knight_dialogue: bool = false
 var summer_gate_open: bool = false
 var jamseller_dialogue_seen: bool = false
+var pnj4_intro_seen: bool = false
+var pnj4_night_dialogue_seen: bool = false
+var pnj4_disappeared: bool = false
 
 
 var quests_completed: Dictionary = {
@@ -42,27 +45,28 @@ var quest_targets: Dictionary = {
 }
 
 
-func add_quest_progress(quest_id: String, amount: int = 1):
+func add_quest_progress(quest_id: String, amount: int = 1) -> void:
 	if not is_quest_active(quest_id):
 		return
 
 	if is_quest_completed(quest_id):
 		return
 
-	quest_progress[quest_id] = quest_progress.get(quest_id, 0) + amount
+	var previous_progress: int = quest_progress.get(quest_id, 0)
 
-	var current: int = quest_progress[quest_id]
+	var current: int = previous_progress + amount
 	var target: int = quest_targets.get(quest_id, 1)
 
-	if current >= target:
-		current = target
-		quest_progress[quest_id] = target
+	current = min(current, target)
+	quest_progress[quest_id] = current
+
+	var actual_amount: int = current - previous_progress
+
+	if quest_id == "fall_quest":
+		for i in range(actual_amount):
+			advance_time()
 
 	quest_progress_changed.emit(quest_id, current, target)
-
-	# Le cycle jour/nuit avance avec chaque feuille obtenue
-	if quest_id == "fall_quest":
-		advance_time()
 
 	if current >= target:
 		complete_quest(quest_id)
@@ -171,8 +175,6 @@ func advance_time() -> void:
 func return_to_village() -> void:
 	SceneTransition.change_scene("res://maingame.tscn")
 	
-# Dormir n'est possible qu'après la conversation avec le chevalier (Event 1).
-# Renvoie false si le joueur ne peut pas encore dormir.
 func sleep_until_morning() -> bool:
 	if not knight_house_dialogue_seen:
 		return false
