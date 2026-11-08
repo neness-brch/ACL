@@ -234,11 +234,21 @@ func get_current_dialogue() -> Array[Dictionary]:
 
 func _on_dialogue_finished():
 
-	if current_dialogue_id == npc_id + "_before_quest" \
-	or current_dialogue_id == npc_id + "_during_quest":
+	if current_dialogue_id == npc_id + "_before_quest":
 		if not GameState.has_seen_dialogue(npc_id + "_potion_received"):
 			GameState.mark_dialogue_seen(npc_id + "_potion_received")
 			GameState.add_item("health_potion", 1)
+
+			print("Potion ajoutée : ", GameState.get_item_count("health_potion"))
+
+			current_dialogue_id = npc_id + "_potion_message"
+			dialogue_box.start_dialogue(potion_dialogue)
+			return
+
+		if not GameState.has_seen_dialogue(npc_id + "_potion_received"):
+			GameState.mark_dialogue_seen(npc_id + "_potion_received")
+			GameState.add_item("health_potion", 1)
+			
 
 			current_dialogue_id = npc_id + "_potion_message"
 			dialogue_box.start_dialogue(potion_dialogue)
@@ -249,7 +259,7 @@ func _on_dialogue_finished():
 
 		var prepared_dialogue := prepare_dialogue(ability_dialogue)
 		dialogue_box.start_dialogue(prepared_dialogue)
-		GameState.unlock_attack("special_attack")
+		GameState.unlock_attack("id")
 		return
 
 	current_dialogue_id = ""

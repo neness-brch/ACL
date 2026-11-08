@@ -17,7 +17,11 @@ func _ready():
 
 
 func _on_texture_button_menu_pressed() -> void:
+	GameState.return_position = player.global_position
+	GameState.has_return_position = true
 	SceneTransition.change_scene("res://menu/main_menu.tscn")
 
 func _on_texture_button_inventory_pressed() -> void:
+	GameState.return_position = player.global_position
+	GameState.has_return_position = true
 	SceneTransition.change_scene("res://menu/inventory.tscn")

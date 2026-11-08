@@ -53,7 +53,6 @@ const COLUMNS := 2
 
 @export_group("Menu layout")
 @export var slot_spacing := Vector2(520, 50)
-@export var slot_text_width := 460.0
 @export var page_label_offset := Vector2(380, 100)
 @export_group("")
 
@@ -94,8 +93,6 @@ var object_arrow_offset := Vector2.ZERO
 
 
 func _ready():
-	print("Inventaire : ", GameState.inventory, " | PV : ", hero_hp, "/", hero_max_hp)
-	hero_hp = GameState.player_hp
 	monster_hp = int(round(monster_max_hp * monster_start_health_ratio))
 	var hero_fill = hero_health_bar.get_theme_stylebox("fill").duplicate()
 	var monster_fill = monster_health_bar.get_theme_stylebox("fill").duplicate()
@@ -157,8 +154,6 @@ func build_slots(menu: Node, arrow: Node) -> Array[Label]:
 
 	template.clip_text = true
 	template.text_overrun_behavior = TextServer.OVERRUN_TRIM_ELLIPSIS
-	template.custom_minimum_size.x = slot_text_width
-	template.size.x = slot_text_width
 	slots.append(template)
 
 	for i in range(1, SLOT_COUNT):
@@ -311,7 +306,6 @@ func use_attack(attack_id: String) -> void:
 
 
 func show_objects_menu():
-	
 	state = BattleState.OBJECTS_MENU
 
 	battle_menu.visible = false
@@ -421,7 +415,6 @@ func use_item(item_id: String) -> void:
 		return
 
 	if hero_hp >= hero_max_hp:
-		show_message("your HP is already full!")
 		return
 
 	state = BattleState.PLAYER_ANIMATION
@@ -431,10 +424,10 @@ func use_item(item_id: String) -> void:
 
 	var healing := int(hero_max_hp * ITEMS[item_id]["heal_ratio"])
 
-	update_player_hp(min(
+	hero_hp = min(
 		hero_hp + healing,
 		hero_max_hp
-	))
+	)
 
 	await animate_health_bar(
 		hero_health_bar,
@@ -445,20 +438,6 @@ func use_item(item_id: String) -> void:
 	await get_tree().create_timer(0.5).timeout
 
 	enemy_turn()
-
-
-# Affiche brièvement un message, puis rend la main au menu précédent
-func show_message(message: String, duration := 1.2) -> void:
-	var previous_state := state
-
-	state = BattleState.DIALOGUE
-	battle_dialogue.visible = true
-	battle_dialogue_text.text = message
-
-	await get_tree().create_timer(duration).timeout
-
-	battle_dialogue.visible = false
-	state = previous_state
 
 
 func hide_menus():
@@ -544,22 +523,9 @@ func special_attack():
 	state = BattleState.PLAYER_ANIMATION
 	hide_menus()
 
-	# Retire 20 % des PV actuels du monstre (au moins 1)
-	var damage := maxi(int(monster_hp * 0.2), 1)
-
-	monster_hp = maxi(monster_hp - damage, 0)
+	monster_hp = monster_hp*0.8
 
 	await flash_monster()
-
-	await animate_health_bar(
-		monster_health_bar,
-		monster_health_bar.value,
-		monster_hp
-	)
-
-	if monster_hp <= 0:
-		victory()
-		return
 
 	await get_tree().create_timer(0.4).timeout
 
@@ -593,7 +559,8 @@ func enemy_turn():
 		base_damage * monster_attack_multiplier
 	)
 
-	update_player_hp(hero_hp-damage)
+	hero_hp -= damage
+	hero_hp = max(hero_hp, 0)
 
 	await flash_hero()
 
@@ -664,7 +631,3 @@ func update_health_bar_color(bar: ProgressBar):
 
 	if fill_style is StyleBoxFlat:
 		fill_style.bg_color = health_color
-		
-func update_player_hp(new_hp: int) -> void:
-	hero_hp = clampi(new_hp, 0, GameState.player_max_hp)
-	GameState.player_hp = hero_hp

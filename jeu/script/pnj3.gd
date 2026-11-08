@@ -29,6 +29,7 @@ func _ready():
 	body_exited.connect(_on_body_exited)
 
 
+
 func _on_body_entered(body):
 	if body is Player:
 		player_nearby = true

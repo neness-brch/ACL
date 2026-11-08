@@ -37,18 +37,11 @@ func _process(_delta: float) -> void:
 
 
 func update_prompt() -> void:
-	interaction_prompt.visible = (
-		player_nearby
-		and GameState.knight_house_dialogue_seen
-	)
+	interaction_prompt.visible = player_nearby
 
 
 func sleep() -> void:
 	if not GameState.knight_house_dialogue_seen:
 		return
 
-	# Passage au lendemain matin
-	GameState.sleep_until_morning()
-
-	# Recharge de la maison avec la transition
-	SceneTransition.change_scene("res://knighthouse.tscn")
+	# Déclenchement futur de la scène du rêve.

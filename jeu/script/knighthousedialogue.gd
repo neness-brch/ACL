@@ -39,14 +39,14 @@ var house_dialogue: Array[String] = [
 	"...",
 	"that's funny. Your expression changed quite a bit when I said that.",
 	"never mind...",
-	"I suggest you head to the Winter Zone tomorrow.",
+	"I suggest you head to the Summer Zone tomorrow.",
 	"find ???.",
 	"he's in charge of the Royal Guards.",
 	"of all the people I know, he might be the only one who knows more about the Princess.",
 	"tell him you came from me. he'll be glad to hear from me!",
 	"it's been a long time since I've seen him...",
 	"anyway, you'll probably need this.",
-	"You obtained a Special Pass for the Winter Zone!",
+	"You obtained a Special Pass for the Summer Zone!",
 	"you need some rest now.",
 	"you've had a long day.",
 	"pick any bed you want!",
@@ -56,17 +56,11 @@ var house_dialogue: Array[String] = [
 ]
 
 
-var repeat_night_dialogue: Array[String] = [
+# Dialogue secondaire : toutes les interactions suivantes
+var repeat_dialogue: Array[String] = [
 	"oh, you're still here?",
 	"make yourself at home!",
 	"I'll be around if you need anything."
-]
-
-var repeat_morning_dialogue: Array[String] = [
-	"hellooooooo",
-	"did you sleep well ?",
-	"...I hope so ! you have important stuff to do today.",
-	"remember, you have to go to the Summer Zone."
 ]
 
 
@@ -103,23 +97,16 @@ func _process(_delta: float) -> void:
 
 func start_dialogue() -> void:
 
-	# Event 1 : première conversation avec le chevalier
 	if not GameState.knight_house_dialogue_seen:
 		current_dialogue_id = "knight_house_first"
 		dialogue_box.start_dialogue(house_dialogue, portrait)
 
-	# Après avoir dormi : dialogue du matin
-	elif GameState.has_slept_after_knight_dialogue:
-		current_dialogue_id = "knight_morning"
-		dialogue_box.start_dialogue(repeat_morning_dialogue, portrait)
-
-	# Event 1 terminé, mais il n'a pas encore dormi : dialogue du soir
 	else:
-		current_dialogue_id = "knight_night"
-		dialogue_box.start_dialogue(repeat_night_dialogue, portrait)
+		current_dialogue_id = "knight_house_repeat"
+		dialogue_box.start_dialogue(repeat_dialogue, portrait)
 
-		interaction_prompt.hide()
-		new_dialogue_bubble.hide()
+	interaction_prompt.hide()
+	new_dialogue_bubble.hide()
 
 
 func _on_dialogue_finished() -> void:
