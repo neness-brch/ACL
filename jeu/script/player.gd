@@ -28,7 +28,6 @@ func _physics_process(_delta: float) -> void:
 		return
 	
 	if cinematic_mode:
-		cinematic_movement(_delta)
 		return
 	
 	if dialogue_box != null and dialogue_box.dialogue_active:
@@ -105,35 +104,7 @@ func update_cinematic_direction() -> void:
 			animated_sprite.play("walk_south")
 
 
-func cinematic_movement(delta: float) -> void:
-	if cinematic_target == null:
-		velocity = Vector2.ZERO
-		move_and_slide()
-		return
 
-	var distance = global_position.distance_to(
-		cinematic_target.global_position
-	)
-
-	if distance <= cinematic_stop_distance:
-		velocity = Vector2.ZERO
-		move_and_slide()
-
-		if not cinematic_arrived:
-			cinematic_arrived_flag = true
-			animated_sprite.play("idle_west")
-			cinematic_mode = false
-			cinematic_target = null
-			emit_signal("cinematic_arrived")
-
-	return
-
-	var direction = global_position.direction_to(
-		cinematic_target.global_position
-	)
-
-	velocity = direction * SPEED
-	move_and_slide()
 	
 func prepare_for_princess() -> void:
 	velocity = Vector2.ZERO

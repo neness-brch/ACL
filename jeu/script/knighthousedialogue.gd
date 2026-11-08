@@ -9,6 +9,7 @@ var current_dialogue_id: String = ""
 @onready var interaction_prompt = $InteractionPrompt
 @onready var new_dialogue_bubble = $BulleDialogue
 @onready var dialogue_box: DialogueBox = $"../CanvasLayer/BoiteDialogues"
+@onready var wake_up_sound: AudioStreamPlayer2D = $"../WakeUpSound"
 
 
 var house_dialogue: Array[String] = [
@@ -69,6 +70,8 @@ var repeat_morning_dialogue: Array[String] = [
 
 
 func _ready() -> void:
+	if GameState.has_slept_after_knight_dialogue:
+		wake_up_sound.play()
 	interaction_prompt.visible = false
 
 	body_entered.connect(_on_body_entered)

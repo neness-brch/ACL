@@ -3,13 +3,12 @@ extends Area2D
 @onready var interaction_prompt = $InteractionPrompt
 
 var player_nearby := false
-@onready var wake_up_sound: AudioStreamPlayer = $WakeUpSound
+
 
 func _ready() -> void:
 	body_entered.connect(_on_body_entered)
 	body_exited.connect(_on_body_exited)
-	if GameState.has_slept_after_knight_dialogue:
-		wake_up_sound.play()
+	
 
 
 func _process(_delta: float) -> void:

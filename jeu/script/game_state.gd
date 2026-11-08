@@ -176,6 +176,8 @@ func return_to_village() -> void:
 	
 
 func sleep_until_morning() -> bool:
+	if has_slept_after_knight_dialogue:
+		return false
 	if not knight_house_dialogue_seen:
 		return false
 
