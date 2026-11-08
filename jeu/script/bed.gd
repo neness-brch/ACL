@@ -46,4 +46,4 @@ func sleep() -> void:
 	if not success:
 		return
 
-	SceneTransition.change_scene("res://scenes/knighthouse.tscn")
+	SceneTransition.change_scene("res://scenes/firstdream.tscn")

@@ -1,0 +1,7 @@
+[gd_resource type="AtlasTexture" format=3 uid="uid://cvx2ws7n4wbun"]
+
+[ext_resource type="Texture2D" uid="uid://bf68yipsrxf4c" path="res://assets/princess_sprite.png" id="1_kt4hp"]
+
+[resource]
+atlas = ExtResource("1_kt4hp")
+region = Rect2(129, 2, 30, 27)

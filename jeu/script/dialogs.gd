@@ -10,6 +10,8 @@ class_name DialogueBox
 @export var monster_pitch_min := 0.55
 @export var monster_pitch_max := 0.70
 
+@export var interrupt_delay := 0
+
 var current_speaker: String = ""
 
 @onready var label: RichTextLabel = $VBoxContainer/Dialog
@@ -22,6 +24,7 @@ var messages: Array = []
 var current_message := 0
 var dialogue_active := false
 var tween: Tween
+var interrupt_after_message := -1
 
 signal dialogue_finished
 
@@ -82,6 +85,11 @@ func show_message():
 	tween.tween_property(label, "visible_ratio", 1.0, duration)
 	tween.tween_callback(voice_timer.stop)
 
+	if current_message == interrupt_after_message:
+		if interrupt_delay > 0.0:
+			tween.tween_interval(interrupt_delay)
+		tween.tween_callback(close_dialogue)
+
 
 func _on_voice_timer_timeout():
 	if tween and tween.is_running():
@@ -101,7 +109,13 @@ func _on_voice_timer_timeout():
 
 
 func _process(_delta):
-	if dialogue_active and Input.is_action_just_pressed("next_dialogue"):
+	if not dialogue_active:
+		return
+
+	if current_message == interrupt_after_message:
+		return
+
+	if Input.is_action_just_pressed("next_dialogue"):
 		if tween and tween.is_running():
 			tween.kill()
 			voice_timer.stop()
@@ -112,6 +126,10 @@ func _process(_delta):
 
 
 func next_message():
+	if current_message == interrupt_after_message:
+		close_dialogue()
+		return
+
 	current_message += 1
 
 	if current_message < messages.size():
@@ -121,6 +139,9 @@ func next_message():
 
 
 func close_dialogue():
+	if not dialogue_active:
+		return
+
 	if tween:
 		tween.kill()
 
@@ -131,4 +152,12 @@ func close_dialogue():
 	label.text = ""
 	messages.clear()
 	visible = false
+
+	interrupt_after_message = -1
+
 	dialogue_finished.emit()
+
+
+func start_dialogue_with_interruption(new_messages: Array, message_index: int):
+	interrupt_after_message = message_index
+	start_dialogue(new_messages)

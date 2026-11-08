@@ -13641,5 +13641,5 @@ shape = SubResource("RectangleShape2D_1qvt6")
 script = ExtResource("66_8umxq")
 
 [connection signal="pressed" from="CanvasLayer/TextureButton_Menu" to="." method="_on_texture_button_menu_pressed"]
-[connection signal="pressed" from="CanvasLayer/TextureButton_inventory" to="." method="_on_texture_button_inventory_pressed"]
 [connection signal="pressed" from="CanvasLayer/TextureButton_inventory" to="." method="_on_texture_button_menu_pressed"]
+[connection signal="pressed" from="CanvasLayer/TextureButton_inventory" to="." method="_on_texture_button_inventory_pressed"]
