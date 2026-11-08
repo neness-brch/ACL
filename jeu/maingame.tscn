@@ -26,6 +26,7 @@
 [ext_resource type="Texture2D" uid="uid://cii8ixeyj1oaj" path="res://assets/daughterportrait.tres" id="16_b3c3w"]
 [ext_resource type="Script" uid="uid://buc4pl4a81d23" path="res://script/quest_progress.gd" id="17_f0ocn"]
 [ext_resource type="AudioStream" uid="uid://d2mmybdbcd1m3" path="res://music/bip.ogg" id="17_mnpky"]
+[ext_resource type="Script" uid="uid://dq1pcbrpb0hfh" path="res://script/pnj2.gd" id="18_wnh6t"]
 [ext_resource type="Texture2D" uid="uid://4ba8r3kbeyg3" path="res://resources/leaf.tres" id="18_yopyy"]
 [ext_resource type="Script" uid="uid://b7eubnv3f8lt1" path="res://script/music.gd" id="19_q45tq"]
 [ext_resource type="Script" uid="uid://bkavghbitpwd6" path="res://script/pnj3.gd" id="20_n3onq"]
@@ -42,6 +43,7 @@
 [ext_resource type="Script" uid="uid://otfjiuwpeg7n" path="res://script/fisherman.gd" id="26_6rwx2"]
 [ext_resource type="Script" uid="uid://cddywhvlbwufx" path="res://script/children.gd" id="26_b3c3w"]
 [ext_resource type="Texture2D" uid="uid://bcbf8sc03pfw0" path="res://assets/remparts/east.png" id="26_mdr15"]
+[ext_resource type="Texture2D" uid="uid://2q8nu6uqttxv" path="res://assets/pnj1.tres" id="26_smv0l"]
 [ext_resource type="Texture2D" uid="uid://r4a8bvvvyyeq" path="res://assets/sprite sheets/monster1-frame4.tres" id="26_vbhjr"]
 [ext_resource type="Texture2D" uid="uid://bf68yipsrxf4c" path="res://assets/princess_sprite.png" id="27_0kvs2"]
 [ext_resource type="Texture2D" uid="uid://t0pgaunogrui" path="res://assets/sprite sheets/TimSprites/east.png" id="27_6i744"]
@@ -10807,7 +10809,8 @@ vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="VillagePNJ2" type="Area2D" parent="." unique_id=478754106]
-script = ExtResource("58_hnxqn")
+script = ExtResource("18_wnh6t")
+pnj_2_portrait = ExtResource("58_84fym")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="VillagePNJ2" unique_id=698835335]
 position = Vector2(-2094, -52)
@@ -10935,6 +10938,7 @@ metadata/_edit_use_anchors_ = true
 
 [node name="VillagePNJ1" type="Area2D" parent="." unique_id=1538401132]
 script = ExtResource("58_hnxqn")
+pnj_1_portrait = ExtResource("26_smv0l")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="VillagePNJ1" unique_id=707208073]
 position = Vector2(-2422, -51.5)
@@ -11566,6 +11570,7 @@ script = ExtResource("19_q45tq")
 [node name="SilenceTimer" type="Timer" parent="MusicNode" unique_id=333801430]
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="MusicNode" unique_id=572108478]
+volume_db = -5.0
 bus = &"PrincessNight"
 
 [node name="MonsterMusic" type="AudioStreamPlayer" parent="MusicNode" unique_id=416711797]

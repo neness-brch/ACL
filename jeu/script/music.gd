@@ -6,7 +6,15 @@ extends Node
 var tracks: Array[AudioStream] = [
 	preload("res://music/secunda.ogg"),
 	preload("res://music/hogre.ogg"),
-	preload("res://music/tedra.ogg")
+	preload("res://music/tedra.ogg"),
+	preload("res://music/flim.ogg"),
+	preload("res://music/shapedlikekaleidoscopes.ogg"),
+	preload("res://music/2814.ogg"),
+	preload("res://music/685-471-2.ogg"),
+	preload("res://music/stoneinfocus.ogg"),
+	preload("res://music/url.ogg"),
+	preload("res://music/aquarium.ogg"),
+	preload("res://music/sleepwalkers.ogg")
 ]
 
 var last_track: AudioStream = null

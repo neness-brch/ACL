@@ -119,7 +119,6 @@ text = "↓"
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=932616926]
 
 [node name="BattleMenu" type="Panel" parent="CanvasLayer" unique_id=1089086360]
-visible = false
 anchors_preset = -1
 anchor_right = 0.017
 anchor_bottom = 0.062000003
@@ -128,7 +127,7 @@ offset_top = 459.0
 offset_right = 1117.416
 offset_bottom = 595.824
 
-[node name="BattleLabel" type="Label" parent="CanvasLayer/BattleMenu" unique_id=1040672381]
+[node name="FightLabel" type="Label" parent="CanvasLayer/BattleMenu" unique_id=984330150]
 layout_mode = 0
 offset_left = 124.0
 offset_top = 39.0
@@ -137,6 +136,16 @@ offset_bottom = 73.0
 theme_override_fonts/font = ExtResource("6_6vh42")
 theme_override_font_sizes/font_size = 30
 text = "FIGHT"
+
+[node name="ObjectsLabel" type="Label" parent="CanvasLayer/BattleMenu" unique_id=838846461]
+layout_mode = 0
+offset_left = 645.0
+offset_top = 45.0
+offset_right = 822.0
+offset_bottom = 74.0
+theme_override_fonts/font = ExtResource("6_6vh42")
+theme_override_font_sizes/font_size = 25
+text = "OBJECTS"
 
 [node name="Arrow" type="Label" parent="CanvasLayer/BattleMenu" unique_id=640045217]
 layout_mode = 0
@@ -157,7 +166,7 @@ offset_top = 457.0
 offset_right = 1140.0
 offset_bottom = 600.824
 
-[node name="FightLabel" type="Label" parent="CanvasLayer/FightMenu" unique_id=822071165]
+[node name="SharpBladeLabel" type="Label" parent="CanvasLayer/FightMenu" unique_id=1474838068]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 0.26700002
@@ -170,6 +179,16 @@ theme_override_fonts/font = ExtResource("6_6vh42")
 theme_override_font_sizes/font_size = 25
 text = "SHARP BLADE"
 
+[node name="IntimidateLabel" type="Label" parent="CanvasLayer/FightMenu" unique_id=1461045251]
+layout_mode = 0
+offset_left = 634.0
+offset_top = 47.0
+offset_right = 868.0
+offset_bottom = 76.0
+theme_override_fonts/font = ExtResource("6_6vh42")
+theme_override_font_sizes/font_size = 25
+text = "INTIMIDATE"
+
 [node name="Arrow" type="Label" parent="CanvasLayer/FightMenu" unique_id=1310495143]
 layout_mode = 0
 offset_left = 75.0
@@ -181,6 +200,7 @@ theme_override_font_sizes/font_size = 26
 text = "->"
 
 [node name="ObjectsMenu" type="Panel" parent="CanvasLayer" unique_id=1258421916]
+visible = false
 offset_right = 40.0
 offset_bottom = 40.0
 
@@ -199,10 +219,10 @@ text = "HEALTH POTION"
 
 [node name="Arrow" type="Label" parent="CanvasLayer/ObjectsMenu" unique_id=1342165487]
 layout_mode = 0
-offset_left = 75.0
-offset_top = 35.0
-offset_right = 118.0
-offset_bottom = 71.0
+offset_left = 88.0
+offset_top = 493.0
+offset_right = 131.0
+offset_bottom = 529.0
 theme_override_fonts/font = ExtResource("6_6vh42")
 theme_override_font_sizes/font_size = 26
 text = "->"

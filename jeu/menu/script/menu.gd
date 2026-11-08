@@ -21,3 +21,7 @@ func _on_texture_button_options_pressed() -> void:
 
 func _on_texture_button_quit_pressed() -> void:
 	get_tree().quit(0)
+
+
+func playpressed() -> void:
+	pass # Replace with function body.
