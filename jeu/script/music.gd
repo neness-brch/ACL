@@ -44,7 +44,7 @@ func play_random_track():
 
 
 func _on_music_finished():
-	silence_timer.wait_time = randf_range(20.0, 90.0)
+	silence_timer.wait_time = randf_range(10.0, 15.0)
 	silence_timer.start()
 
 

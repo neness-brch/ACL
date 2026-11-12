@@ -3,7 +3,7 @@ class_name Player
 signal HealthChanged
 signal cinematic_arrived
 
-const SPEED = 300.0
+const SPEED = 250.0
 
 @onready var animated_sprite = $AnimatedSprite2D
 @onready var original_sprite_scale: Vector2 = animated_sprite.scale
@@ -62,7 +62,7 @@ func _physics_process(_delta: float) -> void:
 		animation_name = "walk_down"
 		animated_sprite.flip_h = false
 
-	var reference_texture = animated_sprite.sprite_frames.get_frame_texture("idle", 0)
+	var reference_texture = animated_sprite.sprite_frames.get_frame_texture("walk", 0)
 	var current_texture = animated_sprite.sprite_frames.get_frame_texture(animation_name, 0)
 
 	var size_ratio: float = float(reference_texture.get_height()) / float(current_texture.get_height())
@@ -108,4 +108,4 @@ func update_cinematic_direction() -> void:
 	
 func prepare_for_princess() -> void:
 	velocity = Vector2.ZERO
-	animated_sprite.play("walk")
+	animated_sprite.play("idle")

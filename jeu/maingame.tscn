@@ -13390,6 +13390,7 @@ text = "Inventory"
 script = ExtResource("19_q45tq")
 
 [node name="SilenceTimer" type="Timer" parent="MusicNode" unique_id=333801430]
+one_shot = true
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="MusicNode" unique_id=572108478]
 volume_db = -5.0
