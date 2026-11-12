@@ -1,0 +1,8 @@
+{
+ "tile_size": 16,
+ "order": [
+  "coconut",
+  "ice_cream",
+  "lemonade"
+ ]
+}

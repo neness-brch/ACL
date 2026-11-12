@@ -1,0 +1,128 @@
+{
+ "tile_size": 16,
+ "columns": 10,
+ "rows": 3,
+ "tiles": {
+  "sand": {
+   "col": 0,
+   "row": 0
+  },
+  "sand_2": {
+   "col": 1,
+   "row": 0
+  },
+  "sand_shells": {
+   "col": 2,
+   "row": 0
+  },
+  "water_nw": {
+   "col": 3,
+   "row": 0
+  },
+  "water_n": {
+   "col": 4,
+   "row": 0
+  },
+  "water_ne": {
+   "col": 5,
+   "row": 0
+  },
+  "palm_tree_0_0": {
+   "col": 6,
+   "row": 0
+  },
+  "palm_tree_0_1": {
+   "col": 7,
+   "row": 0
+  },
+  "umbrella_red_0_0": {
+   "col": 8,
+   "row": 0
+  },
+  "umbrella_red_0_1": {
+   "col": 9,
+   "row": 0
+  },
+  "beach_ball": {
+   "col": 0,
+   "row": 1
+  },
+  "sandcastle": {
+   "col": 1,
+   "row": 1
+  },
+  "cooler": {
+   "col": 2,
+   "row": 1
+  },
+  "water_w": {
+   "col": 3,
+   "row": 1
+  },
+  "water_c": {
+   "col": 4,
+   "row": 1
+  },
+  "water_e": {
+   "col": 5,
+   "row": 1
+  },
+  "palm_tree_1_0": {
+   "col": 6,
+   "row": 1
+  },
+  "palm_tree_1_1": {
+   "col": 7,
+   "row": 1
+  },
+  "umbrella_red_1_0": {
+   "col": 8,
+   "row": 1
+  },
+  "umbrella_red_1_1": {
+   "col": 9,
+   "row": 1
+  },
+  "rock": {
+   "col": 0,
+   "row": 2
+  },
+  "coconuts": {
+   "col": 1,
+   "row": 2
+  },
+  "bucket_spade": {
+   "col": 2,
+   "row": 2
+  },
+  "water_sw": {
+   "col": 3,
+   "row": 2
+  },
+  "water_s": {
+   "col": 4,
+   "row": 2
+  },
+  "water_se": {
+   "col": 5,
+   "row": 2
+  },
+  "palm_tree_2_0": {
+   "col": 6,
+   "row": 2
+  },
+  "palm_tree_2_1": {
+   "col": 7,
+   "row": 2
+  },
+  "sand_starfish": {
+   "col": 8,
+   "row": 2
+  },
+  "water_c2": {
+   "col": 9,
+   "row": 2
+  }
+ },
+ "note": "water_* is a 3x3 lagoon set on sand (water_c2 is a second centre tile). palm_tree is in objects/palm_tree.png (32x48) and umbrella_red is in objects/umbrella_red.png (32x32); split tiles are in tiles/split/. beach_ball, sandcastle, cooler, rock, coconuts and bucket_spade are transparent props."
+}
