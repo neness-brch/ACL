@@ -10,7 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://cltss05wst0my" path="res://Nature/nature.png" id="6_rvkpk"]
 [ext_resource type="PackedScene" uid="uid://crwja1j6djpt4" path="res://scenes/playeranimation.tscn" id="7_fputw"]
 [ext_resource type="Texture2D" uid="uid://dayvyghyq80af" path="res://assets/Campfire.png" id="7_wy1l4"]
-[ext_resource type="Script" uid="uid://dgt8tn12xubee" path="res://script/player.gd" id="9_ekqhg"]
+[ext_resource type="Script" uid="uid://c71ogcct57rmc" path="res://script/player.gd" id="9_ekqhg"]
 [ext_resource type="Texture2D" uid="uid://ka623gyeolb2" path="res://Tilemap/WaterTiles.png" id="10_2x7ir"]
 [ext_resource type="Texture2D" uid="uid://b4qoy6myusb60" path="res://assets/KnightHouse.png" id="10_kymhk"]
 [ext_resource type="Script" uid="uid://p7ojoobsn4wc" path="res://script/health_bar.gd" id="10_olu43"]
@@ -10692,7 +10692,7 @@ size = Vector2(59, 73.5)
 radius = 1296.658
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b7sl3"]
-size = Vector2(251, 166)
+size = Vector2(211.66672, 155.00003)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_4tdkx"]
 animations = [{
@@ -12519,6 +12519,27 @@ size = Vector2(202, 234)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ej7hq"]
 size = Vector2(35, 52)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xsgwr"]
+size = Vector2(116.25, 58)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rp8u8"]
+size = Vector2(24.86145, 75.42874)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5eh7g"]
+size = Vector2(40, 80.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_feidb"]
+size = Vector2(134, 102.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x7kye"]
+size = Vector2(42.25, 76.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m8hci"]
+size = Vector2(40.25, 80)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f5w23"]
+size = Vector2(129.25, 109.125)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nbrx7"]
 size = Vector2(858.5, 619)
 
@@ -12873,7 +12894,7 @@ region_enabled = true
 region_rect = Rect2(391.71854, 215.81973, 126.55606, 125.529236)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="JamSeller" unique_id=1663415010]
-position = Vector2(-2400.5, 1603)
+position = Vector2(-2406.6667, 1586.6667)
 shape = SubResource("RectangleShape2D_b7sl3")
 
 [node name="InteractionPrompt" type="Panel" parent="JamSeller" unique_id=665313745]
@@ -13533,6 +13554,39 @@ shape = SubResource("RectangleShape2D_ej7hq")
 position = Vector2(-2306.75, 164)
 shape = SubResource("RectangleShape2D_ej7hq")
 
+[node name="JamSellerCollision" type="CollisionShape2D" parent="FallZoneCollision" unique_id=1119738242]
+position = Vector2(-2458.125, 1507)
+shape = SubResource("RectangleShape2D_xsgwr")
+
+[node name="Guard3Collision" type="CollisionShape2D" parent="FallZoneCollision" unique_id=1738203141]
+position = Vector2(-1579.9255, -286.5558)
+scale = Vector2(1.614906, 1.0223098)
+shape = SubResource("RectangleShape2D_rp8u8")
+
+[node name="Guard4Collision" type="CollisionShape2D" parent="FallZoneCollision" unique_id=1827087654]
+position = Vector2(-1472, -287.75)
+shape = SubResource("RectangleShape2D_5eh7g")
+
+[node name="Castle2Collision" type="CollisionShape2D" parent="FallZoneCollision" unique_id=1911138720]
+position = Vector2(-1520, -336)
+shape = SubResource("RectangleShape2D_feidb")
+
+[node name="Guard5Collision" type="CollisionShape2D" parent="FallZoneCollision" unique_id=1632790099]
+position = Vector2(-4426.875, 1112)
+shape = SubResource("RectangleShape2D_x7kye")
+
+[node name="Guard6Collision" type="CollisionShape2D" parent="FallZoneCollision" unique_id=1045572978]
+position = Vector2(-4324.125, 1112)
+shape = SubResource("RectangleShape2D_m8hci")
+
+[node name="Castle3Collision" type="CollisionShape2D" parent="FallZoneCollision" unique_id=1082267708]
+position = Vector2(-4376, 1062.5625)
+shape = SubResource("RectangleShape2D_f5w23")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="FallZoneCollision" unique_id=2013882939]
+position = Vector2(-2448, 152)
+polygon = PackedVector2Array(-160, -56, -160, 104, -128, 104, -128, 136, -32, 136, -32, 120, 128, 120, 128, 88, 144, 88, 144, 40, 160, 40, 160, -88, 128, -88, 128, -120, -96, -120, -96, -104, -144, -104, -144, -56)
+
 [node name="Monster1MusicZone" type="Area2D" parent="." unique_id=1439223218]
 
 [node name="ZoneMusiqueMonstre1" type="CollisionShape2D" parent="Monster1MusicZone" unique_id=1993423276]
@@ -13642,5 +13696,5 @@ shape = SubResource("RectangleShape2D_1qvt6")
 script = ExtResource("66_8umxq")
 
 [connection signal="pressed" from="CanvasLayer/TextureButton_Menu" to="." method="_on_texture_button_menu_pressed"]
-[connection signal="pressed" from="CanvasLayer/TextureButton_inventory" to="." method="_on_texture_button_menu_pressed"]
 [connection signal="pressed" from="CanvasLayer/TextureButton_inventory" to="." method="_on_texture_button_inventory_pressed"]
+[connection signal="pressed" from="CanvasLayer/TextureButton_inventory" to="." method="_on_texture_button_menu_pressed"]
