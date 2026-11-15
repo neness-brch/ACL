@@ -25,22 +25,26 @@ var pnj4_disappeared: bool = false
 
 
 var quests_completed: Dictionary = {
-	"fall_quest": false
+	"fall_quest": false,
+	"summer_quest":false
 }
 
 var quests_active: Dictionary = {
-	"fall_quest": false
+	"fall_quest": false,
+	"summer_quest":false
 }
 
 var dialogues_seen: Dictionary = {}
 var tim_needs_escort := false
 
 var quest_progress: Dictionary = {
-	"fall_quest": 0
+	"fall_quest": 0,
+	"summer_quest":0
 }
 
 var quest_targets: Dictionary = {
-	"fall_quest": 3
+	"fall_quest": 3,
+	"summer_quest":3
 }
 
 
@@ -152,6 +156,14 @@ func defeat_monster(monster_id: String):
 
 func is_monster_defeated(monster_id: String) -> bool:
 	return monsters_defeated.get(monster_id, false)
+
+
+var pending_battle_monster_id: String = ""
+
+func consume_battle_monster_id(default_id: String) -> String:
+	var result := pending_battle_monster_id if pending_battle_monster_id != "" else default_id
+	pending_battle_monster_id = ""
+	return result
 	
 var return_position: Vector2 = Vector2.ZERO
 

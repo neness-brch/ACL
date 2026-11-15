@@ -10,7 +10,6 @@ enum BattleState {
 	VICTORY,
 	DEFEAT
 }
-
 var state: BattleState = BattleState.MAIN_MENU
 
 # -------------------------
@@ -36,12 +35,17 @@ const ITEMS := {
 
 var hero_max_hp := 100
 var hero_hp := 100
+@export var ally_enabled: bool = false
+@export var knight_max_hp: int = 100
+
+var knight_hp: int = 100
 
 @export var monster_id: String = "monster_1"
 @export var monster_max_hp: int = 100
 @export var monster_damage_min: int = 10
 @export var monster_damage_max: int = 15
 @export_range(0.01, 1.0) var monster_start_health_ratio: float = 1.0
+@onready var knight: Sprite2D = get_node_or_null("Knight") as Sprite2D
 
 var monster_hp: int = 100
 
@@ -78,6 +82,7 @@ var object_arrow_offset := Vector2.ZERO
 
 @onready var hero_health_bar: ProgressBar = $PlayerUI/HealthBar
 @onready var monster_health_bar: ProgressBar = $OpponentUI/HealthBar
+@onready var knight_health_bar: ProgressBar = $KnightUI/HealthBar
 
 @onready var intimidate_arrow = $IntimidateArrow
 
@@ -94,8 +99,18 @@ var object_arrow_offset := Vector2.ZERO
 
 
 func _ready():
+	# L'identifiant du monstre vient de la carte (voir monster1.gd), sinon de l'inspecteur
+	monster_id = GameState.consume_battle_monster_id(monster_id)
 	hero_hp = GameState.player_hp
 	monster_hp = int(round(monster_max_hp * monster_start_health_ratio))
+	if ally_enabled:
+		knight_hp = knight_max_hp
+		knight.visible = true
+		var knight_fill = knight_health_bar.get_theme_stylebox("fill").duplicate()
+		knight_health_bar.add_theme_stylebox_override("fill", knight_fill)
+		knight_health_bar.max_value = knight_max_hp
+		knight_health_bar.value = knight_hp
+		update_health_bar_color(knight_health_bar)
 	var hero_fill = hero_health_bar.get_theme_stylebox("fill").duplicate()
 	var monster_fill = monster_health_bar.get_theme_stylebox("fill").duplicate()
 
@@ -442,7 +457,7 @@ func use_item(item_id: String) -> void:
 
 	await get_tree().create_timer(0.5).timeout
 
-	enemy_turn()
+	finish_hero_turn()
 
 
 # Affiche brièvement un message, puis rend la main au menu précédent
@@ -482,6 +497,9 @@ func sharp_blade():
 		monster_health_bar.value,
 		monster_hp
 	)
+	await show_message(
+	"Heroine used SHARP BLADE.\nMonster1 took %d damage." % damage
+)
 
 	if monster_hp <= 0:
 		victory()
@@ -489,7 +507,45 @@ func sharp_blade():
 
 	await get_tree().create_timer(0.4).timeout
 
-	enemy_turn()
+	finish_hero_turn()
+	
+func npc_turn() -> void:
+
+	if not ally_enabled or knight_hp <= 0:
+		return
+
+	state = BattleState.PLAYER_ANIMATION
+
+	await get_tree().create_timer(0.4).timeout
+
+	var damage := maxi(int(monster_max_hp * 0.1), 1)
+
+	monster_hp = maxi(monster_hp - damage, 0)
+
+	await flash_monster()
+
+	await animate_health_bar(
+		monster_health_bar,
+		monster_health_bar.value,
+		monster_hp
+	)
+	await show_message(
+	"Knight attacked Monster1.\nMonster1 took %d damage." % damage
+)
+
+	if monster_hp <= 0:
+		victory()
+		return
+		
+func finish_hero_turn() -> void:
+
+	if ally_enabled and knight_hp > 0:
+		await npc_turn()
+
+		if state == BattleState.VICTORY:
+			return
+
+	await enemy_turn()
 
 
 func flash_monster():
@@ -532,17 +588,17 @@ func intimidate():
 	monster_attack_multiplier *= 0.75
 
 	await show_intimidate_animation()
+	await show_message("Heroine used INTIMIDATE.\nMonster1's attack was weakened.")
 
 	await get_tree().create_timer(0.4).timeout
 
-	enemy_turn()
+	finish_hero_turn()
 	
 func special_attack():
 
 	state = BattleState.PLAYER_ANIMATION
 	hide_menus()
 
-	# Retire 20 % des PV actuels du monstre (au moins 1)
 	var damage := maxi(int(monster_hp * 0.2), 1)
 
 	monster_hp = maxi(monster_hp - damage, 0)
@@ -554,6 +610,9 @@ func special_attack():
 		monster_health_bar.value,
 		monster_hp
 	)
+	await show_message(
+	"Heroine used SPECIAL ATTACK.\nMonster1 took %d damage." % damage
+)
 
 	if monster_hp <= 0:
 		victory()
@@ -561,7 +620,7 @@ func special_attack():
 
 	await get_tree().create_timer(0.4).timeout
 
-	enemy_turn()
+	finish_hero_turn()
 
 
 func show_intimidate_animation():
@@ -587,27 +646,63 @@ func enemy_turn():
 	await get_tree().create_timer(0.6).timeout
 
 	var base_damage := randi_range(monster_damage_min, monster_damage_max)
-	var damage := int(
-		base_damage * monster_attack_multiplier
+	var damage := int(base_damage * monster_attack_multiplier)
+
+	var targets: Array[String] = ["hero"]
+
+	if ally_enabled and knight_hp > 0:
+		targets.append("knight")
+
+	var target: String = targets.pick_random()
+
+	if target == "hero":
+		await show_message(
+		"Monster1 attacked Heroine.\nHeroine took %d damage." % damage
+	)
+		update_player_hp(hero_hp - damage)
+
+		await flash_hero()
+
+		await animate_health_bar(
+			hero_health_bar,
+			hero_health_bar.value,
+			hero_hp
+		)
+
+		if hero_hp <= 0:
+			defeat()
+			return
+
+	else:
+		await show_message(
+		"Monster1 attacked Knight.\nKnight took %d damage." % damage
+	)
+		knight_hp = maxi(knight_hp - damage, 0)
+
+		await flash_knight()
+		
+		await animate_health_bar(
+		knight_health_bar,
+		knight_health_bar.value,
+		knight_hp
 	)
 
-	update_player_hp(hero_hp-damage)
-
-	await flash_hero()
-
-	await animate_health_bar(
-		hero_health_bar,
-		hero_health_bar.value,
-		hero_hp
-	)
-
-	if hero_hp <= 0:
-		defeat()
-		return
+		if knight_hp <= 0:
+			knight.visible = false
 
 	await get_tree().create_timer(0.5).timeout
 
 	show_main_menu()
+	
+func flash_knight():
+
+	for i in range(3):
+
+		knight.modulate = Color(1.0, 0.45, 0.45)
+		await get_tree().create_timer(0.10).timeout
+
+		knight.modulate = Color.WHITE
+		await get_tree().create_timer(0.10).timeout
 
 
 func flash_hero():
@@ -623,16 +718,25 @@ func flash_hero():
 func victory():
 	state = BattleState.VICTORY
 	hide_menus()
+
 	if not GameState.is_monster_defeated(monster_id):
 		GameState.defeat_monster(monster_id)
-		GameState.add_quest_progress("fall_quest", 1)
+
+		if ally_enabled:
+			GameState.add_quest_progress("summer_quest", 1)
+		else:
+			GameState.add_quest_progress("fall_quest", 1)
+
 
 	battle_dialogue.visible = true
 	battle_dialogue_text.text = "you won the battle!"
 
 	await get_tree().create_timer(2.5).timeout
 
-	SceneTransition.change_scene("res://maingame.tscn")
+	if ally_enabled:
+		SceneTransition.change_scene("res://zone_2.tscn")
+	else:
+		SceneTransition.change_scene("res://maingame.tscn")
 
 
 func defeat():
