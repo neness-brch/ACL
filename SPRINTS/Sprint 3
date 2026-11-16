@@ -5,13 +5,34 @@
 - Poursuite du digramme de classe (Ana)
 10 - Rédaction des dialogues et ajout des PNJ de la maison du chevalier (Matteo)
 9 - Gestion de la logique de progression dans la quete (Tous)
-- Création du diagramme de séquence (Inès)
 3 - Création de la map de la zone été (Inès/Amélie)
 - Amélioration de la zone automne (Matteo)
 8 - Création des combats (Dieynaba)
 
 ##Review
+1/7 — Amélioration du menu principal et de l’inventaire (Ana)
+Le menu principal et l’inventaire ont été améliorés.
 
+10 — Rédaction des dialogues et ajout des PNJ de la maison du chevalier (Matteo)
+Les dialogues et les PNJ de la maison du chevalier ont été enrichis.
 
-##Retrospective
+9 — Gestion de la logique de progression dans la quête (Tous)
+Nous avons travaillé sur l’enchaînement des étapes et la progression du joueur.
 
+3 — Création de la map de la zone été (Inès/Amélie)
+La zone été a été aménagée avec du sable, un village, des chemins, une zone de baignade et un parc.
+
+8 — Création des combats (Dieynaba)
+Le travail sur les combats a été poursuivi.
+
+- Amélioration de la zone automne (Matteo).
+
+##Rétrospective
+
+Points positifs :
+La répartition des tâches a permis à chacun de contribuer au projet.
+
+Points à améliorer :
+Le partage de l’avancement n’a pas toujours été assez régulier, ce qui a entraîné une fois un chevauchement de travail. Nous avons donc du répartir plus précisément les sous-tâches du travail en binôme.
+La responsabilité collective de la tâche 9, attribuée à « Tous », necessitait une meilleure coordination. Nous avons donc désigné un référent pour cette tache, tout en conservant la participation de tous.
+Nous devons également réserver un temps en fin de sprint pour tester le jeu ensemble et comparer le résultat aux objectifs du backlog.
