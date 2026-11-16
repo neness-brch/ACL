@@ -1,0 +1,14 @@
+LICENSE - Coastal Village - Top-Down Tileset 16x16 v1.0
+
+You CAN:
+- use these assets in personal and commercial projects (games, apps, prototypes, game jams, videos, streams);
+- modify, recolour, crop, combine and adapt them for your projects;
+- use them in as many projects as you like, with no time limit.
+
+You CANNOT:
+- resell, share or redistribute the assets themselves, on their own or inside another asset pack or template,
+  even if modified;
+- claim the assets as your own original work.
+
+Credit is appreciated but not required.
+For any other use, contact the author through the itch.io page.
