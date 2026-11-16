@@ -1,5 +1,8 @@
 [gd_scene format=3 uid="uid://dvw3qowu64wn8"]
 
+[ext_resource type="PackedScene" uid="uid://c82n8erkwol58" path="res://menu/options/window_mode_button.tscn" id="1_bpca2"]
+[ext_resource type="PackedScene" uid="uid://bd1epb2b7voso" path="res://menu/options/resolution_mode_button.tscn" id="2_gto7s"]
+
 [node name="Control" type="Control" unique_id=968627298]
 layout_mode = 3
 anchors_preset = 15
@@ -20,10 +23,9 @@ offset_bottom = -100.0
 grow_horizontal = 2
 grow_vertical = 2
 tab_alignment = 1
-current_tab = 1
+current_tab = 0
 
 [node name="Graphics" type="TabBar" parent="TabContainer" unique_id=1601034365]
-visible = false
 layout_mode = 2
 metadata/_tab_index = 0
 
@@ -39,19 +41,50 @@ theme_override_constants/margin_top = 24
 theme_override_constants/margin_right = 24
 theme_override_constants/margin_bottom = 24
 
-[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Graphics/MarginContainer" unique_id=1370631038]
+[node name="ScrollContainer" type="ScrollContainer" parent="TabContainer/Graphics/MarginContainer" unique_id=1810169504]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Graphics/MarginContainer/ScrollContainer" unique_id=2046379873]
+layout_mode = 2
+theme_override_constants/separation = 100
+
+[node name="window_mode_button" parent="TabContainer/Graphics/MarginContainer/ScrollContainer/VBoxContainer" unique_id=31567149 instance=ExtResource("1_bpca2")]
+layout_mode = 2
+
+[node name="resolution_mode_button" parent="TabContainer/Graphics/MarginContainer/ScrollContainer/VBoxContainer" unique_id=248820693 instance=ExtResource("2_gto7s")]
+layout_mode = 2
+
+[node name="Controls" type="TabBar" parent="TabContainer" unique_id=1977428828]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="TabContainer/Controls" unique_id=1547697690]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 24
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Controls/MarginContainer" unique_id=390488602]
 layout_mode = 2
 theme_override_constants/separation = 64
 alignment = 1
 
-[node name="Label" type="Label" parent="TabContainer/Graphics/MarginContainer/VBoxContainer" unique_id=507808255]
+[node name="Label" type="Label" parent="TabContainer/Controls/MarginContainer/VBoxContainer" unique_id=474199460]
 texture_filter = 1
 layout_mode = 2
-text = "G1"
+text = "Music"
 
 [node name="Sound" type="TabBar" parent="TabContainer" unique_id=1945840301]
+visible = false
 layout_mode = 2
-metadata/_tab_index = 1
+metadata/_tab_index = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="TabContainer/Sound" unique_id=170463518]
 layout_mode = 1
@@ -79,33 +112,6 @@ text = "Music"
 texture_filter = 1
 layout_mode = 2
 text = "Music2"
-
-[node name="Controls" type="TabBar" parent="TabContainer" unique_id=1977428828]
-visible = false
-layout_mode = 2
-metadata/_tab_index = 2
-
-[node name="MarginContainer" type="MarginContainer" parent="TabContainer/Controls" unique_id=1547697690]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_left = 24
-theme_override_constants/margin_top = 24
-theme_override_constants/margin_right = 24
-theme_override_constants/margin_bottom = 24
-
-[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Controls/MarginContainer" unique_id=390488602]
-layout_mode = 2
-theme_override_constants/separation = 64
-alignment = 1
-
-[node name="Label" type="Label" parent="TabContainer/Controls/MarginContainer/VBoxContainer" unique_id=474199460]
-texture_filter = 1
-layout_mode = 2
-text = "Music"
 
 [node name="Accessibility" type="TabBar" parent="TabContainer" unique_id=1902084176]
 visible = false
