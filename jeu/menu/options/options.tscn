@@ -1,0 +1,81 @@
+[gd_scene format=3 uid="uid://do6avbe5ajw27"]
+
+[ext_resource type="FontFile" uid="uid://b4ysgp2awsrtc" path="res://menu/import/godot-pixel-ui-free-7ea1d3962268a1e19f123fcc8103b686c3af2b8c/godot-pixel-ui-free-7ea1d3962268a1e19f123fcc8103b686c3af2b8c/addons/pixel_ui/font/pixel_ui_font.fnt" id="1_kwmgx"]
+[ext_resource type="Script" uid="uid://bn0qvlnpfn47n" path="res://menu/script/control.gd" id="2_qvli6"]
+[ext_resource type="PackedScene" uid="uid://dvw3qowu64wn8" path="res://menu/options/settingstab.tscn" id="3_vrnof"]
+[ext_resource type="Texture2D" uid="uid://h7gwgk7eerkr" path="res://menu/import/godot-pixel-ui-free-7ea1d3962268a1e19f123fcc8103b686c3af2b8c/godot-pixel-ui-free-7ea1d3962268a1e19f123fcc8103b686c3af2b8c/addons/pixel_ui/themes/wood/button_normal.png" id="4_p6051"]
+[ext_resource type="Texture2D" uid="uid://cp5yfvu6nafaf" path="res://menu/import/godot-pixel-ui-free-7ea1d3962268a1e19f123fcc8103b686c3af2b8c/godot-pixel-ui-free-7ea1d3962268a1e19f123fcc8103b686c3af2b8c/addons/pixel_ui/themes/wood/button_pressed.png" id="5_07bmx"]
+[ext_resource type="Texture2D" uid="uid://bwae327r5i1wq" path="res://menu/import/godot-pixel-ui-free-7ea1d3962268a1e19f123fcc8103b686c3af2b8c/godot-pixel-ui-free-7ea1d3962268a1e19f123fcc8103b686c3af2b8c/addons/pixel_ui/themes/wood/button_hover.png" id="6_i3paj"]
+
+[sub_resource type="Theme" id="Theme_8kvc6"]
+Label/fonts/font = ExtResource("1_kwmgx")
+
+[node name="CanvasLayer" type="CanvasLayer" unique_id=557630662]
+
+[node name="options" type="Control" parent="." unique_id=2103741449]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_8kvc6")
+script = ExtResource("2_qvli6")
+
+[node name="MarginContainer" type="MarginContainer" parent="options" unique_id=1264474639]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="VBoxContainer" type="VBoxContainer" parent="options/MarginContainer" unique_id=679675064]
+layout_mode = 2
+theme_override_constants/separation = -48
+
+[node name="Label" type="Label" parent="options/MarginContainer/VBoxContainer" unique_id=1565672872]
+texture_filter = 1
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Options"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Control" parent="options/MarginContainer/VBoxContainer" unique_id=968627298 instance=ExtResource("3_vrnof")]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="back_button" type="TextureButton" parent="options/MarginContainer/VBoxContainer" unique_id=272029242]
+texture_filter = 1
+custom_minimum_size = Vector2(120, 55)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+texture_normal = ExtResource("4_p6051")
+texture_pressed = ExtResource("5_07bmx")
+texture_hover = ExtResource("6_i3paj")
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="options/MarginContainer/VBoxContainer/back_button" unique_id=2023481417]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -22.0
+offset_top = -11.5
+offset_right = 22.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 24
+text = "Back"
+
+[connection signal="pressed" from="options/MarginContainer/VBoxContainer/back_button" to="options" method="_on_texture_button_pressed"]
