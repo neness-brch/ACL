@@ -36,12 +36,15 @@
 [ext_resource type="Texture2D" uid="uid://opxyaijqncoj" path="res://assets/sprite sheets/GateGuards/south-west.png" id="39_cghqf"]
 [ext_resource type="Texture2D" uid="uid://dr7q74y6rooqa" path="res://assets/sprite sheets/GateGuards/south-east.png" id="40_52no2"]
 [ext_resource type="Script" uid="uid://vr0d3k0phw14" path="res://script/summerfallzoneguards.gd" id="41_xadls"]
+[ext_resource type="PackedScene" uid="uid://dg5hxel6v4rrf" path="res://scenes/knight.tscn" id="42_p4f8k"]
 [ext_resource type="Script" uid="uid://barc3cfb0j8qo" path="res://script/winterfallzoneguards.gd" id="42_yecwv"]
+[ext_resource type="Script" uid="uid://dkojdwlx006jh" path="res://script/knightsummer.gd" id="43_2l57s"]
 [ext_resource type="Script" uid="uid://otfjiuwpeg7n" path="res://script/fisherman.gd" id="43_73oau"]
+[ext_resource type="Texture2D" uid="uid://cuvhrsmdl7cer" path="res://assets/knight.tres" id="44_jbnin"]
 [ext_resource type="Texture2D" uid="uid://ctku0kfxw0j5f" path="res://assets/sprite sheets/Fisherman.png" id="44_xrfqe"]
 [ext_resource type="Script" uid="uid://chuls8yih8yi8" path="res://labyrinth.gd" id="45_jrqed"]
 [ext_resource type="PackedScene" uid="uid://crwja1j6djpt4" path="res://scenes/playeranimation.tscn" id="46_wbt3v"]
-[ext_resource type="Script" uid="uid://c71ogcct57rmc" path="res://script/player.gd" id="47_u0w2s"]
+[ext_resource type="Script" uid="uid://dgt8tn12xubee" path="res://script/player.gd" id="47_u0w2s"]
 [ext_resource type="Script" uid="uid://p7ojoobsn4wc" path="res://script/health_bar.gd" id="52_8t6pu"]
 [ext_resource type="Script" uid="uid://cc6gixofs6a0" path="res://script/texture_health_bar.gd" id="53_ht2nv"]
 [ext_resource type="Texture2D" uid="uid://c0v3gs01ae8bw" path="res://assets/Flame.png" id="53_rufim"]
@@ -70,7 +73,6 @@
 [ext_resource type="Texture2D" uid="uid://ch5jdhmluvj6d" path="res://assets/ete/village/coastal-village-topdown-lite/32x32/beach/beach_umbrella_red.png" id="76_5bd1q"]
 [ext_resource type="Texture2D" uid="uid://cmxkhmaq1g37s" path="res://assets/ete/village/coastal-village-topdown-lite/32x32/beach/beach_towel_red.png" id="77_ewsx4"]
 [ext_resource type="Texture2D" uid="uid://1d2ds3vouc4a" path="res://assets/ete/village/coastal-village-topdown-lite/48x48/boats/rowboat_blue_vertical.png" id="78_ctue5"]
-[ext_resource type="Script" uid="uid://sj06lyrqxqxx" path="res://script/feuille.gd" id="79_ag4v7"]
 [ext_resource type="Texture2D" uid="uid://3xo7iaixs2uy" path="res://assets/TownBuilder/02_Roofs/Roof_Details/dormer_copper.png" id="79_pu1c4"]
 [ext_resource type="Script" uid="uid://bhidmvmchgq8j" path="res://script/daynightcycle.gd" id="80_82gh8"]
 [ext_resource type="Texture2D" uid="uid://cixivhgqddfcx" path="res://assets/TownBuilder/02_Roofs/Roof_Details/dormer_reed.png" id="80_agj62"]
@@ -88,6 +90,7 @@
 [ext_resource type="Texture2D" uid="uid://cfrceohguh5qu" path="res://assets/Tour en bois avec toboggan bleu.png" id="89_bt3g8"]
 [ext_resource type="Texture2D" uid="uid://cst6sn5nxbhyc" path="res://assets/Balançoire en bois aux sièges bleus.png" id="90_on8kk"]
 [ext_resource type="Texture2D" uid="uid://crh86k7homu22" path="res://assets/Manège bleu à barrières orange.png" id="91_hdr7y"]
+[ext_resource type="Script" uid="uid://cngl1a6jlnkgn" path="res://script/flamme.gd" id="92_2l57s"]
 [ext_resource type="Texture2D" uid="uid://0rnk0oedpjwp" path="res://assets/Banc de parc pixelisé vertical.png" id="92_impbe"]
 [ext_resource type="Texture2D" uid="uid://m34uk5wx7jqa" path="res://assets/Banc vert et brun en pixel art.png" id="93_d7ddb"]
 
@@ -12812,7 +12815,7 @@ size = Vector2(202, 234)
 size = Vector2(35, 52)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qqh3o"]
-size = Vector2(391, 344)
+size = Vector2(585.5, 396)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xixur"]
 atlas = ExtResource("65_eo1fk")
@@ -12852,6 +12855,9 @@ animations = [{
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jd76d"]
 size = Vector2(61, 73)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uu46q"]
+size = Vector2(81, 100)
 
 [node name="Node2D" type="Node2D" unique_id=497850945]
 script = ExtResource("1_h7xf2")
@@ -13006,6 +13012,7 @@ vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="VillagePNJ4" type="Area2D" parent="." unique_id=1694007100]
+visible = false
 position = Vector2(0, -130)
 script = ExtResource("23_ltngs")
 pnj_4_portrait = ExtResource("24_o6ew4")
@@ -13397,6 +13404,11 @@ horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
+[node name="Knight" parent="." unique_id=1905969664 instance=ExtResource("42_p4f8k")]
+position = Vector2(-1312, 376)
+script = ExtResource("43_2l57s")
+portrait = ExtResource("44_jbnin")
+
 [node name="Depart" type="Marker2D" parent="." unique_id=125820027]
 position = Vector2(-3152, 464)
 
@@ -13668,9 +13680,6 @@ shape = SubResource("RectangleShape2D_ej7hq")
 position = Vector2(-2306.75, 164)
 shape = SubResource("RectangleShape2D_ej7hq")
 
-[node name="Feuille" type="Area2D" parent="." unique_id=1162006422]
-script = ExtResource("79_ag4v7")
-
 [node name="DayNightCycle" type="CanvasModulate" parent="." unique_id=866346504]
 script = ExtResource("80_82gh8")
 
@@ -13709,6 +13718,16 @@ position = Vector2(-3795, 1397.0002)
 scale = Vector2(1.7187595, 1.875)
 texture = ExtResource("83_wb6ex")
 
+[node name="CottageWhiteTerracottaRoof" type="Sprite2D" parent="." unique_id=78896695]
+position = Vector2(-2532, 901.82715)
+scale = Vector2(5.1600027, 5.14378)
+texture = ExtResource("66_ikl71")
+
+[node name="HouseWhiteBlueRoof" type="Sprite2D" parent="." unique_id=345437088]
+position = Vector2(-2268.9998, 901.00006)
+scale = Vector2(4.1151514, 5.223077)
+texture = ExtResource("67_gh0ik")
+
 [node name="Monster1" type="Area2D" parent="." unique_id=2017749338]
 position = Vector2(-1062, 873)
 script = ExtResource("64_7l6qw")
@@ -13729,15 +13748,85 @@ autoplay = "default"
 position = Vector2(5, 0)
 shape = SubResource("RectangleShape2D_jd76d")
 
-[node name="CottageWhiteTerracottaRoof" type="Sprite2D" parent="." unique_id=78896695]
-position = Vector2(-2612, 1005.5)
-scale = Vector2(1.9600078, 1.9538457)
-texture = ExtResource("66_ikl71")
+[node name="Monster2" type="Area2D" parent="." unique_id=740402113]
+position = Vector2(-1450, 873)
+script = ExtResource("64_7l6qw")
 
-[node name="HouseWhiteBlueRoof" type="Sprite2D" parent="." unique_id=345437088]
-position = Vector2(-2510, 1004.75)
-scale = Vector2(1.5454545, 1.9615384)
-texture = ExtResource("67_gh0ik")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Monster2" unique_id=163067851]
+position = Vector2(-86, 55)
+shape = SubResource("RectangleShape2D_qqh3o")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Monster2" unique_id=100753961]
+texture_filter = 1
+scale = Vector2(4.75, 4.75)
+sprite_frames = SubResource("SpriteFrames_2ddio")
+autoplay = "default"
+
+[node name="ContactZone" type="Area2D" parent="Monster2" unique_id=301172276]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Monster2/ContactZone" unique_id=1339939626]
+position = Vector2(5, 0)
+shape = SubResource("RectangleShape2D_jd76d")
+
+[node name="Monster3" type="Area2D" parent="." unique_id=513477587]
+position = Vector2(-1900, 873)
+script = ExtResource("64_7l6qw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Monster3" unique_id=207712494]
+position = Vector2(-86, 55)
+shape = SubResource("RectangleShape2D_qqh3o")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Monster3" unique_id=602962965]
+texture_filter = 1
+scale = Vector2(4.75, 4.75)
+sprite_frames = SubResource("SpriteFrames_2ddio")
+autoplay = "default"
+
+[node name="ContactZone" type="Area2D" parent="Monster3" unique_id=398051008]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Monster3/ContactZone" unique_id=293932597]
+position = Vector2(5, 0)
+shape = SubResource("RectangleShape2D_jd76d")
+
+[node name="Monster4" type="Area2D" parent="." unique_id=823567677]
+position = Vector2(-1500, 600)
+script = ExtResource("64_7l6qw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Monster4" unique_id=1923515429]
+position = Vector2(-86, 55)
+shape = SubResource("RectangleShape2D_qqh3o")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Monster4" unique_id=1260164288]
+texture_filter = 1
+scale = Vector2(4.75, 4.75)
+sprite_frames = SubResource("SpriteFrames_2ddio")
+autoplay = "default"
+
+[node name="ContactZone" type="Area2D" parent="Monster4" unique_id=1055060169]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Monster4/ContactZone" unique_id=1990001495]
+position = Vector2(5, 0)
+shape = SubResource("RectangleShape2D_jd76d")
+
+[node name="Monster5" type="Area2D" parent="." unique_id=1415671437]
+position = Vector2(-2000, 500)
+script = ExtResource("64_7l6qw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Monster5" unique_id=1750641648]
+position = Vector2(11.25, 81)
+shape = SubResource("RectangleShape2D_qqh3o")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Monster5" unique_id=1363454570]
+texture_filter = 1
+scale = Vector2(4.75, 4.75)
+sprite_frames = SubResource("SpriteFrames_2ddio")
+autoplay = "default"
+
+[node name="ContactZone" type="Area2D" parent="Monster5" unique_id=1954296425]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Monster5/ContactZone" unique_id=350146387]
+position = Vector2(5, 0)
+shape = SubResource("RectangleShape2D_jd76d")
 
 [node name="RowboatBlue" type="Sprite2D" parent="." unique_id=248595298]
 position = Vector2(-3892, 1813.5)
@@ -13878,6 +13967,18 @@ position = Vector2(-4130, 244)
 scale = Vector2(0.09423822, 0.109700486)
 texture = ExtResource("92_impbe")
 
+[node name="Flamme" type="Area2D" parent="." unique_id=113336163]
+script = ExtResource("92_2l57s")
+
+[node name="Flamme" type="Sprite2D" parent="Flamme" unique_id=1997739488]
+position = Vector2(-1699.0001, 747.00006)
+scale = Vector2(0.08622453, 0.08622453)
+texture = ExtResource("53_rufim")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Flamme" unique_id=830760301]
+position = Vector2(-1697.5, 747)
+shape = SubResource("RectangleShape2D_uu46q")
+
 [connection signal="pressed" from="CanvasLayer/TextureButton_Menu" to="." method="_on_texture_button_menu_pressed"]
-[connection signal="pressed" from="CanvasLayer/TextureButton_inventory" to="." method="_on_texture_button_inventory_pressed"]
 [connection signal="pressed" from="CanvasLayer/TextureButton_inventory" to="." method="_on_texture_button_menu_pressed"]
+[connection signal="pressed" from="CanvasLayer/TextureButton_inventory" to="." method="_on_texture_button_inventory_pressed"]

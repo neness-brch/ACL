@@ -4,7 +4,7 @@ extends Area2D
 
 @export var monster_id: String = "summer_monster_1"
 
-@export_file("*.tscn") var battle_scene: String = "res://scenes/battle3.tscn"
+@export_file("*.tscn") var battle_scene: String = "res://scenes/battle.tscn"
 
 @onready var monster_sprite: AnimatedSprite2D = $AnimatedSprite2D
 
