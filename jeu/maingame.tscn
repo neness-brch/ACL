@@ -70,8 +70,10 @@
 [ext_resource type="Texture2D" uid="uid://b4gkkb11r5dqc" path="res://assets/DIalogueBubble (2).png" id="49_2x7ir"]
 [ext_resource type="Texture2D" uid="uid://cp8saohby7bqv" path="res://assets/NPCrestock.png" id="50_v663p"]
 [ext_resource type="Texture2D" uid="uid://cp71q3syqlltv" path="res://Basic Asset Pack/Basic Asset Pack/Basic Monster Animations/Bloodshot Eye/BloodshotEye.png" id="51_mdr15"]
+[ext_resource type="Script" uid="uid://bvrii6ossnbtp" path="res://canvas_layer.gd" id="52_8qb8e"]
 [ext_resource type="Script" uid="uid://yixm0u7ttw31" path="res://script/monster2_knight.gd" id="52_a1acs"]
 [ext_resource type="Texture2D" uid="uid://d1qyr72kf7nic" path="res://assets/KnightSPrite.png" id="52_np24b"]
+[ext_resource type="PackedScene" uid="uid://kb33umvuhktq" path="res://inventorybox.tscn" id="52_smv0l"]
 [ext_resource type="Texture2D" uid="uid://c8algejthapdn" path="res://assets/Monika.png" id="58_84fym"]
 [ext_resource type="Script" uid="uid://yx27ygp34krg" path="res://script/pnj1.gd" id="58_hnxqn"]
 [ext_resource type="Script" uid="uid://sj06lyrqxqxx" path="res://script/feuille.gd" id="64_24mxn"]
@@ -13198,6 +13200,18 @@ dad_portrait = ExtResource("15_n784x")
 daughter_portrait = ExtResource("16_b3c3w")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=203238975]
+script = ExtResource("52_8qb8e")
+
+[node name="inventory" parent="CanvasLayer" unique_id=959610212 instance=ExtResource("52_smv0l")]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -58.0
+offset_top = -43.0
+offset_right = 58.0
+offset_bottom = 43.0
 
 [node name="ProgressBar" type="ProgressBar" parent="CanvasLayer" unique_id=1208066851 node_paths=PackedStringArray("player")]
 visible = false
@@ -13376,6 +13390,7 @@ text = "Menu"
 horizontal_alignment = 1
 
 [node name="TextureButton_inventory" type="TextureButton" parent="CanvasLayer" unique_id=948392480]
+visible = false
 texture_filter = 1
 anchors_preset = 1
 anchor_left = 1.0
@@ -13391,6 +13406,7 @@ texture_hover = ExtResource("40_si4m4")
 stretch_mode = 0
 
 [node name="Label" type="Label" parent="CanvasLayer/TextureButton_inventory" unique_id=1088978995]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
