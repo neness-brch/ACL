@@ -13200,6 +13200,7 @@ dad_portrait = ExtResource("15_n784x")
 daughter_portrait = ExtResource("16_b3c3w")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=203238975]
+process_mode = 3
 script = ExtResource("52_8qb8e")
 
 [node name="inventory" parent="CanvasLayer" unique_id=959610212 instance=ExtResource("52_smv0l")]
@@ -13424,6 +13425,7 @@ theme_override_font_sizes/font_size = 15
 text = "Inventory"
 
 [node name="MusicNode" type="Node2D" parent="." unique_id=1040719193]
+process_mode = 3
 script = ExtResource("19_q45tq")
 
 [node name="SilenceTimer" type="Timer" parent="MusicNode" unique_id=333801430]
@@ -13711,6 +13713,8 @@ shape = SubResource("RectangleShape2D_1qvt6")
 [node name="DayNightCycle" type="CanvasModulate" parent="." unique_id=866346504]
 script = ExtResource("66_8umxq")
 
+[connection signal="closed" from="CanvasLayer/inventory" to="." method="_on_inventory_closed"]
+[connection signal="opened" from="CanvasLayer/inventory" to="." method="_on_inventory_opened"]
 [connection signal="pressed" from="CanvasLayer/TextureButton_Menu" to="." method="_on_texture_button_menu_pressed"]
 [connection signal="pressed" from="CanvasLayer/TextureButton_inventory" to="." method="_on_texture_button_inventory_pressed"]
 [connection signal="pressed" from="CanvasLayer/TextureButton_inventory" to="." method="_on_texture_button_menu_pressed"]

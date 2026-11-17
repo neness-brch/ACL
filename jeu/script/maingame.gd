@@ -2,7 +2,6 @@ extends Node2D
 
 @onready var player: Player = $Player
 
-
 func _ready():
 	if GameState.has_pending_spawn:
 		player.global_position = GameState.consume_spawn_position()
@@ -25,3 +24,11 @@ func _on_texture_button_inventory_pressed() -> void:
 	GameState.return_position = player.global_position
 	GameState.has_return_position = true
 	SceneTransition.change_scene("res://menu/inventory.tscn")
+
+
+func _on_inventory_closed() -> void:
+	get_tree().paused = false
+
+
+func _on_inventory_opened() -> void:
+	get_tree().paused = true
