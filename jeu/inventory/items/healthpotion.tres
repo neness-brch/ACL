@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="InventoryItem" format=3 uid="uid://cq47haddgxa2e"]
+
+[ext_resource type="Script" uid="uid://bk7prkfptr0l7" path="res://inventory/inventoryitem.gd" id="1_mt1kp"]
+[ext_resource type="Texture2D" uid="uid://dh3i2ao83ma3e" path="res://menu/import/godot-pixel-ui-free-7ea1d3962268a1e19f123fcc8103b686c3af2b8c/godot-pixel-ui-free-7ea1d3962268a1e19f123fcc8103b686c3af2b8c/addons/pixel_ui/icons/potion.png" id="2_2ug2i"]
+
+[resource]
+script = ExtResource("1_mt1kp")
+name = "HealthPotion"
+texture = ExtResource("2_2ug2i")
+metadata/_custom_type_script = "uid://bk7prkfptr0l7"

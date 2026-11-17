@@ -1,8 +1,9 @@
 [gd_scene format=3 uid="uid://kb33umvuhktq"]
 
-[ext_resource type="Script" uid="uid://bqn8av8tucy5l" path="res://inventorybox.gd" id="1_8sd4e"]
+[ext_resource type="Script" uid="uid://bqn8av8tucy5l" path="res://inventory/inventorybox.gd" id="1_8sd4e"]
 [ext_resource type="Texture2D" uid="uid://c5o8jks5khqai" path="res://menu/import/InventoryRect.png" id="1_dp0ui"]
-[ext_resource type="PackedScene" uid="uid://c36csc2b3etoh" path="res://slot.tscn" id="2_xr6xn"]
+[ext_resource type="PackedScene" uid="uid://c36csc2b3etoh" path="res://inventory/slot.tscn" id="2_xr6xn"]
+[ext_resource type="FontFile" uid="uid://b4ysgp2awsrtc" path="res://menu/import/godot-pixel-ui-free-7ea1d3962268a1e19f123fcc8103b686c3af2b8c/godot-pixel-ui-free-7ea1d3962268a1e19f123fcc8103b686c3af2b8c/addons/pixel_ui/font/pixel_ui_font.fnt" id="4_7bogy"]
 
 [node name="inventory" type="Control" unique_id=959610212]
 custom_minimum_size = Vector2(116, 86)
@@ -81,7 +82,14 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="Label" type="Label" parent="NinePatchRect" unique_id=323701308]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 91.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("4_7bogy")
+theme_override_font_sizes/font_size = 32
 text = "Inventory"
+horizontal_alignment = 1
+vertical_alignment = 1

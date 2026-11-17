@@ -5,6 +5,8 @@ signal cinematic_arrived
 
 const SPEED = 250.0
 
+@export var inventory: Inventory 
+
 @onready var animated_sprite = $AnimatedSprite2D
 @onready var original_sprite_scale: Vector2 = animated_sprite.scale
 @export var max_health = 100
