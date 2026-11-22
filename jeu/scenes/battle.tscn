@@ -32,6 +32,23 @@ animations = [{
 
 [node name="Battle" type="Node2D" unique_id=690537773]
 script = ExtResource("1_4k1nj")
+return_scene = null
+quest_id = null
+monster_names = null
+highlight_offsets = null
+monster_id = null
+monster_max_hp = null
+monster_damage_min = null
+monster_damage_max = null
+monster_start_health_ratio = null
+monster2_id = null
+monster2_max_hp = null
+monster2_damage_min = null
+monster2_damage_max = null
+monster2_start_health_ratio = null
+slot_spacing = null
+slot_text_width = null
+page_label_offset = null
 
 [node name="Background" type="Sprite2D" parent="." unique_id=1458131735]
 
@@ -232,16 +249,16 @@ anchors_preset = -1
 anchor_right = 0.035
 anchor_bottom = 0.062000003
 offset_left = 484.0
-offset_top = 384.0
+offset_top = 342.0
 offset_right = 1095.68
 offset_bottom = 411.824
 
 [node name="Text" type="RichTextLabel" parent="CanvasLayer/BattleDialogue" unique_id=2042350810]
 layout_mode = 0
-offset_left = 60.0
+offset_left = 14.0
 offset_top = 8.0
 offset_right = 649.0
-offset_bottom = 70.0
+offset_bottom = 105.0
 theme_override_fonts/normal_font = ExtResource("8_f4pi3")
 theme_override_font_sizes/normal_font_size = 33
 

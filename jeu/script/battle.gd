@@ -1,6 +1,5 @@
 extends Node2D
 
-
 enum BattleState {
 	TARGET_SELECT,
 	MAIN_MENU,
@@ -14,14 +13,6 @@ enum BattleState {
 }
 var state: BattleState = BattleState.TARGET_SELECT
 
-# -------------------------
-# DONNÉES : ATTAQUES ET OBJETS
-# -------------------------
-
-# Pour ajouter une attaque :
-#   1. l'ajouter ici,
-#   2. ajouter son cas dans use_attack(),
-#   3. la débloquer avec GameState.unlock_attack("id").
 const ATTACKS := {
 	"sharp_blade": {"name": "SHARP BLADE"},
 	"intimidate": {"name": "INTIMIDATE"},
@@ -35,10 +26,11 @@ const ITEMS := {
 
 const MONSTER_COUNT := 2
 
+const FALL_ZONE_SCENE := "res://maingame.tscn"
 
-@export_file("*.tscn") var return_scene: String = "res://zone_2.tscn"
+@export_file("*.tscn") var return_scene: String = ""
 
-@export var quest_id: String = ""
+@export var quest_id: String = "auto"
 
 @export var monster_names: Array[String] = ["Monster1", "Monster2"]
 
@@ -63,7 +55,7 @@ const MONSTER_COUNT := 2
 @export var slot_text_width := 460.0
 @export var page_label_offset := Vector2(380, 100)
 @export_group("")
- 
+
 var hero_max_hp := 100
 var hero_hp := 100
 
@@ -74,6 +66,8 @@ var m_damage_min: Array[int] = []
 var m_damage_max: Array[int] = []
 var m_attack_mult: Array[float] = [1.0, 1.0]
 
+var target := 0
+var monster_count := 0
 
 const SLOT_COUNT := 4
 const COLUMNS := 2
@@ -92,15 +86,23 @@ var page_label: Label
 
 var fight_arrow_offset := Vector2.ZERO
 var object_arrow_offset := Vector2.ZERO
-var target: int = 0
 
 @onready var hero = $Player
 
-@onready var m_sprites: Array = [$Opponent, $Opponent2]
-@onready var m_bars: Array = [$OpponentUI/HealthBar, $Opponent2UI/HealthBar]
-@onready var m_arrows: Array = [$IntimidateArrow, $IntimidateArrow2]
+@onready var m_sprites: Array = [
+	get_node_or_null("Opponent"),
+	get_node_or_null("Opponent2")
+]
+@onready var m_bars: Array = [
+	get_node_or_null("OpponentUI/HealthBar"),
+	get_node_or_null("Opponent2UI/HealthBar")
+]
+@onready var m_arrows: Array = [
+	get_node_or_null("IntimidateArrow"),
+	get_node_or_null("IntimidateArrow2")
+]
 
-@onready var target_highlight: ColorRect = $FondBlanc
+@onready var target_highlight: ColorRect = get_node_or_null("FondBlanc")
 
 @onready var hero_health_bar: ProgressBar = $PlayerUI/HealthBar
 
@@ -121,6 +123,7 @@ func _ready():
 	hero_hp = GameState.player_hp
 
 	setup_monsters()
+	resolve_defaults()
 
 	var hero_fill = hero_health_bar.get_theme_stylebox("fill").duplicate()
 	hero_health_bar.add_theme_stylebox_override("fill", hero_fill)
@@ -129,7 +132,7 @@ func _ready():
 	update_health_bar_color(hero_health_bar)
 
 	battle_dialogue.visible = false
-	target_highlight.visible = false
+	hide_highlight()
 
 	fight_slots = build_slots(fight_menu, fight_arrow)
 	object_slots = build_slots(objects_menu, objects_arrow)
@@ -153,7 +156,17 @@ func setup_monsters() -> void:
 		maxi(int(round(monster2_max_hp * monster2_start_health_ratio)), 1)
 	]
 
+	monster_count = 0
+
 	for i in MONSTER_COUNT:
+
+		if m_sprites[i] == null or m_bars[i] == null:
+			m_hp[i] = 0
+			m_ids[i] = ""
+			continue
+
+		monster_count += 1
+
 		var bar: ProgressBar = m_bars[i]
 		var fill = bar.get_theme_stylebox("fill").duplicate()
 		bar.add_theme_stylebox_override("fill", fill)
@@ -162,7 +175,22 @@ func setup_monsters() -> void:
 		update_health_bar_color(bar)
 
 		var arrow: Label = m_arrows[i]
-		arrow.visible = false
+
+		if arrow != null:
+			arrow.visible = false
+
+	if monster_count == 0:
+		push_error("Aucun monstre trouvé : la scène doit contenir « Opponent » et « OpponentUI/HealthBar ».")
+
+
+func resolve_defaults() -> void:
+	var came_from := GameState.consume_battle_return_scene(FALL_ZONE_SCENE)
+
+	if return_scene == "":
+		return_scene = came_from
+
+	if quest_id == "auto":
+		quest_id = "fall_quest" if return_scene == FALL_ZONE_SCENE else ""
 
 
 func _process(_delta):
@@ -202,17 +230,21 @@ func monster_position(index: int) -> Vector2:
 	return m_sprites[index].get_global_transform().origin
 
 
-#func update_highlight() -> void:
-	#target_highlight.global_position = monster_position(target) + highlight_offsets[target]
-	#target_highlight.visible = true
-	
 func update_highlight() -> void:
+	if target_highlight == null or monster_count < 2:
+		return
+
 	target_highlight.global_position = (
 		monster_position(target)
-		- target_highlight.size / 2
+- target_highlight.size / 2
 		+ highlight_offsets[target]
 	)
 	target_highlight.visible = true
+
+
+func hide_highlight() -> void:
+	if target_highlight != null:
+		target_highlight.visible = false
 
 
 func select_target_side(go_right: bool) -> void:
@@ -234,7 +266,6 @@ func select_target_side(go_right: bool) -> void:
 		update_highlight()
 
 
-
 func show_target_select() -> void:
 	state = BattleState.TARGET_SELECT
 
@@ -252,7 +283,6 @@ func show_target_select() -> void:
 
 	update_highlight()
 
-	# Un seul monstre restant : il n'y a plus de choix à faire
 	if alive.size() == 1:
 		show_main_menu()
 
@@ -383,7 +413,6 @@ func show_main_menu():
 	update_main_arrow()
 
 
-
 func show_fight_menu():
 	state = BattleState.FIGHT_MENU
 
@@ -495,7 +524,6 @@ func refresh_objects_menu() -> void:
 				GameState.get_item_count(item_id)
 			]
 
-	# Aucun objet : message à la place de la liste, pas de flèche
 	if all_items.is_empty():
 		object_slots[0].visible = true
 		object_slots[0].text = "No items"
@@ -584,7 +612,6 @@ func use_item(item_id: String) -> void:
 	end_hero_turn()
 
 
-# Affiche brièvement un message, puis rend la main à l'état précédent
 func show_message(message: String, duration := 1.2) -> void:
 	var previous_state := state
 
@@ -602,7 +629,8 @@ func hide_menus():
 	battle_menu.visible = false
 	fight_menu.visible = false
 	objects_menu.visible = false
-	target_highlight.visible = false
+	hide_highlight()
+
 
 func sharp_blade():
 
@@ -659,7 +687,6 @@ func special_attack():
 	end_hero_turn()
 
 
-# Retire des PV au monstre, joue l'animation, et le fait disparaître s'il est vaincu
 func damage_monster(index: int, amount: int) -> void:
 	m_hp[index] = maxi(m_hp[index] - amount, 0)
 
@@ -682,13 +709,12 @@ func kill_monster(index: int) -> void:
 
 	sprite.visible = false
 
-	# Masque l'interface du monstre vaincu (barre de vie et éventuel nom)
 	var ui = m_bars[index].get_parent()
 	ui.visible = false
 
 
 func announce_defeat(index: int) -> void:
-	if m_hp[index] <= 0:
+	if m_hp[index] <= 0 and not all_monsters_dead():
 		await show_message("%s was defeated!" % monster_names[index])
 
 
@@ -706,9 +732,11 @@ func flash_monster(index: int) -> void:
 		await get_tree().create_timer(0.10).timeout
 
 
-# Flèche d'intimidation au-dessus du monstre ciblé (une flèche par monstre)
 func show_intimidate_animation(index: int) -> void:
 	var arrow: Label = m_arrows[index]
+
+	if arrow == null:
+		return
 
 	arrow.text = "↓"
 	arrow.visible = true
@@ -743,10 +771,6 @@ func animate_health_bar(
 	await tween.finished
 
 
-# =========================
-# FIN DU TOUR DE L'HÉROÏNE, TOUR DES MONSTRES
-# =========================
-
 func end_hero_turn() -> void:
 
 	if all_monsters_dead():
@@ -758,7 +782,6 @@ func end_hero_turn() -> void:
 	await enemy_phase()
 
 
-# Chaque monstre encore en vie attaque l'héroïne : monstre 1 puis monstre 2
 func enemy_phase() -> void:
 
 	state = BattleState.ENEMY_TURN
@@ -816,10 +839,6 @@ func flash_hero():
 		await get_tree().create_timer(0.10).timeout
 
 
-# =========================
-# FIN DE COMBAT
-# =========================
-
 func victory():
 	state = BattleState.VICTORY
 	hide_menus()
@@ -849,10 +868,6 @@ func defeat():
 	battle_dialogue.visible = true
 	battle_dialogue_text.text = "game over..."
 
-
-# =========================
-# BARRES DE VIE
-# =========================
 
 func update_health_bar_color(bar: ProgressBar):
 	var ratio := bar.value / bar.max_value

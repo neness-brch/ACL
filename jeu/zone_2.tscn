@@ -20,8 +20,6 @@
 [ext_resource type="Script" uid="uid://bkavghbitpwd6" path="res://script/pnj3.gd" id="20_impbe"]
 [ext_resource type="Texture2D" uid="uid://dln0stb2h4ouj" path="res://assets/pnj3portrait.tres" id="21_d7ddb"]
 [ext_resource type="Texture2D" uid="uid://cp8saohby7bqv" path="res://assets/NPCrestock.png" id="22_3npss"]
-[ext_resource type="Script" uid="uid://cydp7nj261hoj" path="res://script/pnj4.gd" id="23_ltngs"]
-[ext_resource type="Texture2D" uid="uid://drqe2y2f3ts1q" path="res://assets/pnj4.tres" id="24_o6ew4"]
 [ext_resource type="Script" uid="uid://yx27ygp34krg" path="res://script/pnj1.gd" id="25_e8ahi"]
 [ext_resource type="Texture2D" uid="uid://2q8nu6uqttxv" path="res://assets/pnj1.tres" id="26_3prfe"]
 [ext_resource type="Script" uid="uid://b1ttf7ovneh4d" path="res://script/jamseller.gd" id="29_e011f"]
@@ -12857,7 +12855,7 @@ animations = [{
 size = Vector2(61, 73)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uu46q"]
-size = Vector2(81, 100)
+size = Vector2(43.5, 52)
 
 [node name="Node2D" type="Node2D" unique_id=497850945]
 script = ExtResource("1_h7xf2")
@@ -12994,51 +12992,6 @@ theme = SubResource("Theme_b3c3w")
 metadata/_edit_use_anchors_ = true
 
 [node name="PNJ3Label" type="Label" parent="VillagePNJ3/InteractionPrompt" unique_id=1388555478]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 2.8689785
-anchor_top = -77.66
-anchor_right = 2.8689785
-anchor_bottom = -77.66
-offset_left = -665.472
-offset_top = 1926.5
-offset_right = -442.472
-offset_bottom = 1981.5
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-text = "E - Interact"
-label_settings = SubResource("LabelSettings_5uxs7")
-horizontal_alignment = 1
-vertical_alignment = 1
-metadata/_edit_use_anchors_ = true
-
-[node name="VillagePNJ4" type="Area2D" parent="." unique_id=1694007100]
-visible = false
-position = Vector2(0, -130)
-script = ExtResource("23_ltngs")
-pnj_4_portrait = ExtResource("24_o6ew4")
-night_position = Vector2(-2750, 1480)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="VillagePNJ4" unique_id=1325695848]
-position = Vector2(-1101, -46.5)
-shape = SubResource("RectangleShape2D_gec47")
-
-[node name="Sprite2D" type="Sprite2D" parent="VillagePNJ4" unique_id=1308822031]
-texture_filter = 1
-position = Vector2(-1103, -46)
-scale = Vector2(1.3125, 1.3125)
-texture = ExtResource("22_3npss")
-region_enabled = true
-region_rect = Rect2(388, 11, 25, 34)
-
-[node name="InteractionPrompt" type="Panel" parent="VillagePNJ4" unique_id=1934890157]
-offset_left = -1222.0
-offset_top = -105.0
-offset_right = -989.0
-offset_bottom = -80.0
-theme = SubResource("Theme_b3c3w")
-metadata/_edit_use_anchors_ = true
-
-[node name="PNJ4Label" type="Label" parent="VillagePNJ4/InteractionPrompt" unique_id=323355778]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 2.8689785
@@ -13672,10 +13625,6 @@ shape = SubResource("RectangleShape2D_ej7hq")
 position = Vector2(-2424, -181)
 shape = SubResource("RectangleShape2D_ej7hq")
 
-[node name="PNJ4Collision" type="CollisionShape2D" parent="FallZoneCollision" unique_id=1998937641]
-position = Vector2(-1104, -179)
-shape = SubResource("RectangleShape2D_ej7hq")
-
 [node name="FishermanCollision" type="CollisionShape2D" parent="FallZoneCollision" unique_id=1947713879]
 position = Vector2(-2306.75, 164)
 shape = SubResource("RectangleShape2D_ej7hq")
@@ -13719,13 +13668,13 @@ scale = Vector2(1.7187595, 1.875)
 texture = ExtResource("83_wb6ex")
 
 [node name="CottageWhiteTerracottaRoof" type="Sprite2D" parent="." unique_id=78896695]
-position = Vector2(-2532, 901.82715)
-scale = Vector2(5.1600027, 5.14378)
+position = Vector2(-2474, 976.9901)
+scale = Vector2(2.8400018, 2.8310728)
 texture = ExtResource("66_ikl71")
 
 [node name="HouseWhiteBlueRoof" type="Sprite2D" parent="." unique_id=345437088]
-position = Vector2(-2268.9998, 901.00006)
-scale = Vector2(4.1151514, 5.223077)
+position = Vector2(-2330.4998, 977.87506)
+scale = Vector2(2.2515159, 2.8576934)
 texture = ExtResource("67_gh0ik")
 
 [node name="Monster1" type="Area2D" parent="." unique_id=2017749338]
@@ -13971,14 +13920,14 @@ texture = ExtResource("92_impbe")
 script = ExtResource("92_2l57s")
 
 [node name="Flamme" type="Sprite2D" parent="Flamme" unique_id=1997739488]
-position = Vector2(-1699.0001, 747.00006)
-scale = Vector2(0.08622453, 0.08622453)
+position = Vector2(-1718.125, 766.125)
+scale = Vector2(0.047194082, 0.047194082)
 texture = ExtResource("53_rufim")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Flamme" unique_id=830760301]
-position = Vector2(-1697.5, 747)
+position = Vector2(-1719.75, 766)
 shape = SubResource("RectangleShape2D_uu46q")
 
 [connection signal="pressed" from="CanvasLayer/TextureButton_Menu" to="." method="_on_texture_button_menu_pressed"]
-[connection signal="pressed" from="CanvasLayer/TextureButton_inventory" to="." method="_on_texture_button_menu_pressed"]
 [connection signal="pressed" from="CanvasLayer/TextureButton_inventory" to="." method="_on_texture_button_inventory_pressed"]
+[connection signal="pressed" from="CanvasLayer/TextureButton_inventory" to="." method="_on_texture_button_menu_pressed"]

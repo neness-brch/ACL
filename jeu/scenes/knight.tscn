@@ -80,6 +80,7 @@ vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="DialogueBubble" type="Area2D" parent="." unique_id=1130826103]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DialogueBubble" unique_id=1324236848]
 position = Vector2(-1181.25, 280.75)

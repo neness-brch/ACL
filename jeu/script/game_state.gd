@@ -221,3 +221,11 @@ func unlock_attack(attack_id: String) -> void:
 		
 func open_summer_gate() -> void:
 	summer_gate_open = true
+
+var pending_battle_return_scene: String = ""
+
+
+func consume_battle_return_scene(default_scene: String) -> String:
+	var result := pending_battle_return_scene if pending_battle_return_scene != "" else default_scene
+	pending_battle_return_scene = ""
+	return result
