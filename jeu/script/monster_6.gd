@@ -2,7 +2,6 @@ extends Area2D
 
 @export var monster_id: String = "monster_2"
 
-@onready var knight: Sprite2D = $Sprite2D
 @onready var monster: AnimatedSprite2D = $AnimatedSprite2D
 @onready var player: Player = $"../Player"
 @onready var interaction_prompt: Control = $InteractionPrompt
@@ -14,22 +13,16 @@ var battle_started: bool = false
 func _ready() -> void:
 	interaction_prompt.hide()
 
-	# Connexion des signaux
 	body_entered.connect(_on_body_entered)
 	body_exited.connect(_on_body_exited)
 
-	# Restaurer l'état du chevalier et du monstre
 	if GameState.is_monster_defeated(monster_id):
 		monster.hide()
 		monster.process_mode = Node.PROCESS_MODE_DISABLED
 
-		# Apparence du chevalier après le combat
-		knight.region_enabled = true
-		knight.region_rect = Rect2(
-			79.29258, 2.0749948, 234.95468, 327.84918
-		)
+
 	else:
-		# Collision du monstre uniquement s'il est encore vivant
+		# Le monstre bloque le passage tant qu'il est vivant.
 		create_obstacle(
 			"MonsterObstacle",
 			monster.position,
@@ -51,8 +44,6 @@ func _on_body_exited(body: Node2D) -> void:
 
 
 func _process(_delta: float) -> void:
-	update_interaction_prompt()
-
 	if player_nearby \
 	and not battle_started \
 	and Input.is_action_just_pressed("interact") \
@@ -71,16 +62,20 @@ func update_interaction_prompt() -> void:
 
 
 func start_battle() -> void:
+	if battle_started:
+		return
+
 	battle_started = true
 	interaction_prompt.hide()
 
-	# Sauvegarde de la position pour y revenir après le combat
+	# Sauvegarder la position du joueur.
 	GameState.save_return_position(player.global_position)
-	print("POSITION SAUVEGARDEE : ", player.global_position)
+
+	# Débloquer l'attaque spéciale.
 	if not GameState.unlocked_attacks.has("special_attack"):
 		GameState.unlocked_attacks.append("special_attack")
 
-	# Lancement du combat
+	# Lancer le combat.
 	SceneTransition.change_scene("res://scenes/battle3.tscn")
 
 
@@ -103,6 +98,7 @@ func create_obstacle(
 	body.add_child(collision)
 	add_child(body)
 
-func _on_quest_active_changed(quest_id: String, _active: bool):
+
+func _on_quest_active_changed(quest_id: String, _active: bool) -> void:
 	if quest_id == "summer_quest":
 		update_interaction_prompt()

@@ -3,6 +3,7 @@ extends Area2D
 var player_nearby := false
 var collected := false
 @onready var interaction_prompt = $InteractionPrompt
+@onready var summer_gate_open
 
 func _ready() -> void:
 	body_entered.connect(_on_body_entered)
@@ -47,5 +48,8 @@ func collect_leaf() -> void:
 		return
 
 	collected = true
-	GameState.add_quest_progress("fall_quest", 3)
+	GameState.knight_house_dialogue_seen = true
+	GameState.has_slept_after_knight_dialogue = true
+	#GameState.add_quest_progress("fall_quest", 3)
+	summer_gate_open = true
 	queue_free()

@@ -19,7 +19,7 @@
 [ext_resource type="Script" uid="uid://bkavghbitpwd6" path="res://script/pnj3.gd" id="20_impbe"]
 [ext_resource type="Texture2D" uid="uid://dln0stb2h4ouj" path="res://assets/pnj3portrait.tres" id="21_d7ddb"]
 [ext_resource type="Texture2D" uid="uid://cp8saohby7bqv" path="res://assets/NPCrestock.png" id="22_3npss"]
-[ext_resource type="Script" uid="uid://yx27ygp34krg" path="res://script/pnj2.gd" id="25_e8ahi"]
+[ext_resource type="Script" uid="uid://yx27ygp34krg" path="res://script/pnj1.gd" id="25_e8ahi"]
 [ext_resource type="Script" uid="uid://b1ttf7ovneh4d" path="res://script/jamseller.gd" id="29_e011f"]
 [ext_resource type="Texture2D" uid="uid://ceyj7m6oeg1w0" path="res://assets/jamsellerportrait.tres" id="30_ogjpv"]
 [ext_resource type="Texture2D" uid="uid://dn0edxra5rpe1" path="res://assets/CastleGate1.png" id="32_0837e"]
@@ -13378,7 +13378,6 @@ metadata/_edit_use_anchors_ = true
 
 [node name="VillagePNJ2" type="Area2D" parent="." unique_id=478754106]
 script = ExtResource("25_e8ahi")
-pnj_2_portrait = ExtResource("19_hdr7y")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="VillagePNJ2" unique_id=698835335]
 position = Vector2(-2094, -52)
@@ -14427,5 +14426,5 @@ vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
 [connection signal="pressed" from="CanvasLayer/TextureButton_Menu" to="." method="_on_texture_button_menu_pressed"]
-[connection signal="pressed" from="CanvasLayer/TextureButton_inventory" to="." method="_on_texture_button_menu_pressed"]
 [connection signal="pressed" from="CanvasLayer/TextureButton_inventory" to="." method="_on_texture_button_inventory_pressed"]
+[connection signal="pressed" from="CanvasLayer/TextureButton_inventory" to="." method="_on_texture_button_menu_pressed"]

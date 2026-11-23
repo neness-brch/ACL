@@ -4,6 +4,9 @@ extends Area2D
 var player_nearby := false
 var current_dialogue_id: String = ""
 
+const FALL_ZONE := "res://maingame.tscn"
+const SUMMER_ZONE := "res://zone_2.tscn"
+
 @onready var interaction_prompt = $InteractionPrompt
 @onready var dialogue_box: DialogueBox = $"../CanvasLayer/BoiteDialogues"
 
@@ -68,21 +71,26 @@ func _process(_delta):
 func start_dialogue():
 	var selected_dialogue: Array[Dictionary]
 
-	# CASE 3 : lendemain matin après avoir dormi
-	if GameState.has_slept_after_knight_dialogue:
+	# CASE 1 : pas de Special Pass
+	if not GameState.knight_house_dialogue_seen:
+		current_dialogue_id = "normal"
+		selected_dialogue = dialogue
+
+	# CASE 2 : passage déjà débloqué
+	elif GameState.summer_gate_open:
+		current_dialogue_id = "short"
+		selected_dialogue = get_short_dialogue()
+
+	# CASE 3 : premier passage, après avoir dormi et au matin
+	elif GameState.has_slept_after_knight_dialogue \
+	and GameState.time_progress == 0:
 		current_dialogue_id = "morning"
 		selected_dialogue = morning_dialogue
 
-	# CASE 2 : nuit + Special Pass obtenu
-	elif GameState.knight_house_dialogue_seen \
-	and GameState.time_progress == 3:
+	# CASE 4 : Special Pass obtenu, mais premier passage pas encore autorisé
+	else:
 		current_dialogue_id = "night_pass"
 		selected_dialogue = night_pass_dialogue
-
-	# CASE 1 : journée ou nuit, sans Special Pass
-	else:
-		current_dialogue_id = "normal"
-		selected_dialogue = dialogue
 
 	interaction_prompt.visible = false
 
@@ -90,14 +98,40 @@ func start_dialogue():
 	dialogue_box.start_dialogue(prepared_dialogue)
 
 
+func get_short_dialogue() -> Array[Dictionary]:
+	var destination := get_destination_scene()
+	var destination_name := "summer" if destination == SUMMER_ZONE else "fall"
+
+	return [
+		{"text": "we are the proud guards of the Summer/Fall Zone Gate !", "speaker": "guard_1"},
+		{"text": "have a good time in the " + destination_name + " zone !", "speaker": "guard_2"},
+	]
+
+
+func get_destination_scene() -> String:
+	var current_scene := get_tree().current_scene.scene_file_path
+
+	if current_scene == SUMMER_ZONE:
+		return FALL_ZONE
+
+	return SUMMER_ZONE
+
+
 func _on_dialogue_finished():
+	var should_transition := false
+
 	if current_dialogue_id == "morning":
-		GameState.open_summer_gate()
-		
+		GameState.summer_gate_open = true
+		should_transition = true
+
+	elif current_dialogue_id == "short":
+		should_transition = true
 
 	current_dialogue_id = ""
 
-	if player_nearby:
+	if should_transition:
+		SceneTransition.change_scene(get_destination_scene())
+	elif player_nearby:
 		interaction_prompt.visible = true
 
 

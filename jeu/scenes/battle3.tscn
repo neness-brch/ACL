@@ -75,7 +75,7 @@ region = Rect2(960, 0, 64, 64)
 [sub_resource type="SpriteFrames" id="SpriteFrames_qfbbk"]
 animations = [{
 "frames": [{
-"duration": 1.0,
+"duration": 3.0,
 "texture": SubResource("AtlasTexture_p3vb0")
 }, {
 "duration": 1.0,
@@ -214,6 +214,12 @@ monster_damage_max = 40
 
 [node name="Background" type="Sprite2D" parent="." unique_id=1458131735]
 
+[node name="FondBlanc" type="ColorRect" parent="." unique_id=938769671]
+offset_left = 580.0
+offset_top = -126.0
+offset_right = 777.0
+offset_bottom = 202.0
+
 [node name="Player" type="Sprite2D" parent="." unique_id=293630027]
 texture_filter = 1
 position = Vector2(99, 322)
@@ -233,7 +239,7 @@ autoplay = "Monstre"
 
 [node name="Opponent2" type="AnimatedSprite2D" parent="." unique_id=1240338786]
 texture_filter = 1
-position = Vector2(680, 48)
+position = Vector2(680, 22)
 scale = Vector2(8, 8)
 sprite_frames = SubResource("SpriteFrames_uu46q")
 animation = &"Monstre"
@@ -343,6 +349,7 @@ theme_override_fonts/font = ExtResource("4_p3vb0")
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=932616926]
 
 [node name="BattleMenu" type="Panel" parent="CanvasLayer" unique_id=1089086360]
+visible = false
 anchors_preset = -1
 anchor_right = 0.017
 anchor_bottom = 0.062000003
@@ -419,15 +426,16 @@ anchor_left = 1.669
 anchor_top = 12.533001
 anchor_right = 1.669
 anchor_bottom = 12.533001
-offset_left = -1809.942
-offset_top = -2265.0723
-offset_right = -1756.942
-offset_bottom = -2226.0723
+offset_left = -1798.942
+offset_top = -2330.0723
+offset_right = -1745.942
+offset_bottom = -2291.0723
 theme_override_fonts/font = ExtResource("4_p3vb0")
 theme_override_font_sizes/font_size = 25
 text = "->"
 
 [node name="ObjectsMenu" type="Panel" parent="CanvasLayer" unique_id=1258421916]
+visible = false
 offset_right = 40.0
 offset_bottom = 40.0
 
@@ -446,10 +454,10 @@ text = "HEALTH POTION"
 
 [node name="Arrow" type="Label" parent="CanvasLayer/ObjectsMenu" unique_id=438166804]
 layout_mode = 0
-offset_left = 78.0
-offset_top = 498.0
-offset_right = 118.0
-offset_bottom = 532.0
+offset_left = 90.0
+offset_top = 496.0
+offset_right = 130.0
+offset_bottom = 530.0
 theme_override_fonts/font = ExtResource("4_p3vb0")
 theme_override_font_sizes/font_size = 25
 text = "->"
