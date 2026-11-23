@@ -1,0 +1,231 @@
+[gd_scene format=3 uid="uid://di0qjrt075foo"]
+
+[ext_resource type="Script" uid="uid://bvguxdtymjfhq" path="res://script/battle.gd" id="1_mc5wd"]
+[ext_resource type="Texture2D" uid="uid://dtmg0uacmistu" path="res://assets/sprite sheets/from idle.png" id="2_mmsxc"]
+[ext_resource type="Texture2D" uid="uid://glk8sfqjku0c" path="res://assets/sprite sheets/monster1-frame1.tres" id="3_wnlmw"]
+[ext_resource type="Texture2D" uid="uid://cph5wiiwqua12" path="res://assets/sprite sheets/monster1-frame2.tres" id="4_8il7w"]
+[ext_resource type="Texture2D" uid="uid://bid8sa8vbud24" path="res://assets/sprite sheets/monster1-frame3.tres" id="5_gridl"]
+[ext_resource type="Texture2D" uid="uid://r4a8bvvvyyeq" path="res://assets/sprite sheets/monster1-frame4.tres" id="6_becwn"]
+[ext_resource type="FontFile" uid="uid://x6poahq41v4" path="res://assets/PKMN RBYGSC.ttf" id="7_f0fyu"]
+[ext_resource type="AudioStream" uid="uid://48qu8ix11mxy" path="res://music/180db.ogg" id="9_kdb8a"]
+[ext_resource type="FontFile" uid="uid://c4bfe8sqo0dwg" path="res://assets/EBGaramond-VariableFont_wght.ttf" id="12_xaqkp"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_m4axr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_wnlmw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_8il7w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_gridl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_becwn")
+}],
+"loop": 1,
+"name": &"Monster1",
+"speed": 5.0
+}]
+
+[node name="Battle3" type="Node2D" unique_id=1588731006]
+script = ExtResource("1_mc5wd")
+
+[node name="Background" type="Sprite2D" parent="." unique_id=250672172]
+
+[node name="Player" type="Sprite2D" parent="." unique_id=1911529548]
+texture_filter = 1
+position = Vector2(261, 307.9583)
+scale = Vector2(4, 4.000001)
+texture = ExtResource("2_mmsxc")
+flip_h = true
+region_enabled = true
+region_rect = Rect2(0, 0, 48.95709, 58)
+
+[node name="Opponent" type="AnimatedSprite2D" parent="." unique_id=2037676429]
+texture_filter = 1
+position = Vector2(813, 126)
+scale = Vector2(15.863633, 15.863633)
+sprite_frames = SubResource("SpriteFrames_m4axr")
+animation = &"Monster1"
+autoplay = "Monster1"
+
+[node name="PlayerUI" type="Control" parent="." unique_id=638320920]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 639.0
+offset_top = 216.0
+offset_right = 1012.0
+offset_bottom = 289.0
+
+[node name="Name" type="Label" parent="PlayerUI" unique_id=420053838]
+layout_mode = 0
+offset_left = 84.0
+offset_top = 30.0
+offset_right = 268.0
+offset_bottom = 55.0
+theme_override_fonts/font = ExtResource("7_f0fyu")
+theme_override_font_sizes/font_size = 22
+text = "Monster"
+horizontal_alignment = 1
+
+[node name="HealthBar" type="ProgressBar" parent="PlayerUI" unique_id=1446112928]
+layout_mode = 0
+offset_left = -457.0
+offset_top = -101.0
+offset_right = -262.0
+offset_bottom = -74.0
+theme_override_fonts/font = ExtResource("7_f0fyu")
+
+[node name="OpponentUI" type="Control" parent="." unique_id=1769464493]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 170.0
+offset_top = 105.0
+offset_right = 402.0
+offset_bottom = 141.0
+
+[node name="Name" type="Label" parent="OpponentUI" unique_id=1629304527]
+layout_mode = 0
+offset_left = 41.0
+offset_top = 55.0
+offset_right = 170.0
+offset_bottom = 78.0
+theme_override_fonts/font = ExtResource("7_f0fyu")
+theme_override_font_sizes/font_size = 21
+text = "Heroin"
+horizontal_alignment = 1
+
+[node name="HealthBar" type="ProgressBar" parent="OpponentUI" unique_id=686184069]
+layout_mode = 0
+offset_left = 536.0
+offset_top = 180.0
+offset_right = 756.0
+offset_bottom = 207.0
+theme_override_fonts/font = ExtResource("7_f0fyu")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=505796265]
+
+[node name="BattleMenu" type="Panel" parent="CanvasLayer" unique_id=387518450]
+anchors_preset = -1
+anchor_right = 0.017
+anchor_bottom = 0.062000003
+offset_left = 13.0
+offset_top = 459.0
+offset_right = 1117.416
+offset_bottom = 595.824
+
+[node name="FightLabel" type="Label" parent="CanvasLayer/BattleMenu" unique_id=3184551]
+layout_mode = 0
+offset_left = 124.0
+offset_top = 39.0
+offset_right = 301.0
+offset_bottom = 73.0
+theme_override_fonts/font = ExtResource("7_f0fyu")
+theme_override_font_sizes/font_size = 30
+text = "FIGHT"
+
+[node name="ObjectsLabel" type="Label" parent="CanvasLayer/BattleMenu" unique_id=528219449]
+layout_mode = 0
+offset_left = 645.0
+offset_top = 45.0
+offset_right = 822.0
+offset_bottom = 74.0
+theme_override_fonts/font = ExtResource("7_f0fyu")
+theme_override_font_sizes/font_size = 25
+text = "OBJECTS"
+
+[node name="Arrow" type="Label" parent="CanvasLayer/BattleMenu" unique_id=1293550141]
+layout_mode = 0
+offset_left = 75.0
+offset_top = 35.0
+offset_right = 118.0
+offset_bottom = 71.0
+theme_override_fonts/font = ExtResource("7_f0fyu")
+theme_override_font_sizes/font_size = 26
+text = "->"
+
+[node name="FightMenu" type="Panel" parent="CanvasLayer" unique_id=1194443312]
+visible = false
+anchors_preset = -1
+anchor_bottom = 0.062000003
+offset_left = 22.0
+offset_top = 457.0
+offset_right = 1140.0
+offset_bottom = 600.824
+
+[node name="FightLabel" type="Label" parent="CanvasLayer/FightMenu" unique_id=875590810]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.26700002
+anchor_bottom = 0.61300004
+offset_left = 117.0
+offset_top = 44.0
+offset_right = 77.49399
+offset_bottom = -39.792007
+theme_override_fonts/font = ExtResource("7_f0fyu")
+theme_override_font_sizes/font_size = 25
+text = "SHARP BLADE"
+
+[node name="Arrow" type="Label" parent="CanvasLayer/FightMenu" unique_id=545764735]
+layout_mode = 0
+offset_left = 75.0
+offset_top = 35.0
+offset_right = 118.0
+offset_bottom = 71.0
+theme_override_fonts/font = ExtResource("7_f0fyu")
+theme_override_font_sizes/font_size = 26
+text = "->"
+
+[node name="ObjectsMenu" type="Panel" parent="CanvasLayer" unique_id=1724502491]
+visible = false
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ObjectLabel" type="Label" parent="CanvasLayer/ObjectsMenu" unique_id=2138465896]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.5
+anchor_bottom = 0.57500005
+offset_left = 136.0
+offset_top = 502.0
+offset_right = 489.0
+offset_bottom = 508.0
+theme_override_fonts/font = ExtResource("7_f0fyu")
+theme_override_font_sizes/font_size = 25
+text = "HEALTH POTION"
+
+[node name="Arrow" type="Label" parent="CanvasLayer/ObjectsMenu" unique_id=1709013544]
+layout_mode = 0
+offset_left = 89.0
+offset_top = 494.0
+offset_right = 132.0
+offset_bottom = 530.0
+theme_override_fonts/font = ExtResource("7_f0fyu")
+theme_override_font_sizes/font_size = 26
+text = "->"
+
+[node name="BattleDialogue" type="Panel" parent="CanvasLayer" unique_id=2097654194]
+anchors_preset = -1
+anchor_right = 0.035
+anchor_bottom = 0.062000003
+offset_left = 484.0
+offset_top = 384.0
+offset_right = 1095.68
+offset_bottom = 411.824
+
+[node name="Text" type="RichTextLabel" parent="CanvasLayer/BattleDialogue" unique_id=11058864]
+layout_mode = 0
+offset_left = 60.0
+offset_top = 8.0
+offset_right = 649.0
+offset_bottom = 70.0
+theme_override_fonts/normal_font = ExtResource("12_xaqkp")
+theme_override_font_sizes/normal_font_size = 33
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1612361627]
+stream = ExtResource("9_kdb8a")
+autoplay = true
+parameters/looping = true
