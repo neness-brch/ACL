@@ -7,4 +7,5 @@
 script = ExtResource("1_mt1kp")
 name = "HealthPotion"
 texture = ExtResource("2_2ug2i")
+icon_scale = Vector2(2, 2)
 metadata/_custom_type_script = "uid://bk7prkfptr0l7"

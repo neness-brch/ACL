@@ -123,9 +123,17 @@ var inventory: Dictionary = {
 	"cherry_jam" : 0
 }
 
+var inventory_order: Array[String] = []
+
 
 func add_item(item_id: String, amount: int = 1):
-	inventory[item_id] = inventory.get(item_id, 0) + amount
+	var current_amount: int = inventory.get(item_id, 0)
+
+	if current_amount == 0 and amount > 0:
+		if not inventory_order.has(item_id):
+			inventory_order.append(item_id)
+
+	inventory[item_id] = current_amount + amount
 
 
 func remove_item(item_id: String, amount: int = 1) -> bool:
@@ -135,8 +143,11 @@ func remove_item(item_id: String, amount: int = 1) -> bool:
 		return false
 
 	inventory[item_id] = current_amount - amount
-	return true
 
+	if inventory[item_id] == 0:
+		inventory_order.erase(item_id)
+
+	return true
 
 func get_item_count(item_id: String) -> int:
 	return inventory.get(item_id, 0)

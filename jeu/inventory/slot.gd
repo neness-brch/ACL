@@ -3,14 +3,12 @@ extends Panel
 @onready var backgroundSprite: Sprite2D = $Background
 @onready var itemSprite: Sprite2D = $CenterContainer/Panel/Item
 
-func _ready():
-	itemSprite.scale = Vector2(2, 2)
-
 func update(item: InventoryItem):
 	if !item:
-		backgroundSprite.frame=0
+		backgroundSprite.frame = 0
 		itemSprite.visible = false
 	else:
-		backgroundSprite.frame=1
+		backgroundSprite.frame = 1
 		itemSprite.visible = true
 		itemSprite.texture = item.texture
+		itemSprite.scale = item.icon_scale

@@ -209,7 +209,7 @@ script = ExtResource("10_8qj3r")
 play_button = NodePath("../menu/Panel/VBoxContainer/TextureButton_play")
 options_button = NodePath("../menu/Panel/VBoxContainer/TextureButton_options")
 
-[connection signal="pressed" from="menu/Panel/VBoxContainer/TextureButton_play" to="menu" method="_on_texture_button_play_pressed"]
 [connection signal="pressed" from="menu/Panel/VBoxContainer/TextureButton_play" to="menu" method="playpressed"]
+[connection signal="pressed" from="menu/Panel/VBoxContainer/TextureButton_play" to="menu" method="_on_texture_button_play_pressed"]
 [connection signal="pressed" from="menu/Panel/VBoxContainer/TextureButton_options" to="menu" method="_on_texture_button_options_pressed"]
 [connection signal="pressed" from="menu/Panel/VBoxContainer/TextureButton_quit" to="menu" method="_on_texture_button_quit_pressed"]

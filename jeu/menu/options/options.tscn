@@ -2,7 +2,7 @@
 
 [ext_resource type="FontFile" uid="uid://b4ysgp2awsrtc" path="res://menu/import/godot-pixel-ui-free-7ea1d3962268a1e19f123fcc8103b686c3af2b8c/godot-pixel-ui-free-7ea1d3962268a1e19f123fcc8103b686c3af2b8c/addons/pixel_ui/font/pixel_ui_font.fnt" id="1_kwmgx"]
 [ext_resource type="Script" uid="uid://bn0qvlnpfn47n" path="res://menu/script/control.gd" id="2_qvli6"]
-[ext_resource type="PackedScene" uid="uid://dvw3qowu64wn8" path="res://menu/options/settingstab.tscn" id="3_vrnof"]
+[ext_resource type="PackedScene" uid="uid://dvw3qowu64wn8" path="res://menu/settingstab.tscn" id="3_vrnof"]
 [ext_resource type="Texture2D" uid="uid://h7gwgk7eerkr" path="res://menu/import/godot-pixel-ui-free-7ea1d3962268a1e19f123fcc8103b686c3af2b8c/godot-pixel-ui-free-7ea1d3962268a1e19f123fcc8103b686c3af2b8c/addons/pixel_ui/themes/wood/button_normal.png" id="4_p6051"]
 [ext_resource type="Texture2D" uid="uid://cp5yfvu6nafaf" path="res://menu/import/godot-pixel-ui-free-7ea1d3962268a1e19f123fcc8103b686c3af2b8c/godot-pixel-ui-free-7ea1d3962268a1e19f123fcc8103b686c3af2b8c/addons/pixel_ui/themes/wood/button_pressed.png" id="5_07bmx"]
 [ext_resource type="Texture2D" uid="uid://bwae327r5i1wq" path="res://menu/import/godot-pixel-ui-free-7ea1d3962268a1e19f123fcc8103b686c3af2b8c/godot-pixel-ui-free-7ea1d3962268a1e19f123fcc8103b686c3af2b8c/addons/pixel_ui/themes/wood/button_hover.png" id="6_i3paj"]

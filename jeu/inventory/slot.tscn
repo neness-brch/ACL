@@ -26,3 +26,4 @@ offset_bottom = 65.0
 layout_mode = 2
 
 [node name="Item" type="Sprite2D" parent="CenterContainer/Panel" unique_id=1742989507]
+texture_filter = 1

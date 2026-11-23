@@ -9,20 +9,26 @@ signal closed
 var isOpen: bool = false
 
 var health_potion_item: InventoryItem = preload("res://inventory/items/healthpotion.tres")
-
+var jam_item: InventoryItem = preload("res://inventory/items/jam.tres")
 
 func _ready():
 	update()
 
 
 func update():
-	var quantity = GameState.get_item_count("health_potion")
-	if quantity > 0:
-		slots[0].update(health_potion_item)
-	else:
-		slots[0].update(null)
-	for i in range(1, slots.size()):
-		slots[i].update(null)
+	for slot in slots:
+		slot.update(null)
+	var slot_index=0
+	for item_id in GameState.inventory_order:
+		if GameState.has_item(item_id):
+			if slot_index>=slots.size():
+				break
+			if item_id=="health_potion":
+				slots[slot_index].update(health_potion_item)
+				slot_index+=1
+			elif item_id=="cherry_jam":
+				slots[slot_index].update(jam_item)
+				slot_index+=1
 
 func open():
 	visible = true

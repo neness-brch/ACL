@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="InventoryItem" format=3 uid="uid://vxnch1a1tmjn"]
+
+[ext_resource type="Script" uid="uid://bk7prkfptr0l7" path="res://inventory/inventoryitem.gd" id="1_jpbwa"]
+[ext_resource type="Texture2D" uid="uid://cq50mkow44ru1" path="res://assets/jam.png" id="2_v0sfc"]
+
+[resource]
+script = ExtResource("1_jpbwa")
+texture = ExtResource("2_v0sfc")
+icon_scale = Vector2(0.2, 0.2)
+metadata/_custom_type_script = "uid://bk7prkfptr0l7"
