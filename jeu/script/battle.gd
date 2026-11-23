@@ -45,8 +45,8 @@ const FALL_ZONE_SCENE := "res://maingame.tscn"
 @export_group("Monster 2")
 @export var monster2_id: String = ""
 @export var monster2_max_hp: int = 100
-@export var monster2_damage_min: int = 10
-@export var monster2_damage_max: int = 15
+@export var monster2_damage_min: int = 5
+@export var monster2_damage_max: int = 10
 @export_range(0.01, 1.0) var monster2_start_health_ratio: float = 1.0
 @export_group("")
 

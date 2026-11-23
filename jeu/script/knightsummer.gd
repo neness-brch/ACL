@@ -1,6 +1,6 @@
 extends Area2D
 
-@export var npc_id: String = "knight"
+@export var npc_id: String = "summer_knight"
 
 var player_nearby := false
 var current_dialogue_id: String = ""
@@ -111,7 +111,7 @@ func get_current_dialogue_id() -> String:
 
 		return npc_id + "_after_quest"
 
-	if not GameState.has_seen_dialogue(npc_id + "_first_meeting"):
+	if not GameState.is_quest_active("summer_quest"):
 		return npc_id + "_first_meeting"
 
 	return npc_id + "_normal"
@@ -137,10 +137,10 @@ func update_dialogue_bubble():
 	var dialogue_id := get_current_dialogue_id()
 
 	new_dialogue_bubble.visible = (
-		not GameState.has_seen_dialogue(dialogue_id)
-		and (
-			dialogue_id == npc_id + "_first_meeting"
-			or dialogue_id == npc_id + "_summer_quest"
+		dialogue_id == npc_id + "_first_meeting"
+		or (
+			dialogue_id == npc_id + "_summer_quest"
+			and not GameState.has_seen_dialogue(dialogue_id)
 		)
 	)
 	

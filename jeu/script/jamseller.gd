@@ -1,13 +1,12 @@
 extends Area2D
 
 var player_nearby := false
+var already_got_jam := false
 
 @onready var interaction_prompt = $InteractionPrompt
 @onready var dialogue_box: DialogueBox = $"../CanvasLayer/BoiteDialogues"
 
 @export var jamseller_portrait: Texture2D
-
-
 
 var first_dialogue: Array[Dictionary] = [
 	{"text": "whooooooo wants to give a try to our delicioooous cherry jam !", "speaker": "jamseller"},
@@ -18,51 +17,49 @@ var first_dialogue: Array[Dictionary] = [
 	{"text": "so..does that mean you never tried cherry jam ???", "speaker": "jamseller"},
 	{"text": "ooh dear..you MUST try it.", "speaker": "jamseller"},
 	{"text": "look..it's just between us, but I'm gonna give you a free sample.", "speaker": "jamseller"},
-	{"text": "You obtained Cherry Jam (+20% Health Points)"}
-	
+	{"text": "You obtained Cherry Jam (+20% Health Points)", "speaker": "system"},
 ]
 
 var second_dialogue: Array[Dictionary] = [
 	{"text": "can't wait for you to try my Cherry Jam !", "speaker": "jamseller"},
-	{"text": "trust me, it's absolutely incredible !", "speaker": "jamseller"}
-	
+	{"text": "trust me, it's absolutely incredible !", "speaker": "jamseller"},
 ]
 
 
-
-func _ready():
+func _ready() -> void:
 	interaction_prompt.visible = false
-
 	body_entered.connect(_on_body_entered)
 	body_exited.connect(_on_body_exited)
 
 
-func _on_body_entered(body):
+func _on_body_entered(body: Node2D) -> void:
 	if body is Player:
 		player_nearby = true
 		interaction_prompt.visible = true
 
 
-func _on_body_exited(body):
+func _on_body_exited(body: Node2D) -> void:
 	if body is Player:
 		player_nearby = false
 		interaction_prompt.visible = false
 
 
-func _process(_delta):
-	if player_nearby \
-	and Input.is_action_just_pressed("interact") \
-	and not dialogue_box.dialogue_active:
+func _process(_delta: float) -> void:
+	if player_nearby and Input.is_action_just_pressed("interact") and not dialogue_box.dialogue_active:
 		start_dialogue()
 
 
-func start_dialogue():
+func start_dialogue() -> void:
 	interaction_prompt.visible = false
-	GameState.add_item("cherry_jam", 1)
 
-	var prepared_dialogue := prepare_dialogue(first_dialogue)
-
-	dialogue_box.start_dialogue(prepared_dialogue)
+	if not already_got_jam:
+		already_got_jam = true
+		GameState.add_item("cherry_jam", 1)
+		var prepared_dialogue := prepare_dialogue(first_dialogue)
+		dialogue_box.start_dialogue(prepared_dialogue)
+	else:
+		var prepared_dialogue := prepare_dialogue(second_dialogue)
+		dialogue_box.start_dialogue(prepared_dialogue)
 
 
 func prepare_dialogue(source_dialogue: Array[Dictionary]) -> Array[Dictionary]:
@@ -74,9 +71,6 @@ func prepare_dialogue(source_dialogue: Array[Dictionary]) -> Array[Dictionary]:
 
 		if speaker == "jamseller":
 			new_message["portrait"] = jamseller_portrait
-
-
-
 		else:
 			new_message["portrait"] = null
 

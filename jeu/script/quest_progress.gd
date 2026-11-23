@@ -39,6 +39,8 @@ func update_progress() -> void:
 
 	progress_text.text = str(current) + " / " + str(target)
 
+	progress_text.show()
+	quest_icon.show()
 	visible = true
 
 
