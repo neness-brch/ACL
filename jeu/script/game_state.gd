@@ -24,6 +24,7 @@ var pnj4_disappeared: bool = false
 
 
 
+
 var quests_completed: Dictionary = {
 	"fall_quest": false,
 	"summer_quest":false

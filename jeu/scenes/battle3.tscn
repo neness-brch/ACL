@@ -2,27 +2,75 @@
 
 [ext_resource type="Script" uid="uid://bvguxdtymjfhq" path="res://script/battle.gd" id="1_vcaxo"]
 [ext_resource type="Texture2D" uid="uid://dtmg0uacmistu" path="res://assets/sprite sheets/from idle.png" id="2_yosk5"]
-[ext_resource type="Texture2D" uid="uid://c5xaiq0aopvhx" path="res://Basic Asset Pack/Basic Asset Pack/Basic Monster Animations/Swamp Troll/SwampTroll.png" id="3_yosk5"]
-[ext_resource type="Texture2D" uid="uid://betl8pqh2nvq6" path="res://Basic Asset Pack/Basic Asset Pack/Basic Monster Animations/Crimson Slaad/CrimsonSlaad.png" id="4_ipvrf"]
+[ext_resource type="Texture2D" uid="uid://8yifukdj76t2" path="res://assets/Observer/Observer_attack1.png" id="3_yosk5"]
+[ext_resource type="Texture2D" uid="uid://tu3ru3utl2ji" path="res://assets/mushroom monster/mushroom monster_attack1.png" id="4_ipvrf"]
 [ext_resource type="FontFile" uid="uid://x6poahq41v4" path="res://assets/PKMN RBYGSC.ttf" id="4_p3vb0"]
 [ext_resource type="FontFile" uid="uid://c4bfe8sqo0dwg" path="res://assets/EBGaramond-VariableFont_wght.ttf" id="5_kqpnd"]
 [ext_resource type="AudioStream" uid="uid://dtu48q50a3vcn" path="res://music/stereofidelity.ogg" id="6_8wmqc"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_p3vb0"]
 atlas = ExtResource("3_yosk5")
-region = Rect2(0, 0, 16, 16)
+region = Rect2(0, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kqpnd"]
 atlas = ExtResource("3_yosk5")
-region = Rect2(16, 0, 16, 16)
+region = Rect2(64, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8wmqc"]
 atlas = ExtResource("3_yosk5")
-region = Rect2(32, 0, 16, 16)
+region = Rect2(128, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0td3o"]
 atlas = ExtResource("3_yosk5")
-region = Rect2(48, 0, 16, 16)
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cbt0h"]
+atlas = ExtResource("3_yosk5")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c5027"]
+atlas = ExtResource("3_yosk5")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ni2gj"]
+atlas = ExtResource("3_yosk5")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v5nj6"]
+atlas = ExtResource("3_yosk5")
+region = Rect2(448, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6bvd1"]
+atlas = ExtResource("3_yosk5")
+region = Rect2(512, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q55gc"]
+atlas = ExtResource("3_yosk5")
+region = Rect2(576, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jfpld"]
+atlas = ExtResource("3_yosk5")
+region = Rect2(640, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e7ss4"]
+atlas = ExtResource("3_yosk5")
+region = Rect2(704, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cdcix"]
+atlas = ExtResource("3_yosk5")
+region = Rect2(768, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ywlp8"]
+atlas = ExtResource("3_yosk5")
+region = Rect2(832, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sflax"]
+atlas = ExtResource("3_yosk5")
+region = Rect2(896, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_amki4"]
+atlas = ExtResource("3_yosk5")
+region = Rect2(960, 0, 64, 64)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_qfbbk"]
 animations = [{
@@ -38,31 +86,7 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_0td3o")
-}],
-"loop": 1,
-"name": &"default",
-"speed": 5.0
-}]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_cbt0h"]
-atlas = ExtResource("4_ipvrf")
-region = Rect2(0, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_c5027"]
-atlas = ExtResource("4_ipvrf")
-region = Rect2(16, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ni2gj"]
-atlas = ExtResource("4_ipvrf")
-region = Rect2(32, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_v5nj6"]
-atlas = ExtResource("4_ipvrf")
-region = Rect2(48, 0, 16, 16)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_uu46q"]
-animations = [{
-"frames": [{
+}, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_cbt0h")
 }, {
@@ -74,9 +98,111 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_v5nj6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6bvd1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q55gc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jfpld")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e7ss4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cdcix")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ywlp8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sflax")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_amki4")
 }],
 "loop": 1,
-"name": &"default",
+"name": &"Monstre",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_70lg7"]
+atlas = ExtResource("4_ipvrf")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ip4wt"]
+atlas = ExtResource("4_ipvrf")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8gp10"]
+atlas = ExtResource("4_ipvrf")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2qig4"]
+atlas = ExtResource("4_ipvrf")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j0idt"]
+atlas = ExtResource("4_ipvrf")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wqnrr"]
+atlas = ExtResource("4_ipvrf")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ppao8"]
+atlas = ExtResource("4_ipvrf")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_stp3a"]
+atlas = ExtResource("4_ipvrf")
+region = Rect2(448, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_onuvk"]
+atlas = ExtResource("4_ipvrf")
+region = Rect2(512, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6fsi5"]
+atlas = ExtResource("4_ipvrf")
+region = Rect2(576, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_uu46q"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_70lg7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ip4wt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8gp10")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2qig4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j0idt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wqnrr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ppao8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_stp3a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_onuvk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6fsi5")
+}],
+"loop": 1,
+"name": &"Monstre",
 "speed": 5.0
 }]
 
@@ -97,22 +223,21 @@ flip_h = true
 region_enabled = true
 region_rect = Rect2(0, 0, 48.95709, 58)
 
-[node name="FondBlanc" type="ColorRect" parent="." unique_id=1260626596]
-offset_right = 186.0
-offset_bottom = 206.0
-
 [node name="Opponent" type="AnimatedSprite2D" parent="." unique_id=776005374]
 texture_filter = 1
-position = Vector2(1022, 114)
-scale = Vector2(13.869317, 13.869317)
+position = Vector2(888, 80)
+scale = Vector2(8, 8)
 sprite_frames = SubResource("SpriteFrames_qfbbk")
-autoplay = "default"
+animation = &"Monstre"
+autoplay = "Monstre"
 
 [node name="Opponent2" type="AnimatedSprite2D" parent="." unique_id=1240338786]
 texture_filter = 1
-position = Vector2(826.75, 128.15001)
-scale = Vector2(12.468748, 12.468748)
+position = Vector2(680, 48)
+scale = Vector2(8, 8)
 sprite_frames = SubResource("SpriteFrames_uu46q")
+animation = &"Monstre"
+autoplay = "Monstre"
 
 [node name="PlayerUI" type="Control" parent="." unique_id=1948828985]
 layout_mode = 3
@@ -124,10 +249,10 @@ offset_bottom = 292.0
 
 [node name="Name" type="Label" parent="PlayerUI" unique_id=1382615417]
 layout_mode = 0
-offset_left = 300.0
-offset_top = 7.0
-offset_right = 484.0
-offset_bottom = 32.0
+offset_left = 163.0
+offset_top = 21.0
+offset_right = 347.0
+offset_bottom = 46.0
 theme_override_fonts/font = ExtResource("4_p3vb0")
 theme_override_font_sizes/font_size = 22
 text = "Monster"
@@ -162,27 +287,27 @@ horizontal_alignment = 1
 
 [node name="HealthBar" type="ProgressBar" parent="OpponentUI" unique_id=886698401]
 layout_mode = 0
-offset_left = 784.0
-offset_top = 151.0
-offset_right = 1004.0
-offset_bottom = 178.0
+offset_left = 652.0
+offset_top = 164.0
+offset_right = 872.0
+offset_bottom = 191.0
 theme_override_fonts/font = ExtResource("4_p3vb0")
 
 [node name="IntimidateArrow" type="Label" parent="." unique_id=21313347]
-offset_left = 998.0
-offset_top = 42.0
-offset_right = 1055.0
-offset_bottom = 203.0
+offset_left = 848.0
+offset_top = -24.0
+offset_right = 905.0
+offset_bottom = 137.0
 theme_override_colors/font_color = Color(1, 0, 0, 1)
 theme_override_fonts/font = ExtResource("4_p3vb0")
 theme_override_font_sizes/font_size = 120
 text = "↓"
 
 [node name="IntimidateArrow2" type="Label" parent="." unique_id=706937431]
-offset_left = 789.0
-offset_top = 54.0
-offset_right = 846.0
-offset_bottom = 215.0
+offset_left = 656.0
+offset_top = 40.0
+offset_right = 713.0
+offset_bottom = 201.0
 theme_override_colors/font_color = Color(1, 0, 0, 1)
 theme_override_fonts/font = ExtResource("4_p3vb0")
 theme_override_font_sizes/font_size = 120
@@ -198,10 +323,10 @@ offset_bottom = 869.0
 
 [node name="Name" type="Label" parent="Opponent2UI" unique_id=240014519]
 layout_mode = 0
-offset_left = 150.0
-offset_top = -570.0
-offset_right = 334.0
-offset_bottom = -545.0
+offset_left = 14.0
+offset_top = -556.0
+offset_right = 198.0
+offset_bottom = -531.0
 theme_override_fonts/font = ExtResource("4_p3vb0")
 theme_override_font_sizes/font_size = 22
 text = "Monster"
@@ -209,10 +334,10 @@ horizontal_alignment = 1
 
 [node name="HealthBar" type="ProgressBar" parent="Opponent2UI" unique_id=656397581]
 layout_mode = 0
-offset_left = 143.0
-offset_top = -536.0
-offset_right = 338.0
-offset_bottom = -509.0
+offset_left = 6.0
+offset_top = -524.0
+offset_right = 201.0
+offset_bottom = -497.0
 theme_override_fonts/font = ExtResource("4_p3vb0")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=932616926]
@@ -257,7 +382,6 @@ theme_override_font_sizes/font_size = 26
 text = "->"
 
 [node name="FightMenu" type="Panel" parent="CanvasLayer" unique_id=1657795329]
-visible = false
 anchors_preset = -1
 anchor_bottom = 0.062000003
 offset_left = 22.0
@@ -304,7 +428,6 @@ theme_override_font_sizes/font_size = 25
 text = "->"
 
 [node name="ObjectsMenu" type="Panel" parent="CanvasLayer" unique_id=1258421916]
-visible = false
 offset_right = 40.0
 offset_bottom = 40.0
 
