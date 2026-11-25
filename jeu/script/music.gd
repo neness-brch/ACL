@@ -32,6 +32,8 @@ func _ready():
 	play_random_track()
 
 	play_random_track()
+	
+	audio_player.volume_db = -80
 
 
 func play_random_track():

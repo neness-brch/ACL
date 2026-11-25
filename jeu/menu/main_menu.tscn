@@ -9,7 +9,6 @@
 [ext_resource type="Script" uid="uid://blie2xar6rfid" path="res://menu/startgame.gd" id="6_s8mfa"]
 [ext_resource type="VideoStream" uid="uid://bvkai53r8fg23" path="res://assets/MenuLoop.ogv" id="7_0tw43"]
 [ext_resource type="AudioStream" uid="uid://dqo7qcwyvxtbt" path="res://music/petitefilledelamer.ogg" id="9_8qj3r"]
-[ext_resource type="Script" uid="uid://dr018xhn8rcx5" path="res://menu/script/menumusic.gd" id="10_8qj3r"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_06t4h"]
 bg_color = Color(0.36078432, 0.20392157, 0.14117648, 1)
@@ -200,14 +199,11 @@ grow_vertical = 2
 theme_override_font_sizes/font_size = 24
 text = "QUIT"
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1888337285 node_paths=PackedStringArray("play_button", "options_button")]
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1888337285]
 stream = ExtResource("9_8qj3r")
 volume_db = 3.0
 autoplay = true
 parameters/looping = true
-script = ExtResource("10_8qj3r")
-play_button = NodePath("../menu/Panel/VBoxContainer/TextureButton_play")
-options_button = NodePath("../menu/Panel/VBoxContainer/TextureButton_options")
 
 [connection signal="pressed" from="menu/Panel/VBoxContainer/TextureButton_play" to="menu" method="playpressed"]
 [connection signal="pressed" from="menu/Panel/VBoxContainer/TextureButton_play" to="menu" method="_on_texture_button_play_pressed"]

@@ -3,6 +3,11 @@
 [ext_resource type="PackedScene" uid="uid://c82n8erkwol58" path="res://menu/options/window_mode_button.tscn" id="1_dxv6o"]
 [ext_resource type="PackedScene" uid="uid://bd1epb2b7voso" path="res://menu/options/resolution_mode_button.tscn" id="2_jxxsw"]
 [ext_resource type="PackedScene" uid="uid://buj7osmbuqqk0" path="res://menu/options/audio_slider_settings.tscn" id="3_jxxsw"]
+[ext_resource type="PackedScene" uid="uid://5b5c0itjg4pj" path="res://menu/options/key_rebind_button.tscn" id="4_ju2a8"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qbukb"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gh557"]
 
 [node name="Control" type="Control" unique_id=968627298]
 layout_mode = 3
@@ -24,7 +29,7 @@ offset_bottom = -100.0
 grow_horizontal = 2
 grow_vertical = 2
 tab_alignment = 1
-current_tab = 1
+current_tab = 2
 
 [node name="Graphics" type="TabBar" parent="TabContainer" unique_id=1601034365]
 visible = false
@@ -57,6 +62,7 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="Sound" type="TabBar" parent="TabContainer" unique_id=1945840301]
+visible = false
 layout_mode = 2
 metadata/_tab_index = 1
 
@@ -84,7 +90,6 @@ theme_override_constants/separation = 100
 layout_mode = 2
 
 [node name="Controls" type="TabBar" parent="TabContainer" unique_id=1977428828]
-visible = false
 layout_mode = 2
 metadata/_tab_index = 2
 
@@ -100,12 +105,53 @@ theme_override_constants/margin_top = 24
 theme_override_constants/margin_right = 24
 theme_override_constants/margin_bottom = 24
 
-[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Controls/MarginContainer" unique_id=390488602]
+[node name="ScrollContainer" type="ScrollContainer" parent="TabContainer/Controls/MarginContainer" unique_id=1347687039]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Controls/MarginContainer/ScrollContainer" unique_id=829101600]
 layout_mode = 2
 theme_override_constants/separation = 64
-alignment = 1
 
-[node name="Label" type="Label" parent="TabContainer/Controls/MarginContainer/VBoxContainer" unique_id=474199460]
+[node name="HSeparator" type="HSeparator" parent="TabContainer/Controls/MarginContainer/ScrollContainer/VBoxContainer" unique_id=318462590]
+layout_mode = 2
+theme_override_constants/separation = 20
+theme_override_styles/separator = SubResource("StyleBoxEmpty_qbukb")
+
+[node name="Key_Rebind_Button" parent="TabContainer/Controls/MarginContainer/ScrollContainer/VBoxContainer" unique_id=322619798 instance=ExtResource("4_ju2a8")]
 texture_filter = 1
 layout_mode = 2
-text = "Music"
+
+[node name="Key_Rebind_Button8" parent="TabContainer/Controls/MarginContainer/ScrollContainer/VBoxContainer" unique_id=965980859 instance=ExtResource("4_ju2a8")]
+texture_filter = 1
+layout_mode = 2
+action_name = "move_down"
+
+[node name="Key_Rebind_Button9" parent="TabContainer/Controls/MarginContainer/ScrollContainer/VBoxContainer" unique_id=2138087100 instance=ExtResource("4_ju2a8")]
+texture_filter = 1
+layout_mode = 2
+action_name = "move_left"
+
+[node name="Key_Rebind_Button10" parent="TabContainer/Controls/MarginContainer/ScrollContainer/VBoxContainer" unique_id=1242696303 instance=ExtResource("4_ju2a8")]
+texture_filter = 1
+layout_mode = 2
+action_name = "move_right"
+
+[node name="Key_Rebind_Button11" parent="TabContainer/Controls/MarginContainer/ScrollContainer/VBoxContainer" unique_id=1078469656 instance=ExtResource("4_ju2a8")]
+texture_filter = 1
+layout_mode = 2
+action_name = "interact"
+
+[node name="Key_Rebind_Button12" parent="TabContainer/Controls/MarginContainer/ScrollContainer/VBoxContainer" unique_id=1365104774 instance=ExtResource("4_ju2a8")]
+texture_filter = 1
+layout_mode = 2
+action_name = "next_dialogue"
+
+[node name="Key_Rebind_Button13" parent="TabContainer/Controls/MarginContainer/ScrollContainer/VBoxContainer" unique_id=349461215 instance=ExtResource("4_ju2a8")]
+texture_filter = 1
+layout_mode = 2
+action_name = "toggle_inventory"
+
+[node name="HSeparator2" type="HSeparator" parent="TabContainer/Controls/MarginContainer/ScrollContainer/VBoxContainer" unique_id=331176101]
+layout_mode = 2
+theme_override_constants/separation = 32
+theme_override_styles/separator = SubResource("StyleBoxEmpty_gh557")
