@@ -6,6 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://dvw3qowu64wn8" path="res://menu/settingstab.tscn" id="3_7obbp"]
 [ext_resource type="Texture2D" uid="uid://cp5yfvu6nafaf" path="res://menu/import/godot-pixel-ui-free-7ea1d3962268a1e19f123fcc8103b686c3af2b8c/godot-pixel-ui-free-7ea1d3962268a1e19f123fcc8103b686c3af2b8c/addons/pixel_ui/themes/wood/button_pressed.png" id="4_w5qgn"]
 [ext_resource type="Texture2D" uid="uid://bwae327r5i1wq" path="res://menu/import/godot-pixel-ui-free-7ea1d3962268a1e19f123fcc8103b686c3af2b8c/godot-pixel-ui-free-7ea1d3962268a1e19f123fcc8103b686c3af2b8c/addons/pixel_ui/themes/wood/button_hover.png" id="5_vmi34"]
+[ext_resource type="AudioStream" uid="uid://dqo7qcwyvxtbt" path="res://music/petitefilledelamer.ogg" id="7_61j48"]
+[ext_resource type="Script" uid="uid://dj80n2vjfxfg" path="res://menu/audio_stream_player_2d.gd" id="8_hp8cw"]
 
 [sub_resource type="Theme" id="Theme_8kvc6"]
 Label/fonts/font = ExtResource("1_p8250")
@@ -77,5 +79,12 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 24
 text = "Back"
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=457462483]
+stream = ExtResource("7_61j48")
+volume_db = 3.0
+autoplay = true
+parameters/looping = true
+script = ExtResource("8_hp8cw")
 
 [connection signal="pressed" from="options/MarginContainer/VBoxContainer/back_button" to="options" method="_on_texture_button_pressed"]
