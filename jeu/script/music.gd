@@ -2,6 +2,7 @@ extends Node
 
 @onready var audio_player: AudioStreamPlayer = $AudioStreamPlayer
 @onready var silence_timer: Timer = $SilenceTimer
+var music_volume: float = 1.0
 
 var tracks: Array[AudioStream] = [
 	preload("res://music/secunda.ogg"),
@@ -21,8 +22,14 @@ var last_track: AudioStream = null
 
 
 func _ready():
+	print("Music ready")
+	print(get_children())
+	print($AudioStreamPlayer)
+
 	audio_player.finished.connect(_on_music_finished)
 	silence_timer.timeout.connect(_on_silence_finished)
+
+	play_random_track()
 
 	play_random_track()
 
@@ -50,3 +57,7 @@ func _on_music_finished():
 
 func _on_silence_finished():
 	play_random_track()
+	
+func set_music_volume(value: float):
+	music_volume = value
+	audio_player.volume_db = linear_to_db(value)

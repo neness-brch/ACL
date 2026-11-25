@@ -1,6 +1,9 @@
 [gd_scene format=3 uid="uid://b2x8jjhkkyhi0"]
 
+[ext_resource type="Script" uid="uid://b7eubnv3f8lt1" path="res://script/music.gd" id="1_05ggv"]
+
 [node name="Node2D" type="Node2D" unique_id=1219232951]
+script = ExtResource("1_05ggv")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1361492764]
 
